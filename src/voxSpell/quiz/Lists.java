@@ -36,6 +36,9 @@ public class Lists {
 	private WordList _faulted;
 	private WordList _failed;
 	private WordList _lastFailed;
+	private int _longestStreak;
+	private int _currentStreak;
+	private int _numberOfWordsRight;
 	private ArrayList<ArrayList<Integer>> _scores;
 	private static Lists _thisList = null;
 
@@ -49,11 +52,10 @@ public class Lists {
 		_failed =  new WordList();
 		_lastFailed =  new WordList();
 
-		/*_mastered = readInFile(MASTERED);
+		_mastered = readInFile(MASTERED);
 		_faulted = readInFile(FAULTED);
 		_failed = readInFile(FAILED);
-		_lastFailed = readInFile(LAST_FAILED);*/
-		//URL url = Lists.class.getResource(WORDLIST);
+		_lastFailed = readInFile(LAST_FAILED);
 		//from: stackoverflow.com/questions/15359702/get-location-of-jar-file
 		File f = new File(System.getProperty("java.class.path"));
 		File dir = f.getAbsoluteFile().getParentFile();
@@ -127,6 +129,18 @@ public class Lists {
 		}
 	}
 
+	protected void increaseStreak(){
+		_longestStreak++;
+		_numberOfWordsRight++;
+	}
+	
+	protected void resetStreak(){
+		if(_currentStreak > _longestStreak){
+			_longestStreak = _currentStreak;
+		}
+		_currentStreak = 0;
+	}
+	
 	protected void addScore(int score){
 		_scores.get(GUI.getLevel()).add(score);
 	}
