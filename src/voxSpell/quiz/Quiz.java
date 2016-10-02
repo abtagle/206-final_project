@@ -62,6 +62,8 @@ public abstract class Quiz{
 							_wordNumberInt++;
 							_score++;
 							sayPhrase("Correct.");
+							//Update the streak
+							Lists.getInstance().increaseStreak();
 						} else{
 							_attemptNumber++;
 							sayPhrase("Incorrect. Please try again.");
