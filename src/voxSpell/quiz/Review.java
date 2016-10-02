@@ -24,13 +24,17 @@ public class Review {
 	}
 	
 	public void nextWord(){
-		if(wordNumber < _reviewList.size()-1){
+		if(wordNumber < getLength()-1){
 			wordNumber++;
+		} else{
+			wordNumber = 0;
 		}
 	}
 	public void previousWord(){
 		if(wordNumber != 0){
 			wordNumber--;
+		} else{
+			wordNumber = getLength()-1;
 		}
 	}
 	public void sayWord(){
