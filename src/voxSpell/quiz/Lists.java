@@ -89,6 +89,7 @@ public class Lists {
 				_longestStreak = Integer.parseInt(split[0]);
 				_currentStreak = Integer.parseInt(split[1]);
 				_numberOfWordsRight = Integer.parseInt(split[2]);
+				_numberOfWordsAttempted = Integer.parseInt(split[3]);
 				streakValuesReader.close();	
 
 			} catch (FileNotFoundException e){
@@ -101,6 +102,7 @@ public class Lists {
 			_longestStreak = 0;
 			_currentStreak = 0;
 			_numberOfWordsRight = 0;
+			_numberOfWordsAttempted = 0;
 		}
 	}
 	private WordList readInFile(String filename){
@@ -159,12 +161,14 @@ public class Lists {
 	protected void increaseStreak(){
 		_currentStreak++;
 		_numberOfWordsRight++;
+		_numberOfWordsAttempted++;
 		if(_currentStreak > _longestStreak){
 			_longestStreak = _currentStreak;
 		}
 	}
 	
 	protected void resetStreak(){
+		_numberOfWordsAttempted++;
 		_currentStreak = 0;
 	}
 	
@@ -214,6 +218,9 @@ public class Lists {
 	}
 	public int getWordsRight(){
 		return _numberOfWordsRight;
+	}
+	public int getWordsAttempted(){
+		return _numberOfWordsAttempted;
 	}
 	public WordList getMastered(){
 		return _mastered;
@@ -273,7 +280,7 @@ public class Lists {
 	
 	private void writeStreaksToFile() throws FileNotFoundException{
 		PrintWriter writer = new PrintWriter(STREAK_VALUES);
-		writer.println(_longestStreak + " " + _currentStreak + " " + _numberOfWordsRight);
+		writer.println(_longestStreak + " " + _currentStreak + " " + _numberOfWordsRight + " " +_numberOfWordsAttempted);
 		writer.close();
 	}
 

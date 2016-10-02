@@ -165,7 +165,15 @@ public class MainMenu extends JPanel {
 		int longestStreak = Lists.getInstance().getLongestStreak();
 		int currentStreak = Lists.getInstance().getStreak();
 		int wordsRight= Lists.getInstance().getWordsRight();
+		int wordsAttempted = Lists.getInstance().getWordsAttempted();
+		String accuracy;
+		System.out.println(wordsAttempted);
+		if(wordsAttempted!=0){
+			accuracy = "" +((double)wordsRight/(double)wordsAttempted);
+		} else {
+			accuracy = "-";
+		}
 		
-		stats.setText("Longest Streak: " + longestStreak + "\nCurrent Streak: " + currentStreak + "\nNumber of Words Right: " + wordsRight);
+		stats.setText("Longest Streak: " + longestStreak + "\nCurrent Streak: " + currentStreak + "\nNumber of Words Right: " + wordsRight + "\nAccuracy: " + accuracy + "%");
 	}
 }
