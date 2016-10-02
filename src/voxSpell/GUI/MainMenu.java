@@ -56,12 +56,14 @@ public class MainMenu extends JPanel {
 		add(image, gbc_lblNewLabel);
 		
 		JButton newQuiz = new JButton("New Quiz");
+		newQuiz.setIcon(new ImageIcon("/afs/ec.auckland.ac.nz/users/a/t/atag549/unixhome/Documents/Softeng_206/Project2/voxSpell/play.png"));
+		newQuiz.setBackground(new Color(51, 0, 51));
 		newQuiz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GUI.getInstance().setContentPane(new QuizScreen("New Quiz"));
 			}
 		});
-		newQuiz.setForeground(new Color(51, 0, 51));
+		newQuiz.setForeground(new Color(255, 255, 255));
 		newQuiz.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_newQuiz = new GridBagConstraints();
 		gbc_newQuiz.gridwidth = 2;
@@ -72,21 +74,14 @@ public class MainMenu extends JPanel {
 		add(newQuiz, gbc_newQuiz);
 		
 		JButton review = new JButton("Review");
+		review.setIcon(new ImageIcon("/afs/ec.auckland.ac.nz/users/a/t/atag549/unixhome/Documents/Softeng_206/Project2/voxSpell/review.png"));
+		review.setBackground(new Color(51, 0, 51));
 		review.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GUI.getInstance().setContentPane(new ReviewOptionsScreen());
 			}
 		});
-		
-		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon("/afs/ec.auckland.ac.nz/users/a/t/atag549/unixhome/Documents/Softeng_206/Project2/voxSpell/play.png"));
-		GridBagConstraints gbc_label_1 = new GridBagConstraints();
-		gbc_label_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_label_1.insets = new Insets(0, 0, 5, 5);
-		gbc_label_1.gridx = 7;
-		gbc_label_1.gridy = 2;
-		add(label_1, gbc_label_1);
-		review.setForeground(new Color(51, 0, 51));
+		review.setForeground(new Color(255, 255, 255));
 		review.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_review = new GridBagConstraints();
 		gbc_review.fill = GridBagConstraints.HORIZONTAL;
@@ -115,18 +110,10 @@ public class MainMenu extends JPanel {
 				}
 			}
 		});
-		
-		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("/afs/ec.auckland.ac.nz/users/a/t/atag549/unixhome/Documents/Softeng_206/Project2/voxSpell/review.png"));
-		GridBagConstraints gbc_label = new GridBagConstraints();
-		gbc_label.insets = new Insets(0, 0, 5, 5);
-		gbc_label.gridx = 7;
-		gbc_label.gridy = 4;
-		add(label, gbc_label);
 		statsButton.setForeground(new Color(51, 0, 51));
 		statsButton.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_statsButton = new GridBagConstraints();
-		gbc_statsButton.fill = GridBagConstraints.BOTH;
+		gbc_statsButton.fill = GridBagConstraints.HORIZONTAL;
 		gbc_statsButton.gridwidth = 2;
 		gbc_statsButton.insets = new Insets(0, 0, 5, 5);
 		gbc_statsButton.gridx = 5;
