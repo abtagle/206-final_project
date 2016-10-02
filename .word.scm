@@ -1,2 +1,2 @@
-(voice_rab_diphone) ;;
-(SayText "and")
+(voice_kal_diphone) ;;
+(SayText "my")

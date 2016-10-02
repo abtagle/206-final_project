@@ -40,6 +40,7 @@ public class Lists {
 	private int _longestStreak;
 	private int _currentStreak;
 	private int _numberOfWordsRight;
+	private int _numberOfWordsAttempted;
 	private ArrayList<ArrayList<Integer>> _scores;
 	private static Lists _thisList = null;
 
@@ -156,14 +157,14 @@ public class Lists {
 	}
 
 	protected void increaseStreak(){
-		_longestStreak++;
+		_currentStreak++;
 		_numberOfWordsRight++;
-	}
-	
-	protected void resetStreak(){
 		if(_currentStreak > _longestStreak){
 			_longestStreak = _currentStreak;
 		}
+	}
+	
+	protected void resetStreak(){
 		_currentStreak = 0;
 	}
 	
@@ -245,6 +246,7 @@ public class Lists {
 	}
 	public void writeAllStats(){
 		try {
+			System.out.println("reading");
 			writeStreaksToFile();
 			writeListToFiles(_mastered.returnArrayList(), MASTERED);
 			writeListToFiles(_faulted.returnArrayList(), FAULTED);

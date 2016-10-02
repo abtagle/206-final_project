@@ -66,6 +66,7 @@ public abstract class Quiz{
 							Lists.getInstance().increaseStreak();
 						} else{
 							_attemptNumber++;
+							Lists.getInstance().resetStreak();
 							sayPhrase("Incorrect. Please try again.");
 						}
 						quizQuestion();
@@ -124,7 +125,7 @@ public abstract class Quiz{
 				JOptionPane.showMessageDialog(null, "Error saying word", "Quiz Error", JOptionPane.ERROR_MESSAGE);
 			}
 			//If there are no words left to quiz, show results
-		} else {
+		} /*else {
 			if(_isReview == false){
 				Lists.getInstance().addScore(_score);
 				if(_score >= 9 && GUI.getLevel()!= GUI.NUMBER_OF_LEVELS - 1){
@@ -137,7 +138,7 @@ public abstract class Quiz{
 				}
 			}
 			//TestStats view goes here
-		}	
+		}*/	
 	}
 
 	protected void updateWordNumberInGUI(){
