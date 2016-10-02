@@ -242,6 +242,11 @@ public class Lists {
 		_faulted = new WordList();
 		_failed = new WordList();
 		_lastFailed = new WordList();
+		_currentStreak = 0;
+		_longestStreak = 0;
+		_numberOfWordsRight = 0;
+		_numberOfWordsAttempted = 0;
+		
 		setUpScores();
 	}
 	public void writeAllStats(){

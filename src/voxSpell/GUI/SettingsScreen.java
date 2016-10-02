@@ -204,28 +204,6 @@ public class SettingsScreen extends JPanel {
 		gbc_submitQuizSize.gridy = 5;
 		add(submitQuizSize, gbc_submitQuizSize);
 		
-		JLabel musicLabel = new JLabel("Music");
-		musicLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		musicLabel.setForeground(Color.WHITE);
-		musicLabel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
-		GridBagConstraints gbc_musicLabel = new GridBagConstraints();
-		gbc_musicLabel.anchor = GridBagConstraints.EAST;
-		gbc_musicLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_musicLabel.gridx = 1;
-		gbc_musicLabel.gridy = 7;
-		add(musicLabel, gbc_musicLabel);
-		
-		JToggleButton tglbtnNewToggleButton = new JToggleButton("New toggle button");
-		tglbtnNewToggleButton.setForeground(new Color(51, 0, 51));
-		tglbtnNewToggleButton.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
-		GridBagConstraints gbc_tglbtnNewToggleButton = new GridBagConstraints();
-		gbc_tglbtnNewToggleButton.fill = GridBagConstraints.BOTH;
-		gbc_tglbtnNewToggleButton.gridwidth = 4;
-		gbc_tglbtnNewToggleButton.insets = new Insets(0, 0, 5, 5);
-		gbc_tglbtnNewToggleButton.gridx = 3;
-		gbc_tglbtnNewToggleButton.gridy = 7;
-		add(tglbtnNewToggleButton, gbc_tglbtnNewToggleButton);
-		
 		JButton btnBackToMenu = new JButton("Back To Menu");
 		btnBackToMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -235,6 +213,17 @@ public class SettingsScreen extends JPanel {
 		
 		currentLevel = new JLabel();
 		setCurrentLevelText();
+		
+		JButton restart = new JButton("Restart Game");
+		restart.setForeground(new Color(51, 0, 51));
+		restart.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		GridBagConstraints gbc_restart = new GridBagConstraints();
+		gbc_restart.fill = GridBagConstraints.HORIZONTAL;
+		gbc_restart.gridwidth = 4;
+		gbc_restart.insets = new Insets(0, 0, 5, 5);
+		gbc_restart.gridx = 3;
+		gbc_restart.gridy = 7;
+		add(restart, gbc_restart);
 		currentLevel.setHorizontalAlignment(SwingConstants.RIGHT);
 		currentLevel.setForeground(Color.WHITE);
 		currentLevel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
@@ -254,7 +243,7 @@ public class SettingsScreen extends JPanel {
 		GridBagConstraints gbc_sampleWords = new GridBagConstraints();
 		gbc_sampleWords.gridwidth = 10;
 		gbc_sampleWords.fill = GridBagConstraints.HORIZONTAL;
-		gbc_sampleWords.insets = new Insets(0, 0, 5, 5);
+		gbc_sampleWords.insets = new Insets(0, 0, 5, 0);
 		gbc_sampleWords.gridx = 0;
 		gbc_sampleWords.gridy = 10;
 		add(sampleWords, gbc_sampleWords);

@@ -8,7 +8,7 @@ public class Review {
 
 	public Review(boolean isFailed){
 		if(isFailed){
-			_reviewList = Lists.getInstance().getFailed().returnArrayList();
+			_reviewList = Lists.getInstance().getLastFailed().returnArrayList();
 		} else{
 			_reviewList = Lists.getInstance().getWordList(Settings.getInstance().getLevel()).returnArrayList();
 		}

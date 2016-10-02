@@ -37,11 +37,6 @@ public class ReviewScreen extends JPanel {
 		
 		currentReview = new Review(isFailed);
 		
-		if(currentReview.getLength() == 0){
-			JOptionPane.showMessageDialog(null, "There are no words available to review from that category.", "Review", JOptionPane.ERROR_MESSAGE);
-			GUI.getInstance().setContentPane(new ReviewOptionsScreen());
-		}
-		
 		setBackground(new Color(51, 0, 51));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{80, 40, 160, 160, 160, 40, 80, 0};
@@ -170,6 +165,14 @@ public class ReviewScreen extends JPanel {
 		gbc_menu.gridx = 2;
 		gbc_menu.gridy = 12;
 		add(menu, gbc_menu);
+		
+		if(currentReview.getLength() == 0){
+			JOptionPane.showMessageDialog(null, "There are no words available to review from that category. Please go back to the main menu", "Review", JOptionPane.ERROR_MESSAGE);
+			viewWordToggle.setEnabled(false);
+			next.setEnabled(false);
+			previous.setEnabled(false);
+			relisten.setEnabled(false);
+		}
 
 	}
 	
