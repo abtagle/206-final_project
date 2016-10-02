@@ -11,7 +11,6 @@ import javax.swing.SwingConstants;
 
 import voxSpell.quiz.NewQuiz;
 import voxSpell.quiz.Quiz;
-import voxSpell.quiz.Review;
 
 import javax.swing.JTextField;
 import java.awt.Insets;
@@ -38,7 +37,7 @@ public class QuizScreen extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public QuizScreen(String title, boolean isReview) {
+	public QuizScreen(String title) {
 		this.title = title;
 		setUp(title, false);
 		GUI.getInstance().getFrame().setSize(800, 600);
@@ -156,11 +155,7 @@ public class QuizScreen extends JPanel {
 	private void setUp(String title, boolean isReview){
 		this.title = title;
 		this.isReview = isReview;
-		if (this.isReview){
-			quiz = new Review(this);
-		} else{
-			quiz = new NewQuiz(this);
-		}
+		quiz = new NewQuiz(this);
 		quiz.sayWord();
 		
 	}

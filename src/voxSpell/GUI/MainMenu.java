@@ -42,7 +42,7 @@ public class MainMenu extends JPanel {
 		JButton newQuiz = new JButton("New Quiz");
 		newQuiz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GUI.getInstance().setContentPane(new QuizScreen("New Quiz", false));
+				GUI.getInstance().setContentPane(new QuizScreen("New Quiz"));
 			}
 		});
 		newQuiz.setForeground(new Color(51, 0, 51));
@@ -56,6 +56,11 @@ public class MainMenu extends JPanel {
 		add(newQuiz, gbc_newQuiz);
 		
 		JButton review = new JButton("Review");
+		review.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUI.getInstance().setContentPane(new ReviewOptionsScreen());
+			}
+		});
 		review.setForeground(new Color(51, 0, 51));
 		review.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_review = new GridBagConstraints();
