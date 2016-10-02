@@ -28,13 +28,13 @@ public class GUI implements WindowListener{
 	public static int NUMBER_OF_LEVELS;
 	private static Dimension _frameSize;
 	private static int _level;
-	
+
 	//From: http://stackoverflow.com/questions/7140248/get-system-default-font
 	public static final Font TITLE_FONT = new Font(new JLabel().getName(), 1, 20);
 	private JFrame _frame = null;
 	private static GUI _gui = null;
 	public static void main(String[] args) {
-	    //Schedule a job for the event-dispatching thread:
+		//Schedule a job for the event-dispatching thread:
 		//creating and showing this application's GUI.	
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -77,12 +77,16 @@ public class GUI implements WindowListener{
 	public static Dimension getFrameSize(){
 		return _frameSize;
 	}
-	public JFrame getFrame(){
+	protected JFrame getFrame(){
 		return _frame;
 	}
-	public void setContentPane(Container c){
+	protected void setContentPane(Container c){
 		_frame.setVisible(false);
-		_frame.setSize(800, 600);
+		if(c instanceof MainMenu){
+			_frame.setSize(1000, 600);
+		}else{		
+			_frame.setSize(800, 600);
+		}
 		_frame.setContentPane(c);
 		_frame.setVisible(true);
 	}
@@ -90,7 +94,7 @@ public class GUI implements WindowListener{
 	@Override
 	public void windowActivated(WindowEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public void windowClosing(WindowEvent arg0) {
@@ -99,26 +103,26 @@ public class GUI implements WindowListener{
 	@Override
 	public void windowDeactivated(WindowEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public void windowDeiconified(WindowEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public void windowIconified(WindowEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public void windowOpened(WindowEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public void windowClosed(WindowEvent e) {		
 	}
-		
+
 
 }
