@@ -16,11 +16,18 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+import javax.swing.JToggleButton;
+/**
+ * 
+ * Class representing the view you see when you review words in a flashcard-like setting
+ * 
+ * @author atag549
+ *
+ */
 public class ReviewScreen extends JPanel {
-	
 	private Review currentReview;
 
+	private JToggleButton viewWordToggle;
 	private JLabel word;
 	private JLabel wordNumber;
 	/**
@@ -31,16 +38,16 @@ public class ReviewScreen extends JPanel {
 		currentReview = new Review(isFailed);
 		
 		if(currentReview.getLength() == 0){
-			JOptionPane.showMessageDialog(null, "There are no words available to review from that category. You will be brough back to the main menu.", "Review", JOptionPane.ERROR_MESSAGE);
-			GUI.getInstance().setContentPane(new MainMenu());
+			JOptionPane.showMessageDialog(null, "There are no words available to review from that category.", "Review", JOptionPane.ERROR_MESSAGE);
+			GUI.getInstance().setContentPane(new ReviewOptionsScreen());
 		}
 		
 		setBackground(new Color(51, 0, 51));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{80, 40, 160, 160, 160, 40, 80, 0};
-		gridBagLayout.rowHeights = new int[]{20, 0, 0, 0, 20, 0, 60, 0, 0, 80, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{20, 0, 0, 0, 60, 60, 40, 0, 0, 0, 80, 0, 0, 20, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JLabel title = new JLabel("Review");
@@ -67,18 +74,6 @@ public class ReviewScreen extends JPanel {
 		gbc_wordNumber.gridy = 3;
 		add(wordNumber, gbc_wordNumber);
 		
-		word = new JLabel("?");
-		word.setHorizontalAlignment(SwingConstants.CENTER);
-		word.setForeground(Color.WHITE);
-		word.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
-		GridBagConstraints gbc_word = new GridBagConstraints();
-		gbc_word.insets = new Insets(0, 0, 5, 0);
-		gbc_word.fill = GridBagConstraints.HORIZONTAL;
-		gbc_word.gridwidth = 7;
-		gbc_word.gridx = 0;
-		gbc_word.gridy = 5;
-		add(word, gbc_word);
-		
 		JButton previous = new JButton("<<");
 		previous.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -91,10 +86,10 @@ public class ReviewScreen extends JPanel {
 		previous.setForeground(new Color(51, 0, 51));
 		previous.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_previous = new GridBagConstraints();
-		gbc_previous.fill = GridBagConstraints.HORIZONTAL;
+		gbc_previous.fill = GridBagConstraints.BOTH;
 		gbc_previous.insets = new Insets(0, 0, 5, 5);
 		gbc_previous.gridx = 1;
-		gbc_previous.gridy = 6;
+		gbc_previous.gridy = 5;
 		add(previous, gbc_previous);
 		
 		JButton next = new JButton(">>");
@@ -104,12 +99,25 @@ public class ReviewScreen extends JPanel {
 				setForNewWord();
 			}
 		});
+		
+		word = new JLabel("?");
+		word.setHorizontalAlignment(SwingConstants.CENTER);
+		word.setForeground(Color.WHITE);
+		word.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
+		GridBagConstraints gbc_word = new GridBagConstraints();
+		gbc_word.insets = new Insets(0, 0, 5, 5);
+		gbc_word.fill = GridBagConstraints.HORIZONTAL;
+		gbc_word.gridwidth = 3;
+		gbc_word.gridx = 2;
+		gbc_word.gridy = 5;
+		add(word, gbc_word);
 		next.setForeground(new Color(51, 0, 51));
 		next.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_next = new GridBagConstraints();
+		gbc_next.fill = GridBagConstraints.VERTICAL;
 		gbc_next.insets = new Insets(0, 0, 5, 5);
 		gbc_next.gridx = 5;
-		gbc_next.gridy = 6;
+		gbc_next.gridy = 5;
 		add(next, gbc_next);
 		
 		JButton menu = new JButton("Back To Menu");
@@ -119,7 +127,7 @@ public class ReviewScreen extends JPanel {
 			}
 		});
 		
-		JButton relisten = new JButton("Relisten");
+		JButton relisten = new JButton("Listen to the Word");
 		relisten.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				currentReview.sayWord();
@@ -134,27 +142,33 @@ public class ReviewScreen extends JPanel {
 		gbc_relisten.gridy = 7;
 		add(relisten, gbc_relisten);
 		
-		JButton showSpelling = new JButton("Show  Spelling");
-		showSpelling.addActionListener(new ActionListener() {
+		viewWordToggle = new JToggleButton("Show Spelling");
+		viewWordToggle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				word.setText(currentReview.getWord());
+				if(viewWordToggle.isSelected()){
+					word.setText(currentReview.getWord());
+					viewWordToggle.setText("Hide Text");
+				} else {
+					word.setText("?");
+					viewWordToggle.setText("Show Text");
+				}
 			}
 		});
-		showSpelling.setForeground(new Color(51, 0, 51));
-		showSpelling.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
-		GridBagConstraints gbc_showSpelling = new GridBagConstraints();
-		gbc_showSpelling.gridwidth = 7;
-		gbc_showSpelling.insets = new Insets(0, 0, 5, 5);
-		gbc_showSpelling.gridx = 0;
-		gbc_showSpelling.gridy = 8;
-		add(showSpelling, gbc_showSpelling);
+		viewWordToggle.setForeground(new Color(51, 0, 51));
+		viewWordToggle.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		GridBagConstraints gbc_viewWordToggle = new GridBagConstraints();
+		gbc_viewWordToggle.gridwidth = 7;
+		gbc_viewWordToggle.insets = new Insets(0, 0, 5, 0);
+		gbc_viewWordToggle.gridx = 0;
+		gbc_viewWordToggle.gridy = 8;
+		add(viewWordToggle, gbc_viewWordToggle);
 		menu.setForeground(new Color(51, 0, 51));
 		menu.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_menu = new GridBagConstraints();
 		gbc_menu.fill = GridBagConstraints.HORIZONTAL;
 		gbc_menu.insets = new Insets(0, 0, 5, 5);
 		gbc_menu.gridx = 2;
-		gbc_menu.gridy = 11;
+		gbc_menu.gridy = 12;
 		add(menu, gbc_menu);
 
 	}
