@@ -14,8 +14,9 @@ import java.util.HashMap;
 public class Settings {
 	private HashMap<String, String> knownVoices;
 	static Settings _settings = null;
-	String _voiceName;
-	String _level;
+	private String _voiceName;
+	private String _level;
+	private int _quizSize;
 	public static Settings getInstance(){
 		if(_settings == null){
 			_settings = new Settings();
@@ -30,12 +31,19 @@ public class Settings {
 		knownVoices.put("akl_nz_jdt_diphone", "NZ English");
 		_voiceName = "kal_diphone";
 		_level = Lists.getInstance().getListNames().get(0);
+		_quizSize = 10;
 	}
 	public void setLevel(String level){
 		_level = level;
 	}
 	public String getLevel(){
 		return _level;
+	}
+	public void setQuizSize(int size){
+		_quizSize = size;
+	}
+	public int getQuizSize(){
+		return _quizSize;
 	}
 	public void setVoice(String voiceName){
 		_voiceName = voiceName;		

@@ -30,21 +30,22 @@ public class SettingsScreen extends JPanel {
 	/**
 	 * Swing GUI representation of the options menu for this application
 	 * Author: Aimee Tagle atag549
-	 * Last Modified: 29 September, 2016
+	 * Last Modified: 02 October, 2016
 	 */
 	
-	JComboBox<String> levelSelect;
-	JComboBox<String> voiceSelect;
-	HashMap<String, String> voiceNames;
-	JLabel currentLevel;
-	JLabel sampleWords;
+	private JComboBox<String> levelSelect;
+	private JComboBox<String> voiceSelect;
+	private HashMap<String, String> voiceNames;
+	private JLabel currentLevel;
+	private JLabel sampleWords;
+	private JComboBox<String> quizSizeSelect;
 	
 	public SettingsScreen() {
 		GUI.getInstance().getFrame().setVisible(true);
 		setBackground(new Color(51, 0, 51));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 190, 20, 160, 0, 160, 160, 0, 160, 20, 0};
-		gridBagLayout.rowHeights = new int[]{120, 0, 0, 0, 0, 0, 0, 0, 20, 0, 0, 20, 0, 20, 0};
+		gridBagLayout.rowHeights = new int[]{120, 0, 0, 0, 0, 0, 0, 0, 40, 0, 0, 20, 0, 20, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
@@ -55,9 +56,8 @@ public class SettingsScreen extends JPanel {
 		label.setForeground(Color.WHITE);
 		label.setFont(new Font("Century Schoolbook L", Font.BOLD, 72));
 		GridBagConstraints gbc_label = new GridBagConstraints();
-		gbc_label.anchor = GridBagConstraints.SOUTH;
 		gbc_label.insets = new Insets(0, 0, 5, 0);
-		gbc_label.fill = GridBagConstraints.HORIZONTAL;
+		gbc_label.fill = GridBagConstraints.BOTH;
 		gbc_label.gridwidth = 9;
 		gbc_label.gridx = 1;
 		gbc_label.gridy = 0;
@@ -178,8 +178,9 @@ public class SettingsScreen extends JPanel {
 		gbc_quizSizeLabel.gridy = 5;
 		add(quizSizeLabel, gbc_quizSizeLabel);
 		
-		JComboBox<Integer> quizSizeSelect = new JComboBox<Integer>();
-		quizSizeSelect.setFont(new Font("L M Mono Lt10", Font.BOLD, 28));
+		quizSizeSelect = new JComboBox<String>();
+		quizSizeSelect.setModel(new DefaultComboBoxModel(new String[] {"3", "5", "10", "20"}));
+		quizSizeSelect.setFont(new Font("Century Schoolbook L", Font.BOLD, 28));
 		GridBagConstraints gbc_quizSizeSelect = new GridBagConstraints();
 		gbc_quizSizeSelect.gridwidth = 4;
 		gbc_quizSizeSelect.insets = new Insets(0, 0, 5, 5);
@@ -189,6 +190,11 @@ public class SettingsScreen extends JPanel {
 		add(quizSizeSelect, gbc_quizSizeSelect);
 		
 		JButton submitQuizSize = new JButton("Submit");
+		submitQuizSize.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Settings.getInstance().setQuizSize(Integer.parseInt((String)quizSizeSelect.getSelectedItem()));
+			}
+		});
 		submitQuizSize.setForeground(new Color(51, 0, 51));
 		submitQuizSize.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_submitQuizSize = new GridBagConstraints();

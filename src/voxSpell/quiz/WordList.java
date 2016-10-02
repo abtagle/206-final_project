@@ -12,7 +12,6 @@ import java.util.Collections;
  * 
 **/
 public class WordList {
-	public static final int QUIZ_SIZE = 10;
 	private ArrayList<String> _words;
 	
 	public WordList(){
@@ -29,7 +28,7 @@ public class WordList {
 		Collections.shuffle(shufWords);
 		ArrayList<String> returnList = new ArrayList<String>();
 		int i = 0;
-		while(i < QUIZ_SIZE && i < shufWords.size()){
+		while(i < Settings.getInstance().getQuizSize() && i < shufWords.size()){
 			returnList.add(shufWords.get(i));
 			i++;
 		}
