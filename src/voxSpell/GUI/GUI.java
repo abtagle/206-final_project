@@ -94,7 +94,7 @@ public class GUI implements WindowListener{
 	}
 	@Override
 	public void windowClosing(WindowEvent arg0) {
-		//Lists.getInstance().writeAllStats();
+		Lists.getInstance().writeAllStats();
 	}
 	@Override
 	public void windowDeactivated(WindowEvent arg0) {
@@ -117,8 +117,7 @@ public class GUI implements WindowListener{
 		
 	}
 	@Override
-	public void windowClosed(WindowEvent e) {
-		Lists.getInstance().writeAllStats();
+	public void windowClosed(WindowEvent e) {		
 	}
 		
 

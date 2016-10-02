@@ -246,7 +246,6 @@ public class Lists {
 	}
 	public void writeAllStats(){
 		try {
-			System.out.println("reading");
 			writeStreaksToFile();
 			writeListToFiles(_mastered.returnArrayList(), MASTERED);
 			writeListToFiles(_faulted.returnArrayList(), FAULTED);
