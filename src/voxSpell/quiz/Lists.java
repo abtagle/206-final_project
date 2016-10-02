@@ -52,7 +52,8 @@ public class Lists {
 		_faulted =  new WordList();
 		_failed =  new WordList();
 		_lastFailed =  new WordList();
-
+		
+		readInStreaks();
 		_mastered = readInFile(MASTERED);
 		_faulted = readInFile(FAULTED);
 		_failed = readInFile(FAILED);
@@ -203,6 +204,15 @@ public class Lists {
 		}
 		Collections.sort(names);
 		return names;
+	}
+	public int getLongestStreak(){
+		return _longestStreak;
+	}
+	public int getStreak(){
+		return _currentStreak;
+	}
+	public int getWordsRight(){
+		return _numberOfWordsRight;
 	}
 	public WordList getMastered(){
 		return _mastered;
