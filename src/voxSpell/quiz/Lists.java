@@ -26,10 +26,11 @@ import voxSpell.GUI.GUI;
  */
 
 public class Lists {
-	public static final String MASTERED = ".mastered";
-	public static final String FAULTED = ".faulted";
-	public static final String FAILED = ".failed";
-	public static final String LAST_FAILED = ".lastFailed";
+	public static final String MASTERED = "./.mastered";
+	public static final String FAULTED = "./.faulted";
+	public static final String FAILED = "./.failed";
+	public static final String LAST_FAILED = "./.lastFailed";
+	public static final String STREAK_VALUES = "./.streak";
 	public static final String WORDLIST = "/wordlist.txt";
 	private HashMap<String, WordList> _wordLists = null;
 	private WordList _mastered;
@@ -75,7 +76,31 @@ public class Lists {
 		} 
 		return _thisList;
 	}
+	private void readInStreaks(){
+		//Read in order: Longest streak, current streak, number of words right
+		File streakValues = new File(STREAK_VALUES);
+		if(streakValues.exists()){
+			try{
+				BufferedReader streakValuesReader = new BufferedReader(new FileReader(streakValues));
+				String line = streakValuesReader.readLine();
+				String[] split = line.split("\\s+");
+				_longestStreak = Integer.parseInt(split[0]);
+				_currentStreak = Integer.parseInt(split[1]);
+				_numberOfWordsRight = Integer.parseInt(split[2]);
+				streakValuesReader.close();	
 
+			} catch (FileNotFoundException e){
+				JOptionPane.showMessageDialog(null, "Error: unable to load " + STREAK_VALUES + ".");
+
+			} catch (IOException e) {
+				JOptionPane.showMessageDialog(null, "Error: unable to read from word list " + STREAK_VALUES + ".");
+			}
+		}else{
+			_longestStreak = 0;
+			_currentStreak = 0;
+			_numberOfWordsRight = 0;
+		}
+	}
 	private WordList readInFile(String filename){
 		WordList words = new WordList();
 		File wordList = new File(filename);
@@ -210,6 +235,7 @@ public class Lists {
 	}
 	public void writeAllStats(){
 		try {
+			writeStreaksToFile();
 			writeListToFiles(_mastered.returnArrayList(), MASTERED);
 			writeListToFiles(_faulted.returnArrayList(), FAULTED);
 			writeListToFiles(_failed.returnArrayList(), FAILED);
@@ -227,6 +253,12 @@ public class Lists {
 		}
 		writer.close();
 
+	}
+	
+	private void writeStreaksToFile() throws FileNotFoundException{
+		PrintWriter writer = new PrintWriter(STREAK_VALUES);
+		writer.println(_longestStreak + " " + _currentStreak + " " + _numberOfWordsRight);
+		writer.close();
 	}
 
 }
