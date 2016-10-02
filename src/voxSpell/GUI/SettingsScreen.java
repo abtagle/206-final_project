@@ -45,7 +45,7 @@ public class SettingsScreen extends JPanel {
 		setBackground(new Color(51, 0, 51));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 190, 20, 160, 0, 160, 160, 0, 160, 20, 0};
-		gridBagLayout.rowHeights = new int[]{120, 0, 0, 0, 0, 0, 0, 0, 40, 0, 0, 20, 0, 20, 0};
+		gridBagLayout.rowHeights = new int[]{120, 0, 0, 0, 0, 0, 20, 0, 40, 0, 0, 20, 0, 20, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
@@ -215,7 +215,17 @@ public class SettingsScreen extends JPanel {
 		setCurrentLevelText();
 		
 		JButton restart = new JButton("Restart Game");
-		restart.setForeground(new Color(51, 0, 51));
+		restart.setBackground(new Color(204, 0, 0));
+		restart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to RESTART YOUR GAME? All your achievements and streaks will be lost.", "Restart Game", JOptionPane.YES_NO_OPTION);
+				if (reply == JOptionPane.YES_OPTION) {
+					Lists.getInstance().clearStats();
+					JOptionPane.showMessageDialog(null, "Your game has been restarted", "Restart Game", JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		});
+		restart.setForeground(new Color(255, 255, 255));
 		restart.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_restart = new GridBagConstraints();
 		gbc_restart.fill = GridBagConstraints.HORIZONTAL;
