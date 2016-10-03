@@ -10,7 +10,11 @@ public class StreakAchievement extends Achievement {
 	}
 
 	protected boolean isAchieved() {
-		return false;
+		if(Lists.getInstance().getLongestStreak() >= _streakValue){
+			return true;
+		} else{
+			return false;
+		}
 	}
 
 }
