@@ -18,23 +18,28 @@ public class AchievementList {
 		_achievements.add(new StreakAchievement("10 Word Streak", 10));
 		_achievements.add(new StreakAchievement("25 Word Streak", 25));
 		_achievements.add(new StreakAchievement("50 Word Streak", 50));
-		_achievements.add(new StreakAchievement("50 Words Right", 10));
-		_achievements.add(new StreakAchievement("100 Words Right", 25));
-		_achievements.add(new StreakAchievement("250 Words Right", 50));
+		_achievements.add(new RightWordsAchievement("50 Words Right", 50));
+		_achievements.add(new RightWordsAchievement("100 Words Right", 100));
+		_achievements.add(new RightWordsAchievement("250 Words Right", 250));
 	}
 	
-	protected ArrayList<Achievement> checkChange(ArrayList<Achievement> original){
+	protected ArrayList<Achievement> checkChange(ArrayList<Boolean> original){
 		ArrayList<Achievement> changed = new ArrayList<Achievement>();
 		for(int i = 0; i < _achievements.size(); i++){
-			if(_achievements.get(i).isAchieved() != original.get(i).isAchieved()){
+			if(_achievements.get(i).isAchieved() != original.get(i)){
 				changed.add(_achievements.get(i));
 			}
 		}
+		System.out.println(Lists.getInstance().getLongestStreak());
 		return changed;
 		
 	}
 	
-	protected ArrayList<Achievement> getShallowCopy(){
-		return (ArrayList<Achievement>)_achievements.clone();
+	protected ArrayList<Boolean> getShallowCopy(){
+		ArrayList<Boolean> achievements = new ArrayList<Boolean>();
+		for(Achievement i : _achievements){
+			achievements.add(i.isAchieved());
+		}
+		return achievements;
 	}
 }

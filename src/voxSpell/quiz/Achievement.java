@@ -9,5 +9,9 @@ public abstract class Achievement {
 	}
 	
 	protected abstract boolean isAchieved();
+	
+	public String toString(){
+		return _name;
+	}
 
 }

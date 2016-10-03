@@ -7,7 +7,6 @@ import java.util.concurrent.Executors;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-import voxSpell.GUI.GUI;
 import voxSpell.GUI.QuizScreen;
 /**
  * Abstract class representing the quiz format (extended to represent NewQuiz and Review), with 
@@ -27,9 +26,12 @@ public abstract class Quiz{
 	protected int _attemptNumber;
 	protected int _wordNumberInt;
 	protected QuizScreen _screen;
+	protected ArrayList<Boolean> _originalAchievements;
+	private ArrayList<Achievement> _newAchievements;
 	private ExecutorService _threadPool;
 
 	public Quiz(QuizScreen screen, boolean isReview){
+		_originalAchievements = AchievementList.getInstance().getShallowCopy();
 		_threadPool = Executors.newFixedThreadPool(1);
 		_wordNumberInt = 1;
 		_attemptNumber = 1;
@@ -124,21 +126,9 @@ public abstract class Quiz{
 				e.printStackTrace();
 				JOptionPane.showMessageDialog(null, "Error saying word", "Quiz Error", JOptionPane.ERROR_MESSAGE);
 			}
-			//If there are no words left to quiz, show results
-		} /*else {
-			if(_isReview == false){
-				Lists.getInstance().addScore(_score);
-				if(_score >= 9 && GUI.getLevel()!= GUI.NUMBER_OF_LEVELS - 1){
-					//From http://stackoverflow.com/questions/8396870/joptionpane-yes-or-no-window
-					int reply = JOptionPane.showConfirmDialog(null, "Congratulations! You scored " + _score + " out of " + _wordlist.size()+ ". Would you like to LEVEL UP?", "Level up!", JOptionPane.YES_NO_OPTION);
-					if (reply == JOptionPane.YES_OPTION) {
-						GUI.increaseLevel();
-						JOptionPane.showMessageDialog(null, "You have now LEVELED UP", "Level up!", JOptionPane.INFORMATION_MESSAGE);
-					}
-				}
-			}
-			//TestStats view goes here
-		}*/	
+		} else {
+			endQuiz();
+		}
 	}
 
 	protected void updateWordNumberInGUI(){
@@ -156,9 +146,22 @@ public abstract class Quiz{
 		return false;
 	}
 	
+	protected void endQuiz(){
+		_newAchievements = AchievementList.getInstance().checkChange(_originalAchievements);
+		_screen.endQuiz();
+	}
+	
 	protected void sayPhrase(String phrase){
 		SayAnything anything = new SayAnything(phrase);
 		_threadPool.execute(anything);
+	}
+	
+	public int getScore(){
+		return _score;
+	}
+	
+	public ArrayList<Achievement> getNewAchievements(){
+		return _newAchievements;
 	}
 	
 	public void sayWord(){

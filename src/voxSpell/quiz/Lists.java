@@ -46,6 +46,7 @@ public class Lists {
 
 	private Lists(){
 		//Reads in all the statistics storing lists if they already  exist
+		AchievementList.getInstance();
 		_thisList = this;
 
 		//No need to save data between sessions for assignment 3

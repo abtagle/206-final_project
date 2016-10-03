@@ -175,5 +175,10 @@ public class QuizScreen extends JPanel {
 	public void updateScore(int score){
 		scoreLabel.setText("Score: " + score);
 	}
+	
+	public void endQuiz(){
+		GUI.getInstance().setContentPane(new EndOfQuiz(quiz));
+	}
+
 
 }
