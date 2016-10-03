@@ -181,7 +181,7 @@ public class SettingsScreen extends JPanel {
 		add(quizSizeLabel, gbc_quizSizeLabel);
 		
 		quizSizeSelect = new JComboBox<String>();
-		quizSizeSelect.setModel(new DefaultComboBoxModel(new String[] {"3", "5", "10", "20"}));
+		quizSizeSelect.setModel(new DefaultComboBoxModel(new String[] {"3", "5", "10"}));
 		quizSizeSelect.setFont(new Font("Century Schoolbook L", Font.BOLD, 28));
 		GridBagConstraints gbc_quizSizeSelect = new GridBagConstraints();
 		gbc_quizSizeSelect.gridwidth = 4;

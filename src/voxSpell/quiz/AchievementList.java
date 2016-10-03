@@ -30,7 +30,6 @@ public class AchievementList {
 				changed.add(_achievements.get(i));
 			}
 		}
-		System.out.println(Lists.getInstance().getLongestStreak());
 		return changed;
 		
 	}
