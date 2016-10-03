@@ -55,7 +55,7 @@ public class Options extends JFrame {
 		JLabel title = new JLabel("Options");
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		title.setForeground(Color.WHITE);
-		title.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
+		title.setFont(new Font("Century Schoolbook L", Font.BOLD, 36));
 		GridBagConstraints gbc_title = new GridBagConstraints();
 		gbc_title.gridwidth = 3;
 		gbc_title.fill = GridBagConstraints.HORIZONTAL;
@@ -66,13 +66,14 @@ public class Options extends JFrame {
 		contentPane.add(title, gbc_title);
 		
 		JButton menu = new JButton("Back to Menu");
+		menu.setBackground(new Color(51, 0, 51));
 		menu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {		
 					dispose();
 					GUI.getInstance().setContentPane(new MainMenu());
 			}
 		});
-		menu.setForeground(new Color(51, 0, 51));
+		menu.setForeground(new Color(255, 255, 255));
 		menu.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_menu = new GridBagConstraints();
 		gbc_menu.fill = GridBagConstraints.HORIZONTAL;
@@ -82,6 +83,7 @@ public class Options extends JFrame {
 		contentPane.add(menu, gbc_menu);
 		
 		JButton changeVoice = new JButton("Change Voice");
+		changeVoice.setBackground(new Color(51, 0, 51));
 		changeVoice.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thisFrame.setVisible(false);
@@ -89,7 +91,7 @@ public class Options extends JFrame {
 				thisFrame.setVisible(true);
 			}
 		});
-		changeVoice.setForeground(new Color(51, 0, 51));
+		changeVoice.setForeground(new Color(255, 255, 255));
 		changeVoice.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_settings = new GridBagConstraints();
 		gbc_settings.fill = GridBagConstraints.HORIZONTAL;
@@ -99,7 +101,8 @@ public class Options extends JFrame {
 		contentPane.add(changeVoice, gbc_settings);
 		
 		JButton stats = new JButton("Statistics");
-		stats.setForeground(new Color(51, 0, 51));
+		stats.setBackground(new Color(51, 0, 51));
+		stats.setForeground(new Color(255, 255, 255));
 		stats.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_stats = new GridBagConstraints();
 		gbc_stats.fill = GridBagConstraints.HORIZONTAL;

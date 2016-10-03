@@ -18,6 +18,7 @@ public class ReviewOptionsScreen extends JPanel {
 	 * Create the panel.
 	 */
 	public ReviewOptionsScreen() {
+		setForeground(new Color(255, 255, 255));
 		setBackground(new Color(51, 0, 51));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{160, 160, 160, 160, 160, 0};
@@ -39,12 +40,13 @@ public class ReviewOptionsScreen extends JPanel {
 		add(title, gbc_title);
 		
 		JButton reviewFailed = new JButton("Review Failed Words");
+		reviewFailed.setBackground(new Color(51, 0, 51));
 		reviewFailed.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GUI.getInstance().setContentPane(new ReviewScreen(true));
 			}
 		});
-		reviewFailed.setForeground(new Color(51, 0, 51));
+		reviewFailed.setForeground(new Color(255, 255, 255));
 		reviewFailed.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_reviewFailed = new GridBagConstraints();
 		gbc_reviewFailed.fill = GridBagConstraints.HORIZONTAL;
@@ -55,12 +57,13 @@ public class ReviewOptionsScreen extends JPanel {
 		add(reviewFailed, gbc_reviewFailed);
 		
 		JButton btnReviewCurrentList = new JButton("Review Current Level");
+		btnReviewCurrentList.setBackground(new Color(51, 0, 51));
 		btnReviewCurrentList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GUI.getInstance().setContentPane(new ReviewScreen(false));
 			}
 		});
-		btnReviewCurrentList.setForeground(new Color(51, 0, 51));
+		btnReviewCurrentList.setForeground(new Color(255, 255, 255));
 		btnReviewCurrentList.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_btnReviewCurrentList = new GridBagConstraints();
 		gbc_btnReviewCurrentList.fill = GridBagConstraints.HORIZONTAL;
@@ -71,12 +74,13 @@ public class ReviewOptionsScreen extends JPanel {
 		add(btnReviewCurrentList, gbc_btnReviewCurrentList);
 		
 		JButton button = new JButton("Back To Menu");
+		button.setBackground(new Color(51, 0, 51));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GUI.getInstance().setContentPane(new MainMenu());
 			}
 		});
-		button.setForeground(new Color(51, 0, 51));
+		button.setForeground(new Color(255, 255, 255));
 		button.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.fill = GridBagConstraints.HORIZONTAL;

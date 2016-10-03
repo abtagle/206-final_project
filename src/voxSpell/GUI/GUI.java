@@ -56,7 +56,7 @@ public class GUI implements WindowListener{
 	}
 	private void createAndShowGUI() {
 		//Set up the content pane.
-		_frameSize = new Dimension(800,600);
+		_frameSize = new Dimension(800,500);
 		_frame.setSize(_frameSize);
 		_frame.setVisible(true);
 		setContentPane(new MainMenu());
@@ -83,9 +83,9 @@ public class GUI implements WindowListener{
 	protected void setContentPane(Container c){
 		_frame.setVisible(false);
 		if(c instanceof MainMenu){
-			_frame.setSize(1000, 600);
+			_frame.setSize(1000, 500);
 		}else{		
-			_frame.setSize(800, 600);
+			_frame.setSize(800, 500);
 		}
 		_frame.setContentPane(c);
 		_frame.setVisible(true);

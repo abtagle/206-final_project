@@ -45,7 +45,7 @@ public class SettingsScreen extends JPanel {
 		setBackground(new Color(51, 0, 51));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 190, 20, 160, 0, 160, 160, 0, 160, 20, 0};
-		gridBagLayout.rowHeights = new int[]{120, 0, 0, 0, 0, 0, 20, 0, 40, 0, 0, 20, 0, 20, 0};
+		gridBagLayout.rowHeights = new int[]{120, 0, 0, 0, 0, 0, 20, 0, 20, 0, 0, 20, 0, 20, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
@@ -91,6 +91,7 @@ public class SettingsScreen extends JPanel {
 		add(levelSelect, gbc_levelSelect);
 		
 		JButton submitLevel = new JButton("Submit");
+		submitLevel.setBackground(new Color(51, 0, 51));
 		submitLevel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		submitLevel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -100,7 +101,7 @@ public class SettingsScreen extends JPanel {
 				setSampleWords();
 			}
 		});
-		submitLevel.setForeground(new Color(51, 0, 51));
+		submitLevel.setForeground(new Color(255, 255, 255));
 		GridBagConstraints gbc_submitLevel = new GridBagConstraints();
 		gbc_submitLevel.fill = GridBagConstraints.BOTH;
 		gbc_submitLevel.insets = new Insets(0, 0, 5, 5);
@@ -152,13 +153,14 @@ public class SettingsScreen extends JPanel {
 		add(voiceSelect, gbc_voiceSelect);
 		
 		JButton submitVoice = new JButton("Submit");
+		submitVoice.setBackground(new Color(51, 0, 51));
 		submitVoice.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Settings.getInstance().setVoice(voiceNames.get((String)voiceSelect.getSelectedItem()));
 				JOptionPane.showMessageDialog(null, "Your voice has successfully been changed to " + (String)voiceSelect.getSelectedItem(), "Changed Voice", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		submitVoice.setForeground(new Color(51, 0, 51));
+		submitVoice.setForeground(new Color(255, 255, 255));
 		submitVoice.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_submitVoice = new GridBagConstraints();
 		gbc_submitVoice.fill = GridBagConstraints.HORIZONTAL;
@@ -190,12 +192,13 @@ public class SettingsScreen extends JPanel {
 		add(quizSizeSelect, gbc_quizSizeSelect);
 		
 		JButton submitQuizSize = new JButton("Submit");
+		submitQuizSize.setBackground(new Color(51, 0, 51));
 		submitQuizSize.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Settings.getInstance().setQuizSize(Integer.parseInt((String)quizSizeSelect.getSelectedItem()));
 			}
 		});
-		submitQuizSize.setForeground(new Color(51, 0, 51));
+		submitQuizSize.setForeground(new Color(255, 255, 255));
 		submitQuizSize.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_submitQuizSize = new GridBagConstraints();
 		gbc_submitQuizSize.fill = GridBagConstraints.HORIZONTAL;
@@ -205,6 +208,7 @@ public class SettingsScreen extends JPanel {
 		add(submitQuizSize, gbc_submitQuizSize);
 		
 		JButton btnBackToMenu = new JButton("Back To Menu");
+		btnBackToMenu.setBackground(new Color(51, 0, 51));
 		btnBackToMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GUI.getInstance().setContentPane(new MainMenu());
@@ -257,7 +261,7 @@ public class SettingsScreen extends JPanel {
 		gbc_sampleWords.gridx = 0;
 		gbc_sampleWords.gridy = 10;
 		add(sampleWords, gbc_sampleWords);
-		btnBackToMenu.setForeground(new Color(51, 0, 51));
+		btnBackToMenu.setForeground(new Color(255, 255, 255));
 		btnBackToMenu.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_btnBackToMenu = new GridBagConstraints();
 		gbc_btnBackToMenu.fill = GridBagConstraints.HORIZONTAL;
