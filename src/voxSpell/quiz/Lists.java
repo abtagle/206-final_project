@@ -15,6 +15,7 @@ import java.util.HashMap;
 import javax.swing.JOptionPane;
 
 import voxSpell.GUI.GUI;
+import voxSpell.achievements.AchievementList;
 
 /**
  * Class representing an almost database of all the lists of words used, allowing access to all of them throughout

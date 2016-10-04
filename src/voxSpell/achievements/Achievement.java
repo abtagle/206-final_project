@@ -1,4 +1,4 @@
-package voxSpell.quiz;
+package voxSpell.achievements;
 
 public abstract class Achievement {
 	

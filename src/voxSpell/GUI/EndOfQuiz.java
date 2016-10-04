@@ -10,7 +10,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-import voxSpell.quiz.Achievement;
+import voxSpell.achievements.Achievement;
 import voxSpell.quiz.Quiz;
 
 import java.awt.Insets;

@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import voxSpell.GUI.QuizScreen;
+import voxSpell.achievements.Achievement;
+import voxSpell.achievements.AchievementList;
 /**
  * Abstract class representing the quiz format (extended to represent NewQuiz and Review), with 
  * quiz length of up to 10 words
@@ -168,6 +170,9 @@ public abstract class Quiz{
 		_threadPool.execute(new SayAnything(_wordlist.get(_wordNumberInt-1), true));
 	}
 
+	public void exit(){
+		Lists.getInstance().resetStreak();
+	}
 	/*
 	 * Hook method for spelling aloud implementation
 	 */

@@ -1,5 +1,7 @@
 package voxSpell.quiz;
 
+import voxSpell.achievements.Achievement;
+
 public class RightWordsAchievement extends Achievement {
 	
 	private int _numberOfWords;

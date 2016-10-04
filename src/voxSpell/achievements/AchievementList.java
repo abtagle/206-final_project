@@ -1,6 +1,9 @@
-package voxSpell.quiz;
+package voxSpell.achievements;
 
 import java.util.ArrayList;
+
+import voxSpell.quiz.RightWordsAchievement;
+import voxSpell.quiz.StreakAchievement;
 
 public class AchievementList {
 	private ArrayList<Achievement> _achievements;
@@ -23,7 +26,7 @@ public class AchievementList {
 		_achievements.add(new RightWordsAchievement("250 Words Right", 250));
 	}
 	
-	protected ArrayList<Achievement> checkChange(ArrayList<Boolean> original){
+	public ArrayList<Achievement> checkChange(ArrayList<Boolean> original){
 		ArrayList<Achievement> changed = new ArrayList<Achievement>();
 		for(int i = 0; i < _achievements.size(); i++){
 			if(_achievements.get(i).isAchieved() != original.get(i)){
@@ -34,7 +37,7 @@ public class AchievementList {
 		
 	}
 	
-	protected ArrayList<Boolean> getShallowCopy(){
+	public ArrayList<Boolean> getShallowCopy(){
 		ArrayList<Boolean> achievements = new ArrayList<Boolean>();
 		for(Achievement i : _achievements){
 			achievements.add(i.isAchieved());

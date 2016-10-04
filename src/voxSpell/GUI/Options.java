@@ -37,6 +37,7 @@ public class Options extends JFrame {
 	private JButton menu;
 	private JButton changeVoice;
 	private JButton stats;
+	private Quiz _quiz;
 	
 
 	/**
@@ -44,6 +45,7 @@ public class Options extends JFrame {
 	 */
 	public Options(Quiz quiz) {
 		thisFrame = this;
+		_quiz = quiz;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -76,6 +78,7 @@ public class Options extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to LEAVE THIS QUIZ? You will lose your streak.", "Leave Quiz", JOptionPane.YES_NO_OPTION);
 				if (reply == JOptionPane.YES_OPTION) {
+					_quiz.exit();
 					dispose();
 					GUI.getInstance().setContentPane(new MainMenu());
 				}

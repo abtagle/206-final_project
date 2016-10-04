@@ -1,5 +1,7 @@
 package voxSpell.quiz;
 
+import voxSpell.achievements.Achievement;
+
 public class StreakAchievement extends Achievement {
 	
 	private int _streakValue;
