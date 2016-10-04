@@ -101,6 +101,11 @@ public class MainMenu extends JPanel {
 		add(statistics, gbc_statistics);
 		
 		JButton achievements = new JButton("Achievements");
+		achievements.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUI.getInstance().setContentPane(new AchievementScreen());
+			}
+		});
 		achievements.setHorizontalAlignment(SwingConstants.RIGHT);
 		achievements.setIcon(new ImageIcon(path+"/achievements.png"));
 		achievements.setForeground(Color.WHITE);

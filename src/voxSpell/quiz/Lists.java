@@ -31,6 +31,7 @@ public class Lists {
 	public static final String FAILED = "./.failed";
 	public static final String LAST_FAILED = "./.lastFailed";
 	public static final String STREAK_VALUES = "./.streak";
+	public static final String LEVEL_STATS= "./.stats";
 	public static final String WORDLIST = "/wordlist.txt";
 	private HashMap<String, WordList> _wordLists = null;
 	private WordList _mastered;
@@ -41,6 +42,7 @@ public class Lists {
 	private int _currentStreak;
 	private int _numberOfWordsRight;
 	private int _numberOfWordsAttempted;
+	private HashMap<String, LevelStats> _levelStats;
 	private ArrayList<ArrayList<Integer>> _scores;
 	private static Lists _thisList = null;
 
@@ -49,12 +51,12 @@ public class Lists {
 		AchievementList.getInstance();
 		_thisList = this;
 
-		//No need to save data between sessions for assignment 3
 		_mastered = new WordList();
 		_faulted =  new WordList();
 		_failed =  new WordList();
 		_lastFailed =  new WordList();
-		
+
+		readInLevelStats();
 		readInStreaks();
 		_mastered = readInFile(MASTERED);
 		_faulted = readInFile(FAULTED);
@@ -106,6 +108,29 @@ public class Lists {
 			_numberOfWordsAttempted = 0;
 		}
 	}
+	private void readInLevelStats(){
+		//Read in order: Longest streak, current streak, number of words right
+		_levelStats = new HashMap<String, LevelStats>();
+		File levelStats = new File(LEVEL_STATS);
+		if(levelStats.exists()){
+			try{
+				BufferedReader wordListRead = new BufferedReader(new FileReader(levelStats));
+				String word;
+				String listName = "";
+
+				while((word = wordListRead.readLine()) != null){
+					String[] split  = word.split("\\s+");
+					_levelStats.put(split[0], new LevelStats(Integer.parseInt(split[1]), Integer.parseInt(split[2])));
+				}
+				wordListRead.close();	
+			} catch (FileNotFoundException e){
+				JOptionPane.showMessageDialog(null, "Error: unable to load " + STREAK_VALUES + ".");
+
+			} catch (IOException e) {
+				JOptionPane.showMessageDialog(null, "Error: unable to read from word list " + STREAK_VALUES + ".");
+			}
+		} 
+	}
 	private WordList readInFile(String filename){
 		WordList words = new WordList();
 		File wordList = new File(filename);
@@ -134,12 +159,12 @@ public class Lists {
 	public void setWordList(File file){
 		_wordLists = new HashMap<String, WordList>();
 		if(file.exists()){
-			
+
 			try{
 				BufferedReader wordListRead = new BufferedReader(new FileReader(file));
 				String word;
 				String listName = "";
-				
+
 				while((word = wordListRead.readLine()) != null){
 					if((word.equals("") == false && (word.equals("\\s+") == false)&& word.charAt(0)!='%')){
 						_wordLists.get(listName).addWord(word);
@@ -166,13 +191,26 @@ public class Lists {
 		if(_currentStreak > _longestStreak){
 			_longestStreak = _currentStreak;
 		}
+		if(_levelStats.containsKey(Settings.getInstance().getLevel())){
+			_levelStats.get(Settings.getInstance().getLevel()).update(true);
+		} else{
+			//Make new LevelStats if no stats exist
+			_levelStats.put(Settings.getInstance().getLevel(), new LevelStats(1,1));
+		}
 	}
-	
+
 	protected void resetStreak(){
 		_numberOfWordsAttempted++;
 		_currentStreak = 0;
+		if(_levelStats.containsKey(Settings.getInstance().getLevel())){
+			_levelStats.get(Settings.getInstance().getLevel()).update(false);
+		} else{
+			//Make new LevelStats if no stats exist
+			_levelStats.put(Settings.getInstance().getLevel(), new LevelStats(1,0));
+		}
+
 	}
-	
+
 	protected void addScore(int score){
 		_scores.get(GUI.getLevel()).add(score);
 	}
@@ -189,16 +227,16 @@ public class Lists {
 		return avg + "";
 	}
 	public double getAverageDoubleScore(int level){
-  		int total = 0;
-  		if ((_scores.get(level)).size() == 0){
- 			return 0.0;
-  		}
-  		for(int i : _scores.get(level)){
-  			total += i;
-  		}
- 		double avg = (double)total / (_scores.get(level).size());
- 		return avg*10;
-  	}
+		int total = 0;
+		if ((_scores.get(level)).size() == 0){
+			return 0.0;
+		}
+		for(int i : _scores.get(level)){
+			total += i;
+		}
+		double avg = (double)total / (_scores.get(level).size());
+		return avg*10;
+	}
 
 	public WordList getWordList(String level){
 		return _wordLists.get(level);
@@ -254,12 +292,13 @@ public class Lists {
 		_longestStreak = 0;
 		_numberOfWordsRight = 0;
 		_numberOfWordsAttempted = 0;
-		
+
 		setUpScores();
 	}
 	public void writeAllStats(){
 		try {
 			writeStreaksToFile();
+			writeLevelStatsToFile();
 			writeListToFiles(_mastered.returnArrayList(), MASTERED);
 			writeListToFiles(_faulted.returnArrayList(), FAULTED);
 			writeListToFiles(_failed.returnArrayList(), FAILED);
@@ -278,11 +317,52 @@ public class Lists {
 		writer.close();
 
 	}
-	
+
 	private void writeStreaksToFile() throws FileNotFoundException{
 		PrintWriter writer = new PrintWriter(STREAK_VALUES);
 		writer.println(_longestStreak + " " + _currentStreak + " " + _numberOfWordsRight + " " +_numberOfWordsAttempted);
 		writer.close();
+	}
+	
+	private void writeLevelStatsToFile() throws FileNotFoundException{
+		PrintWriter writer = new PrintWriter(LEVEL_STATS);
+		for(String list : _levelStats.keySet()){
+			writer.println(list + " " + _levelStats.get(list).getNumberOfWordsTested() + " "+ _levelStats.get(list).getNumberOfWordsRight());
+		}
+		writer.close();
+	}
+	/**
+	 * Inner class written for this project for objects storing stats for each level, allowing easier storage
+	 * Last Modified 05 October, 2016
+	 * @author atag549
+	 *
+	 */
+
+	private class LevelStats{
+		private int _numberOfWordsRight;
+		private int _numberOfWordsTested;
+		public LevelStats(int numberOfWordsTested, int numnberOfWordsRight){
+			_numberOfWordsRight = numnberOfWordsRight;
+			_numberOfWordsTested = numberOfWordsTested;
+		}
+		public LevelStats(){
+			this(0,0);
+		}
+		public void update(boolean isCorrect){
+			_numberOfWordsTested++;
+			if(isCorrect){
+				_numberOfWordsRight++;
+			}
+		}
+		public double getAccuracy(){
+			return (double)_numberOfWordsRight/(double)_numberOfWordsTested;
+		}
+		public int getNumberOfWordsTested(){
+			return _numberOfWordsTested;
+		}
+		public int getNumberOfWordsRight(){
+			return _numberOfWordsRight;
+		}
 	}
 
 }
