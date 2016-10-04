@@ -138,7 +138,7 @@ public class QuizScreen extends JPanel {
 		options.setBackground(new Color(51, 0, 51));
 		options.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Options window = new Options();
+				Options window = new Options(quiz);
 				window.setSize(new Dimension(400, 200));
 				window.setVisible(true);
 			}

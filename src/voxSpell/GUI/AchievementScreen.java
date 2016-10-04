@@ -18,8 +18,11 @@ public class AchievementScreen extends JPanel {
 	private JLabel streak;
 	private JLabel wordsRight;
 	private JButton streak10ViewReward;
-	private JLabel label;
-	private JButton streak0ViewReward;
+	private JLabel streakLabel25;
+	private JButton streakView25;
+	private JLabel streakLabel50;
+	private JButton streakView50;
+	private JButton menu;
 
 	/**
 	 * Create the panel.
@@ -28,9 +31,9 @@ public class AchievementScreen extends JPanel {
 		setBackground(new Color(51, 0, 51));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{80, 300, 40, 300, 80, 0};
-		gridBagLayout.rowHeights = new int[]{20, 0, 20, 0, 10, 0, 0, 20, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{20, 0, 20, 0, 10, 0, 0, 20, 0, 0, 20, 0, 0, 0, 0, 0, 30, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		title = new JLabel("Achievements");
@@ -91,25 +94,61 @@ public class AchievementScreen extends JPanel {
 		gbc_streak10ViewReward.gridy = 6;
 		add(streak10ViewReward, gbc_streak10ViewReward);
 		
-		label = new JLabel("10 Words");
-		label.setHorizontalAlignment(SwingConstants.RIGHT);
-		label.setForeground(Color.WHITE);
-		label.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
-		GridBagConstraints gbc_label = new GridBagConstraints();
-		gbc_label.insets = new Insets(0, 0, 5, 5);
-		gbc_label.gridx = 1;
-		gbc_label.gridy = 8;
-		add(label, gbc_label);
+		streakLabel25 = new JLabel("10 Words");
+		streakLabel25.setHorizontalAlignment(SwingConstants.RIGHT);
+		streakLabel25.setForeground(Color.WHITE);
+		streakLabel25.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
+		GridBagConstraints gbc_streakLabel25 = new GridBagConstraints();
+		gbc_streakLabel25.insets = new Insets(0, 0, 5, 5);
+		gbc_streakLabel25.gridx = 1;
+		gbc_streakLabel25.gridy = 8;
+		add(streakLabel25, gbc_streakLabel25);
 		
-		streak0ViewReward = new JButton("View Reward");
-		streak0ViewReward.setForeground(Color.WHITE);
-		streak0ViewReward.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
-		streak0ViewReward.setBackground(new Color(51, 0, 51));
-		GridBagConstraints gbc_streak0ViewReward = new GridBagConstraints();
-		gbc_streak0ViewReward.insets = new Insets(0, 0, 0, 5);
-		gbc_streak0ViewReward.gridx = 1;
-		gbc_streak0ViewReward.gridy = 9;
-		add(streak0ViewReward, gbc_streak0ViewReward);
+		streakView25 = new JButton("View Reward");
+		streakView25.setForeground(Color.WHITE);
+		streakView25.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
+		streakView25.setBackground(new Color(51, 0, 51));
+		GridBagConstraints gbc_streakView25 = new GridBagConstraints();
+		gbc_streakView25.insets = new Insets(0, 0, 5, 5);
+		gbc_streakView25.gridx = 1;
+		gbc_streakView25.gridy = 9;
+		add(streakView25, gbc_streakView25);
+		
+		streakLabel50 = new JLabel("10 Words");
+		streakLabel50.setHorizontalAlignment(SwingConstants.RIGHT);
+		streakLabel50.setForeground(Color.WHITE);
+		streakLabel50.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
+		GridBagConstraints gbc_streakLabel50 = new GridBagConstraints();
+		gbc_streakLabel50.insets = new Insets(0, 0, 5, 5);
+		gbc_streakLabel50.gridx = 1;
+		gbc_streakLabel50.gridy = 11;
+		add(streakLabel50, gbc_streakLabel50);
+		
+		streakView50 = new JButton("View Reward");
+		streakView50.setForeground(Color.WHITE);
+		streakView50.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
+		streakView50.setBackground(new Color(51, 0, 51));
+		GridBagConstraints gbc_streakView50 = new GridBagConstraints();
+		gbc_streakView50.insets = new Insets(0, 0, 5, 5);
+		gbc_streakView50.gridx = 1;
+		gbc_streakView50.gridy = 12;
+		add(streakView50, gbc_streakView50);
+		
+		menu = new JButton("Back to Main Menu");
+		menu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUI.getInstance().setContentPane(new MainMenu());
+			}
+		});
+		menu.setForeground(Color.WHITE);
+		menu.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
+		menu.setBackground(new Color(51, 0, 51));
+		GridBagConstraints gbc_menu = new GridBagConstraints();
+		gbc_menu.anchor = GridBagConstraints.WEST;
+		gbc_menu.insets = new Insets(0, 0, 5, 5);
+		gbc_menu.gridx = 1;
+		gbc_menu.gridy = 15;
+		add(menu, gbc_menu);
 
 	}
 

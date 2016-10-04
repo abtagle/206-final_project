@@ -32,7 +32,6 @@ public class Lists {
 	public static final String LAST_FAILED = "./.lastFailed";
 	public static final String STREAK_VALUES = "./.streak";
 	public static final String LEVEL_STATS= "./.stats";
-	public static final String WORDLIST = "/wordlist.txt";
 	private HashMap<String, WordList> _wordLists = null;
 	private WordList _mastered;
 	private WordList _faulted;
@@ -62,17 +61,6 @@ public class Lists {
 		_faulted = readInFile(FAULTED);
 		_failed = readInFile(FAILED);
 		_lastFailed = readInFile(LAST_FAILED);
-		//from: stackoverflow.com/questions/15359702/get-location-of-jar-file
-		File f = new File(System.getProperty("java.class.path"));
-		File dir = f.getAbsoluteFile().getParentFile();
-		String path = dir.toString();
-
-		if(!path.contains(":")){
-			setWordList(new File(path+WORDLIST));	
-		} else{
-			URL url = Lists.class.getResource(WORDLIST);
-			setWordList(new File(url.getPath()));
-		}
 	}
 
 	public static Lists getInstance(){
@@ -308,6 +296,7 @@ public class Lists {
 			e.printStackTrace();
 		}
 	}
+
 	private void writeListToFiles(ArrayList<String> list, String filename) throws FileNotFoundException, UnsupportedEncodingException{
 		//From: http://stackoverflow.com/questions/2885173/how-to-create-a-file-and-write-to-a-file-in-java
 		PrintWriter writer = new PrintWriter(filename);
@@ -337,7 +326,6 @@ public class Lists {
 	 * @author atag549
 	 *
 	 */
-
 	private class LevelStats{
 		private int _numberOfWordsRight;
 		private int _numberOfWordsTested;

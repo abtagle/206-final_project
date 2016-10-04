@@ -6,8 +6,10 @@ import java.awt.Font;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import voxSpell.quiz.Lists;
 import voxSpell.quiz.Settings;
@@ -44,12 +46,26 @@ public class GUI implements WindowListener{
 	}
 	private GUI(){
 		//Create and set up the window.
+		JOptionPane.showMessageDialog(null, "Please select a file to read words from", "Select a Word List", JOptionPane.INFORMATION_MESSAGE);
+		chooseFile();
 		Settings.getInstance();
 		_frame = new JFrame("VOXSPELL");
 		_frame.addWindowListener(this);
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		NUMBER_OF_LEVELS=Lists.getInstance().getNumberOfLevels();
 		Lists.getInstance().setUpScores();
+	}
+	
+	protected void chooseFile(){
+		JFileChooser chooser = new JFileChooser();
+	    int returnVal = chooser.showOpenDialog(null);
+	    if(returnVal == JFileChooser.APPROVE_OPTION) {
+	    	if(chooser.getSelectedFile()!= null)
+	            Lists.getInstance().setWordList(chooser.getSelectedFile());
+	    } else{
+	    	JOptionPane.showMessageDialog(null, "You MUST select a word list upon startup", "Select a Word List", JOptionPane.ERROR_MESSAGE);
+	    	chooseFile();
+	    }
 	}
 	protected void setLevel(int level){
 		_level = level;
@@ -85,7 +101,7 @@ public class GUI implements WindowListener{
 		if(c instanceof MainMenu){
 			_frame.setSize(1000, 500);
 		}else{		
-			_frame.setSize(800, 500);
+			_frame.setSize(800, 600);
 		}
 		_frame.setContentPane(c);
 		_frame.setVisible(true);

@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import voxSpell.quiz.Quiz;
 import voxSpell.quiz.Settings;
 
 import java.awt.Color;
@@ -33,11 +34,15 @@ public class Options extends JFrame {
 
 	private JPanel contentPane;
 	private JFrame thisFrame;
+	private JButton menu;
+	private JButton changeVoice;
+	private JButton stats;
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public Options() {
+	public Options(Quiz quiz) {
 		thisFrame = this;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -65,12 +70,16 @@ public class Options extends JFrame {
 		gbc_title.gridy = 1;
 		contentPane.add(title, gbc_title);
 		
-		JButton menu = new JButton("Back to Menu");
+		menu = new JButton("Back to Menu");
 		menu.setBackground(new Color(51, 0, 51));
 		menu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {		
+			public void actionPerformed(ActionEvent e) {
+				int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to LEAVE THIS QUIZ? You will lose your streak.", "Leave Quiz", JOptionPane.YES_NO_OPTION);
+				if (reply == JOptionPane.YES_OPTION) {
 					dispose();
 					GUI.getInstance().setContentPane(new MainMenu());
+				}
+					
 			}
 		});
 		menu.setForeground(new Color(255, 255, 255));
@@ -82,7 +91,7 @@ public class Options extends JFrame {
 		gbc_menu.gridy = 3;
 		contentPane.add(menu, gbc_menu);
 		
-		JButton changeVoice = new JButton("Change Voice");
+		changeVoice = new JButton("Change Voice");
 		changeVoice.setBackground(new Color(51, 0, 51));
 		changeVoice.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -93,14 +102,14 @@ public class Options extends JFrame {
 		});
 		changeVoice.setForeground(new Color(255, 255, 255));
 		changeVoice.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
-		GridBagConstraints gbc_settings = new GridBagConstraints();
-		gbc_settings.fill = GridBagConstraints.HORIZONTAL;
-		gbc_settings.insets = new Insets(0, 0, 5, 5);
-		gbc_settings.gridx = 1;
-		gbc_settings.gridy = 5;
-		contentPane.add(changeVoice, gbc_settings);
+		GridBagConstraints gbc_changeVoice = new GridBagConstraints();
+		gbc_changeVoice.fill = GridBagConstraints.HORIZONTAL;
+		gbc_changeVoice.insets = new Insets(0, 0, 5, 5);
+		gbc_changeVoice.gridx = 1;
+		gbc_changeVoice.gridy = 5;
+		contentPane.add(changeVoice, gbc_changeVoice);
 		
-		JButton stats = new JButton("Statistics");
+		stats = new JButton("Statistics");
 		stats.setBackground(new Color(51, 0, 51));
 		stats.setForeground(new Color(255, 255, 255));
 		stats.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
