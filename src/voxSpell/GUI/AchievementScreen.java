@@ -91,9 +91,6 @@ public class AchievementScreen extends JPanel {
 		add(streakLabel10, gbc_streakLabel10);
 		
 		streak10ViewReward = new JButton("View Reward");
-		if(!AchievementList.getInstance().getShallowCopy().get(0)){
-			streak10ViewReward.setEnabled(false);
-		}
 		streak10ViewReward.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -108,7 +105,6 @@ public class AchievementScreen extends JPanel {
 		gbc_rightLabel50.gridx = 3;
 		gbc_rightLabel50.gridy = 5;
 		add(rightLabel50, gbc_rightLabel50);
-		streak10ViewReward.setEnabled(false);
 		streak10ViewReward.setForeground(Color.WHITE);
 		streak10ViewReward.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
 		streak10ViewReward.setBackground(new Color(51, 0, 51));
@@ -122,7 +118,6 @@ public class AchievementScreen extends JPanel {
 		right50ViewReward = new JButton("View Reward");
 		right50ViewReward.setForeground(Color.WHITE);
 		right50ViewReward.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
-		right50ViewReward.setEnabled(false);
 		right50ViewReward.setBackground(new Color(51, 0, 51));
 		GridBagConstraints gbc_right50ViewReward = new GridBagConstraints();
 		gbc_right50ViewReward.insets = new Insets(0, 0, 5, 5);
@@ -163,7 +158,6 @@ public class AchievementScreen extends JPanel {
 		right100ViewReward = new JButton("View Reward");
 		right100ViewReward.setForeground(Color.WHITE);
 		right100ViewReward.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
-		right100ViewReward.setEnabled(false);
 		right100ViewReward.setBackground(new Color(51, 0, 51));
 		GridBagConstraints gbc_right100ViewReward = new GridBagConstraints();
 		gbc_right100ViewReward.insets = new Insets(0, 0, 5, 5);
@@ -211,7 +205,6 @@ public class AchievementScreen extends JPanel {
 		right250ViewReward = new JButton("View Reward");
 		right250ViewReward.setForeground(Color.WHITE);
 		right250ViewReward.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
-		right250ViewReward.setEnabled(false);
 		right250ViewReward.setBackground(new Color(51, 0, 51));
 		GridBagConstraints gbc_right250ViewReward = new GridBagConstraints();
 		gbc_right250ViewReward.insets = new Insets(0, 0, 5, 5);
@@ -228,13 +221,18 @@ public class AchievementScreen extends JPanel {
 		gbc_menu.gridy = 15;
 		add(menu, gbc_menu);
 		
+		addButtonsToList();
+		setButtonEnabling();
+
+	}
+	
+	private void addButtonsToList(){
 		viewRewardButtons.add(streak10ViewReward);
 		viewRewardButtons.add(streak25ViewReward);
 		viewRewardButtons.add(streak50ViewReward);
 		viewRewardButtons.add(right50ViewReward);
 		viewRewardButtons.add(right100ViewReward);
-		viewRewardButtons.add(right250ViewReward);		
-
+		viewRewardButtons.add(right250ViewReward);	
 	}
 	
 	private void setButtonEnabling(){

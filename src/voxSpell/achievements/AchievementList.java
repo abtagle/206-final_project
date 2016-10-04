@@ -2,9 +2,6 @@ package voxSpell.achievements;
 
 import java.util.ArrayList;
 
-import voxSpell.quiz.RightWordsAchievement;
-import voxSpell.quiz.StreakAchievement;
-
 public class AchievementList {
 	private ArrayList<Achievement> _achievements;
 	private static AchievementList _this;

@@ -1,6 +1,6 @@
-package voxSpell.quiz;
+package voxSpell.achievements;
 
-import voxSpell.achievements.Achievement;
+import voxSpell.quiz.Lists;
 
 public class RightWordsAchievement extends Achievement {
 	

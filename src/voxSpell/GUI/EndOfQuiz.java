@@ -109,6 +109,11 @@ public class EndOfQuiz extends JPanel {
 		});
 
 		viewAchievements = new JButton("View Achievements");
+		viewAchievements.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUI.getInstance().setContentPane(new AchievementScreen());
+			}
+		});
 		viewAchievements.setForeground(Color.WHITE);
 		viewAchievements.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		viewAchievements.setBackground(new Color(51, 0, 51));
