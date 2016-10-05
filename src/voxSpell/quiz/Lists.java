@@ -103,15 +103,17 @@ public class Lists {
 		File levelStats = new File(LEVEL_STATS);
 		if(levelStats.exists()){
 			try{
-				BufferedReader wordListRead = new BufferedReader(new FileReader(levelStats));
-				String word;
+				BufferedReader statsRead = new BufferedReader(new FileReader(levelStats));
+				String stat;
 				String listName = "";
 
-				while((word = wordListRead.readLine()) != null){
-					String[] split  = word.split("\\s+");
-					_levelStats.put(split[0], new LevelStats(Integer.parseInt(split[1]), Integer.parseInt(split[2])));
+				while((stat = statsRead.readLine()) != null){
+					listName = stat;
+					String details = statsRead.readLine();
+					String[] split  = details.split("\\s+");
+					_levelStats.put(listName, new LevelStats(Integer.parseInt(split[0]), Integer.parseInt(split[1])));
 				}
-				wordListRead.close();	
+				statsRead.close();	
 			} catch (FileNotFoundException e){
 				JOptionPane.showMessageDialog(null, "Error: unable to load " + STREAK_VALUES + ".");
 
@@ -281,6 +283,7 @@ public class Lists {
 		_longestStreak = 0;
 		_numberOfWordsRight = 0;
 		_numberOfWordsAttempted = 0;
+		_levelStats = new HashMap<String, LevelStats>();
 
 		setUpScores();
 	}
@@ -317,7 +320,8 @@ public class Lists {
 	private void writeLevelStatsToFile() throws FileNotFoundException{
 		PrintWriter writer = new PrintWriter(LEVEL_STATS);
 		for(String list : _levelStats.keySet()){
-			writer.println(list + " " + _levelStats.get(list).getNumberOfWordsTested() + " "+ _levelStats.get(list).getNumberOfWordsRight());
+			writer.println(list);
+			writer.println( _levelStats.get(list).getNumberOfWordsTested() + " "+ _levelStats.get(list).getNumberOfWordsRight());
 		}
 		writer.close();
 	}

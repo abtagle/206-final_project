@@ -43,7 +43,7 @@ public class AchievementScreen extends JPanel {
 		setBackground(new Color(51, 0, 51));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{80, 300, 40, 300, 80, 0};
-		gridBagLayout.rowHeights = new int[]{20, 0, 20, 0, 10, 0, 0, 20, 0, 0, 20, 0, 0, 0, 50, 0, 30, 0};
+		gridBagLayout.rowHeights = new int[]{30, 0, 20, 0, 10, 0, 0, 20, 0, 0, 20, 0, 0, 0, 50, 0, 30, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);

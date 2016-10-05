@@ -73,8 +73,7 @@ public class ReviewScreen extends JPanel {
 		previous.setBackground(new Color(51, 0, 51));
 		previous.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				currentReview.previousWord();
-				word.setText("?");
+				currentReview.previousWord();		
 				setForNewWord();
 				
 			}
@@ -181,9 +180,14 @@ public class ReviewScreen extends JPanel {
 
 	}
 	
+	
 	private void setForNewWord(){
-		word.setText("?");
 		wordNumber.setText("Word " + (currentReview.getWordNumber()+1) + " of " + currentReview.getLength());
+		if(viewWordToggle.isSelected()){
+			word.setText(currentReview.getWord());
+		} else{
+			word.setText("?");
+		}
 	}
 
 }

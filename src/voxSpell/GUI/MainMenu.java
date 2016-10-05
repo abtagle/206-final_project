@@ -87,6 +87,11 @@ public class MainMenu extends JPanel {
 		add(review, gbc_review);
 		
 		JButton statistics = new JButton("      Statistics");
+		statistics.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUI.getInstance().setContentPane(new StatisticsScreen());
+			}
+		});
 		statistics.setHorizontalAlignment(SwingConstants.RIGHT);
 		statistics.setIcon(new ImageIcon(path+"/stats.png"));
 		statistics.setForeground(Color.WHITE);
