@@ -86,6 +86,9 @@ public class StatisticsScreen extends JPanel {
 		add(chooseLevel, gbc_chooseLevel);
 		
 		submitLevel = new JButton("View");
+		if(levelsWithStats.size() == 0){
+			submitLevel.setEnabled(false);
+		}
 		submitLevel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				accuracy.setText("Accuracy: "+ Lists.getInstance().getAccuracy((String)chooseLevel.getSelectedItem()) + "%");

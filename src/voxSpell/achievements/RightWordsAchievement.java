@@ -5,8 +5,8 @@ import voxSpell.quiz.Lists;
 public class RightWordsAchievement extends Achievement {
 	
 	private int _numberOfWords;
-	public RightWordsAchievement(String name, int numberOfWords){
-		super(name);
+	public RightWordsAchievement(String name, String videoName, int numberOfWords){
+		super(name, videoName);
 		_numberOfWords = numberOfWords;
 	}
 	

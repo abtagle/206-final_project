@@ -222,11 +222,7 @@ public class SettingsScreen extends JPanel {
 		restart.setBackground(new Color(204, 0, 0));
 		restart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to RESTART YOUR GAME? All your achievements and streaks will be lost.", "Restart Game", JOptionPane.YES_NO_OPTION);
-				if (reply == JOptionPane.YES_OPTION) {
-					Lists.getInstance().clearStats();
-					JOptionPane.showMessageDialog(null, "Your game has been restarted", "Restart Game", JOptionPane.INFORMATION_MESSAGE);
-				}
+				restart();
 			}
 		});
 		restart.setForeground(new Color(255, 255, 255));
@@ -279,5 +275,12 @@ public class SettingsScreen extends JPanel {
 	private void setSampleWords(){
 		sampleWords.setText("Sample Level Words: " + Lists.getInstance().getWordList(Settings.getInstance().getLevel()).getWord(0) + ", " + Lists.getInstance().getWordList(Settings.getInstance().getLevel()).getWord(1) + ", " + Lists.getInstance().getWordList(Settings.getInstance().getLevel()).getWord(2));
 		sampleWords.repaint();
+	}
+	private void restart(){
+		int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to RESTART YOUR GAME? All your achievements and streaks will be lost.", "Restart Game", JOptionPane.YES_NO_OPTION);
+		if (reply == JOptionPane.YES_OPTION) {
+			Lists.getInstance().clearStats();
+			JOptionPane.showMessageDialog(null, "Your game has been restarted", "Restart Game", JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 }

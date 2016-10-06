@@ -9,7 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
 import java.awt.Color;
-
+/**
+ * Potential class representing the dialog boxes that appear to warn the user of unsavoury results
+ * @author atag549
+ *
+ */
 public class Error extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();

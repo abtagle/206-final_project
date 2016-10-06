@@ -6,8 +6,8 @@ public class StreakAchievement extends Achievement {
 	
 	private int _streakValue;
 
-	public StreakAchievement(String name, int streakValue) {
-		super(name);
+	public StreakAchievement(String name, String videoName, int streakValue) {
+		super(name, videoName);
 		_streakValue = streakValue;
 	}
 
