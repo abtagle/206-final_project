@@ -93,6 +93,7 @@ public class AchievementScreen extends JPanel {
 		streak10ViewReward = new JButton("View Reward");
 		streak10ViewReward.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new VideoReward(AchievementList.getInstance().getAchievement(0));
 			}
 		});
 		

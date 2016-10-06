@@ -15,7 +15,7 @@ public class AchievementList {
 	
 	private AchievementList(){
 		_achievements = new ArrayList<Achievement>();
-		_achievements.add(new StreakAchievement("10 Word Streak", "streak10.mp4", 10));
+		_achievements.add(new StreakAchievement("10 Word Streak", "/streak10.avi", 10));
 		_achievements.add(new StreakAchievement("25 Word Streak", "streak25.mp4",25));
 		_achievements.add(new StreakAchievement("50 Word Streak", "streak50.mp4",50));
 		_achievements.add(new RightWordsAchievement("50 Words Right", "right50.mp4", 50));
@@ -40,5 +40,9 @@ public class AchievementList {
 			achievements.add(i.isAchieved());
 		}
 		return achievements;
+	}
+	
+	public Achievement getAchievement(int achievement){
+		return _achievements.get(achievement);
 	}
 }
