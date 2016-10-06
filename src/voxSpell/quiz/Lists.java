@@ -264,6 +264,21 @@ public class Lists {
 	public WordList getLastFailed(){
 		return _lastFailed;
 	}
+	public double getAccuracy(String level){
+		return _levelStats.get(level).getAccuracy();
+	}
+	public int getWordsTested(String level){
+		return _levelStats.get(level).getNumberOfWordsTested();
+	}
+	public ArrayList<String> getLevelsWithStats(){
+		if(_levelStats.keySet().isEmpty()){
+			return new ArrayList<String>();
+		}
+		ArrayList<String> arrayList = new ArrayList<String>();
+		arrayList.addAll(_levelStats.keySet());
+		return arrayList;
+		
+	}
 	public int getNumberOfLevels(){
 
 		return _wordLists.size();
@@ -348,7 +363,7 @@ public class Lists {
 			}
 		}
 		public double getAccuracy(){
-			return (double)_numberOfWordsRight/(double)_numberOfWordsTested;
+			return ((double)_numberOfWordsRight/(double)_numberOfWordsTested) * 100;
 		}
 		public int getNumberOfWordsTested(){
 			return _numberOfWordsTested;
