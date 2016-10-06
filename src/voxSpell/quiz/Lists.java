@@ -27,12 +27,13 @@ import voxSpell.achievements.AchievementList;
  */
 
 public class Lists {
-	public static final String MASTERED = "./.mastered";
-	public static final String FAULTED = "./.faulted";
-	public static final String FAILED = "./.failed";
-	public static final String LAST_FAILED = "./.lastFailed";
-	public static final String STREAK_VALUES = "./.streak";
-	public static final String LEVEL_STATS= "./.stats";
+	public static final String PATH = new File(System.getProperty("java.class.path")).getAbsoluteFile().getParentFile().toString();
+	public static final String MASTERED = PATH+"/.mastered";
+	public static final String FAULTED = PATH+"/.faulted";
+	public static final String FAILED = PATH+"/.failed";
+	public static final String LAST_FAILED = PATH+"/.lastFailed";
+	public static final String STREAK_VALUES = PATH+"/.streak";
+	public static final String LEVEL_STATS= PATH+"/.stats";
 	private HashMap<String, WordList> _wordLists = null;
 	private WordList _mastered;
 	private WordList _faulted;
@@ -49,6 +50,9 @@ public class Lists {
 	private Lists(){
 		//Reads in all the statistics storing lists if they already  exist
 		AchievementList.getInstance();
+		
+		File f = new File(System.getProperty("java.class.path"));
+		File dir = f.getAbsoluteFile().getParentFile();
 		_thisList = this;
 
 		_mastered = new WordList();
