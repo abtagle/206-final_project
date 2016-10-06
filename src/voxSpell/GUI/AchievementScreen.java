@@ -117,6 +117,11 @@ public class AchievementScreen extends JPanel {
 		add(streak10ViewReward, gbc_streak10ViewReward);
 		
 		right50ViewReward = new JButton("View Reward");
+		right50ViewReward.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new VideoReward(AchievementList.getInstance().getAchievement(1));
+			}
+		});
 		right50ViewReward.setForeground(Color.WHITE);
 		right50ViewReward.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
 		right50ViewReward.setBackground(new Color(51, 0, 51));
@@ -147,6 +152,11 @@ public class AchievementScreen extends JPanel {
 		add(rightLabel100, gbc_rightLabel100);
 		
 		streak25ViewReward = new JButton("View Reward");
+		streak25ViewReward.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new VideoReward(AchievementList.getInstance().getAchievement(2));
+			}
+		});
 		streak25ViewReward.setForeground(Color.WHITE);
 		streak25ViewReward.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
 		streak25ViewReward.setBackground(new Color(51, 0, 51));
@@ -157,6 +167,11 @@ public class AchievementScreen extends JPanel {
 		add(streak25ViewReward, gbc_streak25ViewReward);
 		
 		right100ViewReward = new JButton("View Reward");
+		right100ViewReward.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new VideoReward(AchievementList.getInstance().getAchievement(3));
+			}
+		});
 		right100ViewReward.setForeground(Color.WHITE);
 		right100ViewReward.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
 		right100ViewReward.setBackground(new Color(51, 0, 51));
@@ -187,6 +202,11 @@ public class AchievementScreen extends JPanel {
 		add(rightLabel250, gbc_rightLabel250);
 		
 		streak50ViewReward = new JButton("View Reward");
+		streak50ViewReward.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new VideoReward(AchievementList.getInstance().getAchievement(4));
+			}
+		});
 		streak50ViewReward.setForeground(Color.WHITE);
 		streak50ViewReward.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
 		streak50ViewReward.setBackground(new Color(51, 0, 51));
@@ -204,6 +224,11 @@ public class AchievementScreen extends JPanel {
 		});
 		
 		right250ViewReward = new JButton("View Reward");
+		right250ViewReward.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new VideoReward(AchievementList.getInstance().getAchievement(5));
+			}
+		});
 		right250ViewReward.setForeground(Color.WHITE);
 		right250ViewReward.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
 		right250ViewReward.setBackground(new Color(51, 0, 51));
