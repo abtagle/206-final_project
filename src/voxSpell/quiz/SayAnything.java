@@ -3,6 +3,7 @@ package voxSpell.quiz;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Path;
 
 import javax.swing.SwingWorker;
 
@@ -15,7 +16,7 @@ import javax.swing.SwingWorker;
  */
 class SayAnything extends SwingWorker<Void, Void>{
 	private String _phrase = null;
-	private String _fileName = ".say.scm";
+	private String _fileName = "/.say.scm";
 	
 	Process _process;
 	public SayAnything(String anything){
@@ -24,7 +25,7 @@ class SayAnything extends SwingWorker<Void, Void>{
 		PrintWriter writer;
 		_phrase = anything;
 		try {
-			writer = new PrintWriter(_fileName);
+			writer = new PrintWriter(Lists.PATH +_fileName);
 			writer.println("(voice_" + Settings.getInstance().getVoice() + ") ;;");
 			writer.println("(SayText \"" + _phrase + "\")");
 			writer.close();
@@ -36,12 +37,12 @@ class SayAnything extends SwingWorker<Void, Void>{
 	//If the phrase being said is a word, use a different .scm file
 	public SayAnything(String anything, boolean isWord){
 		if(isWord){
-			_fileName = ".word.scm";
+			_fileName = "/.word.scm";
 		}
 		PrintWriter writer;
 		_phrase = anything;
 		try {
-			writer = new PrintWriter(_fileName);
+			writer = new PrintWriter(Lists.PATH +_fileName);
 			writer.println("(voice_" + Settings.getInstance().getVoice() + ") ;;");
 			writer.println("(SayText \"" + _phrase + "\")");
 			writer.close();
@@ -55,7 +56,7 @@ class SayAnything extends SwingWorker<Void, Void>{
 
 	@Override
 	protected Void doInBackground(){
-		ProcessBuilder sayBuilder = new ProcessBuilder("/bin/bash", "-c", "festival -b " + _fileName);
+		ProcessBuilder sayBuilder = new ProcessBuilder("/bin/bash", "-c", "festival -b " + Lists.PATH + _fileName);
 		try {
 			_process = sayBuilder.start();
 			_process.waitFor();
