@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JToggleButton;
 
+import voxSpell.quiz.ButtonSound;
 import voxSpell.quiz.Lists;
 import javax.swing.SwingConstants;
 
@@ -45,6 +46,7 @@ public class MainMenu extends JPanel {
 		newQuiz.setBackground(new Color(51, 0, 51));
 		newQuiz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				buttonPress();
 				GUI.getInstance().setContentPane(new QuizScreen("New Quiz"));
 			}
 		});
@@ -73,6 +75,7 @@ public class MainMenu extends JPanel {
 		review.setBackground(new Color(51, 0, 51));
 		review.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				buttonPress();
 				GUI.getInstance().setContentPane(new ReviewOptionsScreen());
 			}
 		});
@@ -89,6 +92,7 @@ public class MainMenu extends JPanel {
 		JButton statistics = new JButton("      Statistics");
 		statistics.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				buttonPress();
 				GUI.getInstance().setContentPane(new StatisticsScreen());
 			}
 		});
@@ -108,6 +112,7 @@ public class MainMenu extends JPanel {
 		JButton achievements = new JButton("Achievements");
 		achievements.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				buttonPress();
 				GUI.getInstance().setContentPane(new AchievementScreen());
 			}
 		});
@@ -128,6 +133,7 @@ public class MainMenu extends JPanel {
 		settings.setHorizontalAlignment(SwingConstants.RIGHT);
 		settings.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				buttonPress();
 				GUI.getInstance().setContentPane(new SettingsScreen());
 			}
 		});
@@ -142,5 +148,10 @@ public class MainMenu extends JPanel {
 		gbc_settings.gridx = 3;
 		gbc_settings.gridy = 5;
 		add(settings, gbc_settings);
+	}
+	private void buttonPress(){
+		ButtonSound sound = new ButtonSound();
+		sound.execute();
+		
 	}
 }

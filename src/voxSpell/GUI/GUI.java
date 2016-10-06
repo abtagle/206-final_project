@@ -98,13 +98,13 @@ public class GUI implements WindowListener{
 		return _frame;
 	}
 	protected void setContentPane(Container c){
+		_frame.setVisible(false);
 		if(c instanceof MainMenu){
 			_frame.setSize(1000, 500);
 		}else{		
 			_frame.setSize(800, 600);
 		}
 		_frame.setContentPane(c);
-		_frame.repaint();
 		_frame.setVisible(true);
 	}
 

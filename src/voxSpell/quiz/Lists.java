@@ -268,6 +268,9 @@ public class Lists {
 		return _levelStats.get(level).getAccuracy();
 	}
 	public double getAccuracy(){
+		if(_numberOfWordsAttempted == 0){
+			return 0;
+		}
 		return (double)(_numberOfWordsRight*100/_numberOfWordsAttempted);
 	}
 	public int getWordsTested(String level){
