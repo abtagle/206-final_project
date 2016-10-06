@@ -267,6 +267,9 @@ public class Lists {
 	public double getAccuracy(String level){
 		return _levelStats.get(level).getAccuracy();
 	}
+	public double getAccuracy(){
+		return (double)(_numberOfWordsRight*100/_numberOfWordsAttempted);
+	}
 	public int getWordsTested(String level){
 		return _levelStats.get(level).getNumberOfWordsTested();
 	}
