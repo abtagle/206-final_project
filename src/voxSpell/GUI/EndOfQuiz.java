@@ -35,9 +35,6 @@ public class EndOfQuiz extends JPanel {
 
 	public EndOfQuiz(Quiz quiz) {
 		_quiz = quiz;
-		File f = new File(System.getProperty("java.class.path"));
-		File dir = f.getAbsoluteFile().getParentFile();
-		String path = dir.toString();
 		setBackground(new Color(51, 0, 51));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{30, 0, 30, 0};
@@ -69,7 +66,7 @@ public class EndOfQuiz extends JPanel {
 		add(score, gbc_score);
 		if(_quiz.getNewAchievements().size() != 0){
 			list = new JLabel("Achievements Unlocked");
-			list.setIcon(new ImageIcon(path+"/achievements.png"));
+			list.setIcon(new ImageIcon(GUI.PATH+"/achievements.png"));
 			list.setHorizontalAlignment(SwingConstants.CENTER);
 			list.setForeground(Color.WHITE);
 			list.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));

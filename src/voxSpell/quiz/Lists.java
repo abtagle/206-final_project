@@ -27,7 +27,7 @@ import voxSpell.achievements.AchievementList;
  */
 
 public class Lists {
-	public static final String PATH = new File(System.getProperty("java.class.path")).getAbsoluteFile().getParentFile().toString();
+	public static final String PATH = new File(System.getProperty("java.class.path")).getAbsoluteFile().getParentFile().toString() + "/.media";
 	public static final String MASTERED = PATH+"/.mastered";
 	public static final String FAULTED = PATH+"/.faulted";
 	public static final String FAILED = PATH+"/.failed";

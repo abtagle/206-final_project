@@ -37,9 +37,7 @@ public class MainMenu extends JPanel {
 		setLayout(gridBagLayout);
 		
 
-		File f = new File(System.getProperty("java.class.path"));
-		File dir = f.getAbsoluteFile().getParentFile();
-		String path = dir.toString();
+		String path = GUI.PATH;
 		JButton newQuiz = new JButton("      New Quiz");
 		newQuiz.setHorizontalAlignment(SwingConstants.RIGHT);
 		newQuiz.setIcon(new ImageIcon(path+"/play.png"));

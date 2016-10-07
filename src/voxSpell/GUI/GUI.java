@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -27,6 +28,7 @@ import voxSpell.quiz.Settings;
 
 //Must also be able to tell when the window is closing to save everything from the GUI
 public class GUI implements WindowListener{
+	public static final String PATH = new File(System.getProperty("java.class.path")).getAbsoluteFile().getParentFile().toString() + "/.media";
 	public static int NUMBER_OF_LEVELS;
 	private static Dimension _frameSize;
 	private static int _level;

@@ -100,7 +100,7 @@ public class QuizScreen extends JPanel {
 		//Relisten Button
 		relisten = new JButton("Relisten");
 		relisten.setBackground(new Color(51, 0, 51));
-		relisten.setIcon(new ImageIcon("/afs/ec.auckland.ac.nz/users/a/t/atag549/unixhome/Documents/Softeng_206/Project2/voxSpell/sound.png"));
+		relisten.setIcon(new ImageIcon(GUI.PATH + "/sound.png"));
 		relisten.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				quiz.sayWord();

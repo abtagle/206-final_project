@@ -89,10 +89,7 @@ public class VideoReward extends JFrame{
 		setVisible(true);
 		//Read in the video
 		
-		File f = new File(System.getProperty("java.class.path"));
-		File dir = f.getAbsoluteFile().getParentFile();
-		String path = dir.toString();
-		path = path + _videoName;	
+		String path = GUI.PATH + _videoName;	
 
 		//URL url = SelectLevel.class.getResource("/big_buck_bunny_1_minute.avi");
 		_video.playMedia(path);
