@@ -16,6 +16,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AchievementScreen extends JPanel {
 	private JLabel title;
@@ -34,6 +36,8 @@ public class AchievementScreen extends JPanel {
 	private JButton right50ViewReward;
 	private JButton right100ViewReward;
 	private JButton right250ViewReward;
+	private JLabel title2;
+	private JLabel eButton;
 
 	/**
 	 * Create the panel.
@@ -42,23 +46,53 @@ public class AchievementScreen extends JPanel {
 		viewRewardButtons = new ArrayList <JButton>();
 		setBackground(new Color(51, 0, 51));
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{80, 300, 40, 300, 80, 0};
+		gridBagLayout.columnWidths = new int[]{80, 300, 0, 300, 80, 0};
 		gridBagLayout.rowHeights = new int[]{30, 0, 20, 0, 10, 0, 0, 20, 0, 0, 20, 0, 0, 0, 50, 0, 30, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		title = new JLabel("Achievements");
+		title = new JLabel("Achiev");
 		title.setVerticalAlignment(SwingConstants.BOTTOM);
-		title.setHorizontalAlignment(SwingConstants.CENTER);
+		title.setHorizontalAlignment(SwingConstants.RIGHT);
 		title.setForeground(Color.WHITE);
 		title.setFont(new Font("Century Schoolbook L", Font.BOLD, 72));
 		GridBagConstraints gbc_title = new GridBagConstraints();
-		gbc_title.insets = new Insets(0, 0, 5, 0);
-		gbc_title.gridwidth = 5;
+		gbc_title.anchor = GridBagConstraints.EAST;
+		gbc_title.insets = new Insets(0, 0, 5, 5);
+		gbc_title.gridwidth = 2;
 		gbc_title.gridx = 0;
 		gbc_title.gridy = 1;
 		add(title, gbc_title);
+		
+		eButton = new JLabel("e");
+		eButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new VideoReward();
+			}
+		});
+		eButton.setVerticalAlignment(SwingConstants.BOTTOM);
+		eButton.setHorizontalAlignment(SwingConstants.RIGHT);
+		eButton.setForeground(Color.WHITE);
+		eButton.setFont(new Font("Century Schoolbook L", Font.BOLD, 72));
+		GridBagConstraints gbc_eButton = new GridBagConstraints();
+		gbc_eButton.insets = new Insets(0, 0, 5, 5);
+		gbc_eButton.gridx = 2;
+		gbc_eButton.gridy = 1;
+		add(eButton, gbc_eButton);
+		
+		title2 = new JLabel("ments");
+		title2.setVerticalAlignment(SwingConstants.BOTTOM);
+		title2.setHorizontalAlignment(SwingConstants.RIGHT);
+		title2.setForeground(Color.WHITE);
+		title2.setFont(new Font("Century Schoolbook L", Font.BOLD, 72));
+		GridBagConstraints gbc_title2 = new GridBagConstraints();
+		gbc_title2.anchor = GridBagConstraints.NORTHWEST;
+		gbc_title2.insets = new Insets(0, 0, 5, 5);
+		gbc_title2.gridx = 3;
+		gbc_title2.gridy = 1;
+		add(title2, gbc_title2);
 		
 		streak = new JLabel("Streak Length");
 		streak.setHorizontalAlignment(SwingConstants.RIGHT);

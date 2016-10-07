@@ -31,24 +31,37 @@ import com.sun.jna.NativeLibrary;
  *
  */
 public class VideoReward extends JFrame{
-	EmbeddedMediaPlayer _video;
-	Achievement _achievement;
+	private EmbeddedMediaPlayer _video;
+	private String _videoName;
+	private final EmbeddedMediaPlayerComponent _player;
 
-	private final EmbeddedMediaPlayerComponent mediaPlayerComponent;
 	public VideoReward(Achievement achievement) {
 		super("Video Reward");
-		_achievement = achievement;
-		mediaPlayerComponent = new EmbeddedMediaPlayerComponent();
+		_videoName = achievement.getVideoReward();
+		_player = new EmbeddedMediaPlayerComponent();
+		_video = _player.getMediaPlayer();
+		setContentPane(_player);
+		runVideo();
 
-		_video = mediaPlayerComponent.getMediaPlayer();
+	}
+	
+	public VideoReward() {
+		super("Secret Video Reward");
+		_videoName = "/big_buck_bunny_1_minute.avi";
+		_player = new EmbeddedMediaPlayerComponent();
+		_video = _player.getMediaPlayer();
+		setContentPane(_player);
+		runVideo();
 
-		setContentPane(mediaPlayerComponent);
+	}
+	
+	private void runVideo(){
 
 		setLocation(100, 100);
 		setSize(1050, 600);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		JPanel panel = new JPanel(new BorderLayout());
-		panel.add(mediaPlayerComponent, BorderLayout.CENTER);
+		panel.add(_player, BorderLayout.CENTER);
 		setContentPane(panel);
 		_video.canPause();
 
@@ -79,7 +92,7 @@ public class VideoReward extends JFrame{
 		File f = new File(System.getProperty("java.class.path"));
 		File dir = f.getAbsoluteFile().getParentFile();
 		String path = dir.toString();
-		path = path + _achievement.getVideoReward();	
+		path = path + _videoName;	
 
 		//URL url = SelectLevel.class.getResource("/big_buck_bunny_1_minute.avi");
 		_video.playMedia(path);
