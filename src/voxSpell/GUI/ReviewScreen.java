@@ -17,6 +17,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JToggleButton;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 /**
  * 
  * Class representing the view you see when you review words in a flashcard-like setting
@@ -34,6 +36,29 @@ public class ReviewScreen extends JPanel {
 	 * Create the panel.
 	 */
 	public ReviewScreen(boolean isFailed) {
+		addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+					currentReview.nextWord();
+				} else if(e.getKeyCode() == KeyEvent.VK_LEFT){
+					currentReview.previousWord();
+				}  else if(e.getKeyCode() == KeyEvent.VK_SPACE){
+					currentReview.sayWord();
+				} else if(e.getKeyCode() == KeyEvent.VK_SPACE){
+					if(viewWordToggle.isSelected()){
+						viewWordToggle.setEnabled(false);
+						word.setText("?");
+						viewWordToggle.setText("Show Text");
+					} else {
+						viewWordToggle.setEnabled(true);
+						word.setText(currentReview.getWord());
+						viewWordToggle.setText("Hide Text");
+					}
+				}
+				setForNewWord();
+			}
+		});
 		
 		currentReview = new Review(isFailed);
 		

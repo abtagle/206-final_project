@@ -32,6 +32,7 @@ public class GUI implements WindowListener{
 	public static int NUMBER_OF_LEVELS;
 	private static Dimension _frameSize;
 	private static int _level;
+	
 
 	//From: http://stackoverflow.com/questions/7140248/get-system-default-font
 	public static final Font TITLE_FONT = new Font(new JLabel().getName(), 1, 20);
