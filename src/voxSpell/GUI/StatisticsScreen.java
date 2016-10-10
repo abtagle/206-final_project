@@ -31,7 +31,7 @@ public class StatisticsScreen extends JPanel {
 	private JLabel longestStreak;
 	private JLabel accuracy;
 	private JLabel currentStreak;
-	private JButton menu;
+	protected JButton menu;
 	private JLabel wordsTested;
 	private JLabel overallAccuracy;
 	private JLabel totalWordsTested;

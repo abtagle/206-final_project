@@ -112,6 +112,15 @@ public class Options extends JFrame {
 		contentPane.add(changeVoice, gbc_changeVoice);
 		
 		stats = new JButton("Statistics");
+		stats.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				thisFrame.setVisible(false);
+				thisFrame.setContentPane(new InnerStatistics());
+				thisFrame.setSize(800, 600);
+				thisFrame.setVisible(true);
+				
+			}
+		});
 		stats.setBackground(GUI.background);
 		stats.setForeground(GUI.foreground);
 		stats.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
@@ -196,6 +205,12 @@ public class Options extends JFrame {
 
 		}
 
+	}
+	private class InnerStatistics extends StatisticsScreen{
+		public InnerStatistics(){
+			super();
+			menu.setVisible(false);
+		}
 	}
 
 }

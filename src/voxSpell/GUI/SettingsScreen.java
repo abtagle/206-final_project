@@ -42,7 +42,12 @@ public class SettingsScreen extends JPanel {
 	private JLabel currentLevel;
 	private JLabel sampleWords;
 	private JComboBox<String> quizSizeSelect;
-	private JScrollPane scroll;
+	private JButton button;
+	private JButton submitLevel;
+	private JButton submitVoice;
+	private JButton submitQuizSize;
+	private JButton theme;
+	private JButton btnBackToMenu;
 	
 	public SettingsScreen() {
 		GUI.getInstance().getFrame().setVisible(true);
@@ -53,8 +58,6 @@ public class SettingsScreen extends JPanel {
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
-		
-		scroll = new JScrollPane(this);
 		
 		JLabel label = new JLabel("Settings");
 		label.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -69,7 +72,7 @@ public class SettingsScreen extends JPanel {
 		gbc_label.gridy = 0;
 		add(label, gbc_label);
 		
-		JButton button = new JButton("Change Word List");
+		button = new JButton("Change Word List");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser chooser = new JFileChooser();
@@ -120,7 +123,7 @@ public class SettingsScreen extends JPanel {
 		gbc_levelSelect.gridy = 4;
 		add(levelSelect, gbc_levelSelect);
 		
-		JButton submitLevel = new JButton("Submit");
+		submitLevel = new JButton("Submit");
 		submitLevel.setBackground(GUI.background);
 		submitLevel.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		submitLevel.addActionListener(new ActionListener() {
@@ -182,7 +185,7 @@ public class SettingsScreen extends JPanel {
 		
 		add(voiceSelect, gbc_voiceSelect);
 		
-		JButton submitVoice = new JButton("Submit");
+		submitVoice = new JButton("Submit");
 		submitVoice.setBackground(GUI.background);
 		submitVoice.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -221,7 +224,7 @@ public class SettingsScreen extends JPanel {
 		gbc_quizSizeSelect.gridy = 8;
 		add(quizSizeSelect, gbc_quizSizeSelect);
 		
-		JButton submitQuizSize = new JButton("Submit");
+		submitQuizSize = new JButton("Submit");
 		submitQuizSize.setBackground(GUI.background);
 		submitQuizSize.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -237,7 +240,7 @@ public class SettingsScreen extends JPanel {
 		gbc_submitQuizSize.gridy = 8;
 		add(submitQuizSize, gbc_submitQuizSize);
 		
-		JButton btnBackToMenu = new JButton("Back To Menu");
+		btnBackToMenu = new JButton("Back To Menu");
 		btnBackToMenu.setBackground(GUI.background);
 		btnBackToMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -297,7 +300,7 @@ public class SettingsScreen extends JPanel {
 		gbc_btnBackToMenu.gridy = 15;
 		add(btnBackToMenu, gbc_btnBackToMenu);
 		
-		JButton theme = new JButton("Change Theme");
+		theme = new JButton("Change Theme");
 		theme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GUI.getInstance().changeTheme();
