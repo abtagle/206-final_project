@@ -40,7 +40,7 @@ public class StatisticsScreen extends JPanel {
 	 * Create the panel.
 	 */
 	public StatisticsScreen() {
-		setBackground(new Color(51, 0, 51));
+		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{30, 0, 50, 300, 20, 0, 30, 0};
 		gridBagLayout.rowHeights = new int[]{30, 0, 20, 0, 20, 0, 20, 20, 20, 20, 20, 0, 0, 30, 0, 0};
@@ -51,7 +51,7 @@ public class StatisticsScreen extends JPanel {
 		title = new JLabel("Statistics");
 		title.setVerticalAlignment(SwingConstants.BOTTOM);
 		title.setHorizontalAlignment(SwingConstants.CENTER);
-		title.setForeground(Color.WHITE);
+		title.setForeground(GUI.foreground);
 		title.setFont(new Font("Century Schoolbook L", Font.BOLD, 72));
 		GridBagConstraints gbc_title = new GridBagConstraints();
 		gbc_title.gridwidth = 7;
@@ -62,7 +62,7 @@ public class StatisticsScreen extends JPanel {
 		
 		levelLabel = new JLabel("Level");
 		levelLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		levelLabel.setForeground(Color.WHITE);
+		levelLabel.setForeground(GUI.foreground);
 		levelLabel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 		GridBagConstraints gbc_levelLabel = new GridBagConstraints();
 		gbc_levelLabel.fill = GridBagConstraints.HORIZONTAL;
@@ -95,9 +95,9 @@ public class StatisticsScreen extends JPanel {
 				wordsTested.setText("Word Tested from Level: " + Lists.getInstance().getWordsTested((String)chooseLevel.getSelectedItem()));
 			}
 		});
-		submitLevel.setForeground(Color.WHITE);
+		submitLevel.setForeground(GUI.foreground);
 		submitLevel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
-		submitLevel.setBackground(new Color(51, 0, 51));
+		submitLevel.setBackground(GUI.background);
 		GridBagConstraints gbc_submitLevel = new GridBagConstraints();
 		gbc_submitLevel.insets = new Insets(0, 0, 5, 5);
 		gbc_submitLevel.gridx = 5;
@@ -106,7 +106,7 @@ public class StatisticsScreen extends JPanel {
 		
 		wordsTested = new JLabel("Words Tested from Level: ");
 		wordsTested.setHorizontalAlignment(SwingConstants.RIGHT);
-		wordsTested.setForeground(Color.WHITE);
+		wordsTested.setForeground(GUI.foreground);
 		wordsTested.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 		GridBagConstraints gbc_wordsTested = new GridBagConstraints();
 		gbc_wordsTested.anchor = GridBagConstraints.WEST;
@@ -118,7 +118,7 @@ public class StatisticsScreen extends JPanel {
 		
 		accuracy = new JLabel("Accuracy: ");
 		accuracy.setHorizontalAlignment(SwingConstants.RIGHT);
-		accuracy.setForeground(Color.WHITE);
+		accuracy.setForeground(GUI.foreground);
 		accuracy.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 		GridBagConstraints gbc_accuracy = new GridBagConstraints();
 		gbc_accuracy.anchor = GridBagConstraints.WEST;
@@ -130,7 +130,7 @@ public class StatisticsScreen extends JPanel {
 		
 		currentStreak = new JLabel("Current Streak: " + Lists.getInstance().getStreak());
 		currentStreak.setHorizontalAlignment(SwingConstants.RIGHT);
-		currentStreak.setForeground(Color.WHITE);
+		currentStreak.setForeground(GUI.foreground);
 		currentStreak.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 		GridBagConstraints gbc_currentStreak = new GridBagConstraints();
 		gbc_currentStreak.anchor = GridBagConstraints.WEST;
@@ -149,7 +149,7 @@ public class StatisticsScreen extends JPanel {
 		
 		longestStreak = new JLabel("Longest Streak: " + Lists.getInstance().getLongestStreak());
 		longestStreak.setHorizontalAlignment(SwingConstants.RIGHT);
-		longestStreak.setForeground(Color.WHITE);
+		longestStreak.setForeground(GUI.foreground);
 		longestStreak.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 		GridBagConstraints gbc_longestStreak = new GridBagConstraints();
 		gbc_longestStreak.anchor = GridBagConstraints.WEST;
@@ -161,7 +161,7 @@ public class StatisticsScreen extends JPanel {
 		
 		totalWordsTested = new JLabel("Total Number of Words Tested: " + Lists.getInstance().getWordsAttempted());
 		totalWordsTested.setHorizontalAlignment(SwingConstants.RIGHT);
-		totalWordsTested.setForeground(Color.WHITE);
+		totalWordsTested.setForeground(GUI.foreground);
 		totalWordsTested.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 		GridBagConstraints gbc_totalWordsTested = new GridBagConstraints();
 		gbc_totalWordsTested.gridwidth = 3;
@@ -173,7 +173,7 @@ public class StatisticsScreen extends JPanel {
 		
 		overallAccuracy = new JLabel("Overall Accuracy: " + Lists.getInstance().getAccuracy() + "%");
 		overallAccuracy.setHorizontalAlignment(SwingConstants.RIGHT);
-		overallAccuracy.setForeground(Color.WHITE);
+		overallAccuracy.setForeground(GUI.foreground);
 		overallAccuracy.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 		GridBagConstraints gbc_overallAccuracy = new GridBagConstraints();
 		gbc_overallAccuracy.anchor = GridBagConstraints.WEST;
@@ -182,9 +182,9 @@ public class StatisticsScreen extends JPanel {
 		gbc_overallAccuracy.gridx = 1;
 		gbc_overallAccuracy.gridy = 12;
 		add(overallAccuracy, gbc_overallAccuracy);
-		menu.setForeground(Color.WHITE);
+		menu.setForeground(GUI.foreground);
 		menu.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
-		menu.setBackground(new Color(51, 0, 51));
+		menu.setBackground(GUI.background);
 		GridBagConstraints gbc_menu = new GridBagConstraints();
 		gbc_menu.gridwidth = 2;
 		gbc_menu.insets = new Insets(0, 0, 0, 5);

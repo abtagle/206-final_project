@@ -28,7 +28,7 @@ import javax.swing.SwingConstants;
  */
 public class MainMenu extends JPanel {
 	public MainMenu() {
-		setBackground(new Color(51, 0, 51));
+		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{40, 125, 0, 60, 160, 40, 10, 0};
 		gridBagLayout.rowHeights = new int[]{30, 0, 0, 0, 0, 0, 30, 0};
@@ -41,7 +41,7 @@ public class MainMenu extends JPanel {
 		JButton newQuiz = new JButton("      New Quiz");
 		newQuiz.setHorizontalAlignment(SwingConstants.RIGHT);
 		newQuiz.setIcon(new ImageIcon(path+"/play.png"));
-		newQuiz.setBackground(new Color(51, 0, 51));
+		newQuiz.setBackground(GUI.background);
 		newQuiz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				buttonPress();
@@ -57,7 +57,7 @@ public class MainMenu extends JPanel {
 		gbc_lblNewLabel.gridx = 1;
 		gbc_lblNewLabel.gridy = 1;
 		add(lblNewLabel, gbc_lblNewLabel);
-		newQuiz.setForeground(new Color(255, 255, 255));
+		newQuiz.setForeground(GUI.foreground);
 		newQuiz.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_newQuiz = new GridBagConstraints();
 		gbc_newQuiz.gridwidth = 2;
@@ -70,14 +70,14 @@ public class MainMenu extends JPanel {
 		JButton review = new JButton("          Review");
 		review.setHorizontalAlignment(SwingConstants.RIGHT);
 		review.setIcon(new ImageIcon(path+"/review.png"));
-		review.setBackground(new Color(51, 0, 51));
+		review.setBackground(GUI.background);
 		review.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				buttonPress();
 				GUI.getInstance().setContentPane(new ReviewOptionsScreen());
 			}
 		});
-		review.setForeground(new Color(255, 255, 255));
+		review.setForeground(GUI.foreground);
 		review.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_review = new GridBagConstraints();
 		gbc_review.fill = GridBagConstraints.HORIZONTAL;
@@ -96,9 +96,9 @@ public class MainMenu extends JPanel {
 		});
 		statistics.setHorizontalAlignment(SwingConstants.RIGHT);
 		statistics.setIcon(new ImageIcon(path+"/stats.png"));
-		statistics.setForeground(Color.WHITE);
+		statistics.setForeground(GUI.foreground);
 		statistics.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
-		statistics.setBackground(new Color(51, 0, 51));
+		statistics.setBackground(GUI.background);
 		GridBagConstraints gbc_statistics = new GridBagConstraints();
 		gbc_statistics.fill = GridBagConstraints.HORIZONTAL;
 		gbc_statistics.gridwidth = 2;
@@ -116,9 +116,9 @@ public class MainMenu extends JPanel {
 		});
 		achievements.setHorizontalAlignment(SwingConstants.RIGHT);
 		achievements.setIcon(new ImageIcon(path+"/achievements.png"));
-		achievements.setForeground(Color.WHITE);
+		achievements.setForeground(GUI.foreground);
 		achievements.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
-		achievements.setBackground(new Color(51, 0, 51));
+		achievements.setBackground(GUI.background);
 		GridBagConstraints gbc_achievements = new GridBagConstraints();
 		gbc_achievements.fill = GridBagConstraints.HORIZONTAL;
 		gbc_achievements.gridwidth = 2;
@@ -136,9 +136,9 @@ public class MainMenu extends JPanel {
 			}
 		});
 		settings.setIcon(new ImageIcon(path+"/settings.png"));
-		settings.setForeground(Color.WHITE);
+		settings.setForeground(GUI.foreground);
 		settings.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
-		settings.setBackground(new Color(51, 0, 51));
+		settings.setBackground(GUI.background);
 		GridBagConstraints gbc_settings = new GridBagConstraints();
 		gbc_settings.gridwidth = 2;
 		gbc_settings.fill = GridBagConstraints.HORIZONTAL;

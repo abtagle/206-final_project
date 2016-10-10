@@ -43,7 +43,7 @@ public class QuizScreen extends JPanel {
 		setUp(title, false);
 		GUI.getInstance().getFrame().setSize(800, 600);
 		
-		setBackground(new Color(51, 0, 51));
+		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{100, 0, 400, 0, 100, 0};
 		gridBagLayout.rowHeights = new int[]{30, 40, 20, 0, 0, 0, 50, 50, 50, 0, 10, 0, 0, 0};
@@ -53,7 +53,7 @@ public class QuizScreen extends JPanel {
 		
 		titleLabel = new JLabel(this.title);
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		titleLabel.setForeground(Color.WHITE);
+		titleLabel.setForeground(GUI.foreground);
 		titleLabel.setFont(new Font("Century Schoolbook L", Font.BOLD, 72));
 		GridBagConstraints gbc_titleLabel = new GridBagConstraints();
 		gbc_titleLabel.gridwidth = 5;
@@ -65,7 +65,7 @@ public class QuizScreen extends JPanel {
 		
 		wordNumberLabel = new JLabel("Word 1 of " + quiz.getNumberOfWords());
 		wordNumberLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		wordNumberLabel.setForeground(Color.WHITE);
+		wordNumberLabel.setForeground(GUI.foreground);
 		wordNumberLabel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 		GridBagConstraints gbc_wordNumberLabel = new GridBagConstraints();
 		gbc_wordNumberLabel.fill = GridBagConstraints.HORIZONTAL;
@@ -77,7 +77,7 @@ public class QuizScreen extends JPanel {
 		
 		scoreLabel = new JLabel("Score: 0");
 		scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		scoreLabel.setForeground(Color.WHITE);
+		scoreLabel.setForeground(GUI.foreground);
 		scoreLabel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 		GridBagConstraints gbc_scoreLabel = new GridBagConstraints();
 		gbc_scoreLabel.fill = GridBagConstraints.HORIZONTAL;
@@ -99,14 +99,14 @@ public class QuizScreen extends JPanel {
 		spellingBar.setColumns(10);
 		//Relisten Button
 		relisten = new JButton("Relisten");
-		relisten.setBackground(new Color(51, 0, 51));
+		relisten.setBackground(GUI.background);
 		relisten.setIcon(new ImageIcon(GUI.PATH + "/sound.png"));
 		relisten.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				quiz.sayWord();
 			}
 		});
-		relisten.setForeground(new Color(255, 255, 255));
+		relisten.setForeground(GUI.foreground);
 		relisten.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_relisten = new GridBagConstraints();
 		gbc_relisten.fill = GridBagConstraints.BOTH;
@@ -116,7 +116,7 @@ public class QuizScreen extends JPanel {
 		add(relisten, gbc_relisten);
 		
 		submit = new JButton("Submit");
-		submit.setBackground(new Color(51, 0, 51));
+		submit.setBackground(GUI.background);
 		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				quiz.checkSpelling(spellingBar.getText());
@@ -124,7 +124,7 @@ public class QuizScreen extends JPanel {
 			}
 		});
 		GUI.getInstance().getFrame().getRootPane().setDefaultButton(submit);
-		submit.setForeground(new Color(255, 255, 255));
+		submit.setForeground(GUI.foreground);
 		submit.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_submit = new GridBagConstraints();
 		gbc_submit.gridwidth = 3;
@@ -135,7 +135,7 @@ public class QuizScreen extends JPanel {
 		add(submit, gbc_submit);
 		
 		options = new JButton("Options");
-		options.setBackground(new Color(51, 0, 51));
+		options.setBackground(GUI.background);
 		options.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Options window = new Options(quiz);
@@ -143,7 +143,7 @@ public class QuizScreen extends JPanel {
 				window.setVisible(true);
 			}
 		});
-		options.setForeground(new Color(255, 255, 255));
+		options.setForeground(GUI.foreground);
 		options.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_options = new GridBagConstraints();
 		gbc_options.gridwidth = 3;

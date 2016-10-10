@@ -49,7 +49,7 @@ public class Options extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(51, 0, 51));
+		contentPane.setBackground(GUI.background);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
@@ -61,7 +61,7 @@ public class Options extends JFrame {
 		
 		JLabel title = new JLabel("Options");
 		title.setHorizontalAlignment(SwingConstants.CENTER);
-		title.setForeground(Color.WHITE);
+		title.setForeground(GUI.foreground);
 		title.setFont(new Font("Century Schoolbook L", Font.BOLD, 36));
 		GridBagConstraints gbc_title = new GridBagConstraints();
 		gbc_title.gridwidth = 3;
@@ -73,7 +73,7 @@ public class Options extends JFrame {
 		contentPane.add(title, gbc_title);
 		
 		menu = new JButton("Back to Menu");
-		menu.setBackground(new Color(51, 0, 51));
+		menu.setBackground(GUI.background);
 		menu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to LEAVE THIS QUIZ? You will lose your streak.", "Leave Quiz", JOptionPane.YES_NO_OPTION);
@@ -85,7 +85,7 @@ public class Options extends JFrame {
 					
 			}
 		});
-		menu.setForeground(new Color(255, 255, 255));
+		menu.setForeground(GUI.foreground);
 		menu.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_menu = new GridBagConstraints();
 		gbc_menu.fill = GridBagConstraints.HORIZONTAL;
@@ -95,7 +95,7 @@ public class Options extends JFrame {
 		contentPane.add(menu, gbc_menu);
 		
 		changeVoice = new JButton("Change Voice");
-		changeVoice.setBackground(new Color(51, 0, 51));
+		changeVoice.setBackground(GUI.background);
 		changeVoice.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thisFrame.setVisible(false);
@@ -103,7 +103,7 @@ public class Options extends JFrame {
 				thisFrame.setVisible(true);
 			}
 		});
-		changeVoice.setForeground(new Color(255, 255, 255));
+		changeVoice.setForeground(GUI.foreground);
 		changeVoice.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_changeVoice = new GridBagConstraints();
 		gbc_changeVoice.fill = GridBagConstraints.HORIZONTAL;
@@ -113,8 +113,8 @@ public class Options extends JFrame {
 		contentPane.add(changeVoice, gbc_changeVoice);
 		
 		stats = new JButton("Statistics");
-		stats.setBackground(new Color(51, 0, 51));
-		stats.setForeground(new Color(255, 255, 255));
+		stats.setBackground(GUI.background);
+		stats.setForeground(GUI.foreground);
 		stats.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_stats = new GridBagConstraints();
 		gbc_stats.fill = GridBagConstraints.HORIZONTAL;
@@ -132,7 +132,7 @@ public class Options extends JFrame {
 		private JComboBox<String> voiceSelect;
 		private HashMap<String, String>voiceNames;
 		public ChangeVoice() {
-			setBackground(new Color(51, 0, 51));
+			setBackground(GUI.background);
 			GridBagLayout gridBagLayout = new GridBagLayout();
 			gridBagLayout.columnWidths = new int[]{30, 200, 30, 0};
 			gridBagLayout.rowHeights = new int[]{20, 0, 0, 0, 0, 0, 0};
@@ -142,7 +142,7 @@ public class Options extends JFrame {
 			
 			JLabel lblChangeVoice = new JLabel("Change Voice");
 			lblChangeVoice.setHorizontalAlignment(SwingConstants.CENTER);
-			lblChangeVoice.setForeground(Color.WHITE);
+			lblChangeVoice.setForeground(GUI.foreground);
 			lblChangeVoice.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 			GridBagConstraints gbc_lblChangeVoice = new GridBagConstraints();
 			gbc_lblChangeVoice.insets = new Insets(0, 0, 5, 0);
@@ -186,7 +186,7 @@ public class Options extends JFrame {
 					JOptionPane.showMessageDialog(null, "Your voice has successfully been changed to " + (String)voiceSelect.getSelectedItem(), "Changed Voice", JOptionPane.INFORMATION_MESSAGE);
 				}
 			});
-			button.setForeground(new Color(51, 0, 51));
+			button.setForeground(GUI.background);
 			button.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 			GridBagConstraints gbc_button = new GridBagConstraints();
 			gbc_button.fill = GridBagConstraints.HORIZONTAL;

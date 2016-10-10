@@ -24,7 +24,7 @@ public class Error extends JDialog {
 	public Error() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBackground(new Color(51, 0, 51));
+		contentPanel.setBackground(GUI.background);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_contentPanel = new GridBagLayout();

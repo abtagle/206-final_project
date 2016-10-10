@@ -18,8 +18,8 @@ public class ReviewOptionsScreen extends JPanel {
 	 * Create the panel.
 	 */
 	public ReviewOptionsScreen() {
-		setForeground(new Color(255, 255, 255));
-		setBackground(new Color(51, 0, 51));
+		setForeground(GUI.foreground);
+		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{160, 160, 160, 160, 160, 0};
 		gridBagLayout.rowHeights = new int[]{20, 0, 60, 0, 20, 0, 120, 0, 40, 0};
@@ -30,7 +30,7 @@ public class ReviewOptionsScreen extends JPanel {
 		JLabel title = new JLabel("Review");
 		title.setVerticalAlignment(SwingConstants.BOTTOM);
 		title.setHorizontalAlignment(SwingConstants.CENTER);
-		title.setForeground(Color.WHITE);
+		title.setForeground(GUI.foreground);
 		title.setFont(new Font("Century Schoolbook L", Font.BOLD, 72));
 		GridBagConstraints gbc_title = new GridBagConstraints();
 		gbc_title.gridwidth = 5;
@@ -40,13 +40,13 @@ public class ReviewOptionsScreen extends JPanel {
 		add(title, gbc_title);
 		
 		JButton reviewFailed = new JButton("Review Failed Words");
-		reviewFailed.setBackground(new Color(51, 0, 51));
+		reviewFailed.setBackground(GUI.background);
 		reviewFailed.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GUI.getInstance().setContentPane(new ReviewScreen(true));
 			}
 		});
-		reviewFailed.setForeground(new Color(255, 255, 255));
+		reviewFailed.setForeground(GUI.foreground);
 		reviewFailed.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_reviewFailed = new GridBagConstraints();
 		gbc_reviewFailed.fill = GridBagConstraints.HORIZONTAL;
@@ -57,13 +57,13 @@ public class ReviewOptionsScreen extends JPanel {
 		add(reviewFailed, gbc_reviewFailed);
 		
 		JButton btnReviewCurrentList = new JButton("Review Current Level");
-		btnReviewCurrentList.setBackground(new Color(51, 0, 51));
+		btnReviewCurrentList.setBackground(GUI.background);
 		btnReviewCurrentList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GUI.getInstance().setContentPane(new ReviewScreen(false));
 			}
 		});
-		btnReviewCurrentList.setForeground(new Color(255, 255, 255));
+		btnReviewCurrentList.setForeground(GUI.foreground);
 		btnReviewCurrentList.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_btnReviewCurrentList = new GridBagConstraints();
 		gbc_btnReviewCurrentList.fill = GridBagConstraints.HORIZONTAL;
@@ -74,13 +74,13 @@ public class ReviewOptionsScreen extends JPanel {
 		add(btnReviewCurrentList, gbc_btnReviewCurrentList);
 		
 		JButton button = new JButton("Back To Menu");
-		button.setBackground(new Color(51, 0, 51));
+		button.setBackground(GUI.background);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GUI.getInstance().setContentPane(new MainMenu());
 			}
 		});
-		button.setForeground(new Color(255, 255, 255));
+		button.setForeground(GUI.foreground);
 		button.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.fill = GridBagConstraints.HORIZONTAL;

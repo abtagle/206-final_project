@@ -46,7 +46,7 @@ public class SettingsScreen extends JPanel {
 	
 	public SettingsScreen() {
 		GUI.getInstance().getFrame().setVisible(true);
-		setBackground(new Color(51, 0, 51));
+		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 190, 20, 160, 0, 160, 160, 0, 160, 20, 0};
 		gridBagLayout.rowHeights = new int[]{90, 20, 0, 20, 0, 0, 0, 0, 0, 20, 0, 20, 0, 0, 20, 0, 20, 0};
@@ -59,7 +59,7 @@ public class SettingsScreen extends JPanel {
 		JLabel label = new JLabel("Settings");
 		label.setVerticalAlignment(SwingConstants.BOTTOM);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setForeground(Color.WHITE);
+		label.setForeground(GUI.foreground);
 		label.setFont(new Font("Century Schoolbook L", Font.BOLD, 72));
 		GridBagConstraints gbc_label = new GridBagConstraints();
 		gbc_label.insets = new Insets(0, 0, 5, 0);
@@ -82,9 +82,9 @@ public class SettingsScreen extends JPanel {
 			    GUI.getInstance().setContentPane(new SettingsScreen());
 			}
 		});
-		button.setForeground(Color.WHITE);
+		button.setForeground(GUI.foreground);
 		button.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
-		button.setBackground(new Color(51, 0, 51));
+		button.setBackground(GUI.background);
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.fill = GridBagConstraints.HORIZONTAL;
 		gbc_button.gridwidth = 4;
@@ -96,7 +96,7 @@ public class SettingsScreen extends JPanel {
 		//Level Select
 		JLabel levelLabel = new JLabel("Level");
 		levelLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		levelLabel.setForeground(new Color(255, 255, 255));
+		levelLabel.setForeground(GUI.foreground);
 		levelLabel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 		GridBagConstraints gbc_levelLabel = new GridBagConstraints();
 		gbc_levelLabel.anchor = GridBagConstraints.EAST;
@@ -121,7 +121,7 @@ public class SettingsScreen extends JPanel {
 		add(levelSelect, gbc_levelSelect);
 		
 		JButton submitLevel = new JButton("Submit");
-		submitLevel.setBackground(new Color(51, 0, 51));
+		submitLevel.setBackground(GUI.background);
 		submitLevel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		submitLevel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -131,7 +131,7 @@ public class SettingsScreen extends JPanel {
 				setSampleWords();
 			}
 		});
-		submitLevel.setForeground(new Color(255, 255, 255));
+		submitLevel.setForeground(GUI.foreground);
 		GridBagConstraints gbc_submitLevel = new GridBagConstraints();
 		gbc_submitLevel.fill = GridBagConstraints.BOTH;
 		gbc_submitLevel.insets = new Insets(0, 0, 5, 5);
@@ -142,7 +142,7 @@ public class SettingsScreen extends JPanel {
 		//Voice-related things
 		JLabel voiceLabel = new JLabel("Voice");
 		voiceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		voiceLabel.setForeground(Color.WHITE);
+		voiceLabel.setForeground(GUI.foreground);
 		voiceLabel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 		GridBagConstraints gbc_voiceLabel = new GridBagConstraints();
 		gbc_voiceLabel.anchor = GridBagConstraints.EAST;
@@ -183,14 +183,14 @@ public class SettingsScreen extends JPanel {
 		add(voiceSelect, gbc_voiceSelect);
 		
 		JButton submitVoice = new JButton("Submit");
-		submitVoice.setBackground(new Color(51, 0, 51));
+		submitVoice.setBackground(GUI.background);
 		submitVoice.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Settings.getInstance().setVoice(voiceNames.get((String)voiceSelect.getSelectedItem()));
 				JOptionPane.showMessageDialog(null, "Your voice has successfully been changed to " + (String)voiceSelect.getSelectedItem(), "Changed Voice", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		submitVoice.setForeground(new Color(255, 255, 255));
+		submitVoice.setForeground(GUI.foreground);
 		submitVoice.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_submitVoice = new GridBagConstraints();
 		gbc_submitVoice.fill = GridBagConstraints.HORIZONTAL;
@@ -201,7 +201,7 @@ public class SettingsScreen extends JPanel {
 		
 		JLabel quizSizeLabel = new JLabel("Quiz Size");
 		quizSizeLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		quizSizeLabel.setForeground(Color.WHITE);
+		quizSizeLabel.setForeground(GUI.foreground);
 		quizSizeLabel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 		GridBagConstraints gbc_quizSizeLabel = new GridBagConstraints();
 		gbc_quizSizeLabel.anchor = GridBagConstraints.EAST;
@@ -222,13 +222,13 @@ public class SettingsScreen extends JPanel {
 		add(quizSizeSelect, gbc_quizSizeSelect);
 		
 		JButton submitQuizSize = new JButton("Submit");
-		submitQuizSize.setBackground(new Color(51, 0, 51));
+		submitQuizSize.setBackground(GUI.background);
 		submitQuizSize.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Settings.getInstance().setQuizSize(Integer.parseInt((String)quizSizeSelect.getSelectedItem()));
 			}
 		});
-		submitQuizSize.setForeground(new Color(255, 255, 255));
+		submitQuizSize.setForeground(GUI.foreground);
 		submitQuizSize.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_submitQuizSize = new GridBagConstraints();
 		gbc_submitQuizSize.fill = GridBagConstraints.HORIZONTAL;
@@ -238,7 +238,7 @@ public class SettingsScreen extends JPanel {
 		add(submitQuizSize, gbc_submitQuizSize);
 		
 		JButton btnBackToMenu = new JButton("Back To Menu");
-		btnBackToMenu.setBackground(new Color(51, 0, 51));
+		btnBackToMenu.setBackground(GUI.background);
 		btnBackToMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GUI.getInstance().setContentPane(new MainMenu());
@@ -255,7 +255,7 @@ public class SettingsScreen extends JPanel {
 				restart();
 			}
 		});
-		restart.setForeground(new Color(255, 255, 255));
+		restart.setForeground(GUI.foreground);
 		restart.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_restart = new GridBagConstraints();
 		gbc_restart.fill = GridBagConstraints.HORIZONTAL;
@@ -265,7 +265,7 @@ public class SettingsScreen extends JPanel {
 		gbc_restart.gridy = 10;
 		add(restart, gbc_restart);
 		currentLevel.setHorizontalAlignment(SwingConstants.RIGHT);
-		currentLevel.setForeground(Color.WHITE);
+		currentLevel.setForeground(GUI.foreground);
 		currentLevel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 		GridBagConstraints gbc_currentLevel = new GridBagConstraints();
 		gbc_currentLevel.gridwidth = 8;
@@ -278,7 +278,7 @@ public class SettingsScreen extends JPanel {
 		sampleWords = new JLabel();
 		setSampleWords();
 		sampleWords.setHorizontalAlignment(SwingConstants.CENTER);
-		sampleWords.setForeground(Color.WHITE);
+		sampleWords.setForeground(GUI.foreground);
 		sampleWords.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
 		GridBagConstraints gbc_sampleWords = new GridBagConstraints();
 		gbc_sampleWords.gridwidth = 10;
@@ -287,7 +287,7 @@ public class SettingsScreen extends JPanel {
 		gbc_sampleWords.gridx = 0;
 		gbc_sampleWords.gridy = 13;
 		add(sampleWords, gbc_sampleWords);
-		btnBackToMenu.setForeground(new Color(255, 255, 255));
+		btnBackToMenu.setForeground(GUI.foreground);
 		btnBackToMenu.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_btnBackToMenu = new GridBagConstraints();
 		gbc_btnBackToMenu.fill = GridBagConstraints.HORIZONTAL;
@@ -298,9 +298,15 @@ public class SettingsScreen extends JPanel {
 		add(btnBackToMenu, gbc_btnBackToMenu);
 		
 		JButton theme = new JButton("Change Theme");
-		theme.setForeground(Color.WHITE);
+		theme.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUI.getInstance().changeTheme();
+				GUI.getInstance().setContentPane(new SettingsScreen());
+			}
+		});
+		theme.setForeground(GUI.foreground);
 		theme.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
-		theme.setBackground(new Color(51, 0, 51));
+		theme.setBackground(GUI.background);
 		GridBagConstraints gbc_theme = new GridBagConstraints();
 		gbc_theme.anchor = GridBagConstraints.EAST;
 		gbc_theme.gridwidth = 3;

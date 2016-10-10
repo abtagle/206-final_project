@@ -1,5 +1,6 @@
 package voxSpell.GUI;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -7,10 +8,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 import voxSpell.quiz.Lists;
 import voxSpell.quiz.Settings;
@@ -32,7 +31,9 @@ public class GUI implements WindowListener{
 	public static int NUMBER_OF_LEVELS;
 	private static Dimension _frameSize;
 	private static int _level;
-	
+	public static final String THEME="dark";
+	public static Color background = new Color(51, 0, 51);
+	public static Color foreground = new Color(204, 204, 204);
 
 	//From: http://stackoverflow.com/questions/7140248/get-system-default-font
 	public static final Font TITLE_FONT = new Font(new JLabel().getName(), 1, 20);
@@ -57,6 +58,11 @@ public class GUI implements WindowListener{
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		NUMBER_OF_LEVELS=Lists.getInstance().getNumberOfLevels();
 		Lists.getInstance().setUpScores();
+	}
+	protected void changeTheme(){
+		Color temp = background;
+		background  = foreground;
+		foreground = temp;
 	}
 	
 	protected void setLevel(int level){

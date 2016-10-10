@@ -62,7 +62,7 @@ public class ReviewScreen extends JPanel {
 		
 		currentReview = new Review(isFailed);
 		
-		setBackground(new Color(51, 0, 51));
+		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{80, 40, 160, 160, 160, 40, 80, 0};
 		gridBagLayout.rowHeights = new int[]{20, 0, 0, 0, 60, 60, 40, 0, 0, 50, 0, 20, 0};
@@ -73,7 +73,7 @@ public class ReviewScreen extends JPanel {
 		JLabel title = new JLabel("Review");
 		title.setVerticalAlignment(SwingConstants.BOTTOM);
 		title.setHorizontalAlignment(SwingConstants.CENTER);
-		title.setForeground(Color.WHITE);
+		title.setForeground(GUI.foreground);
 		title.setFont(new Font("Century Schoolbook L", Font.BOLD, 72));
 		GridBagConstraints gbc_title = new GridBagConstraints();
 		gbc_title.fill = GridBagConstraints.HORIZONTAL;
@@ -85,7 +85,7 @@ public class ReviewScreen extends JPanel {
 		
 		wordNumber = new JLabel("Word 1 of " + (currentReview.getLength()));
 		wordNumber.setHorizontalAlignment(SwingConstants.CENTER);
-		wordNumber.setForeground(Color.WHITE);
+		wordNumber.setForeground(GUI.foreground);
 		wordNumber.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 		GridBagConstraints gbc_wordNumber = new GridBagConstraints();
 		gbc_wordNumber.gridwidth = 7;
@@ -95,7 +95,7 @@ public class ReviewScreen extends JPanel {
 		add(wordNumber, gbc_wordNumber);
 		
 		JButton previous = new JButton("<<");
-		previous.setBackground(new Color(51, 0, 51));
+		previous.setBackground(GUI.background);
 		previous.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				currentReview.previousWord();		
@@ -103,7 +103,7 @@ public class ReviewScreen extends JPanel {
 				
 			}
 		});
-		previous.setForeground(new Color(255, 255, 255));
+		previous.setForeground(GUI.foreground);
 		previous.setFont(new Font("Century Schoolbook L", Font.BOLD, 28));
 		GridBagConstraints gbc_previous = new GridBagConstraints();
 		gbc_previous.fill = GridBagConstraints.BOTH;
@@ -113,7 +113,7 @@ public class ReviewScreen extends JPanel {
 		add(previous, gbc_previous);
 		
 		JButton next = new JButton(">>");
-		next.setBackground(new Color(51, 0, 51));
+		next.setBackground(GUI.background);
 		next.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				currentReview.nextWord();
@@ -123,7 +123,7 @@ public class ReviewScreen extends JPanel {
 		
 		word = new JLabel("?");
 		word.setHorizontalAlignment(SwingConstants.CENTER);
-		word.setForeground(Color.WHITE);
+		word.setForeground(GUI.foreground);
 		word.setFont(new Font("Century Schoolbook L", Font.PLAIN, 48));
 		GridBagConstraints gbc_word = new GridBagConstraints();
 		gbc_word.insets = new Insets(0, 0, 5, 5);
@@ -132,7 +132,7 @@ public class ReviewScreen extends JPanel {
 		gbc_word.gridx = 2;
 		gbc_word.gridy = 5;
 		add(word, gbc_word);
-		next.setForeground(new Color(255, 255, 255));
+		next.setForeground(GUI.foreground);
 		next.setFont(new Font("Century Schoolbook L", Font.BOLD, 28));
 		GridBagConstraints gbc_next = new GridBagConstraints();
 		gbc_next.fill = GridBagConstraints.VERTICAL;
@@ -142,7 +142,7 @@ public class ReviewScreen extends JPanel {
 		add(next, gbc_next);
 		
 		JButton menu = new JButton("Back To Menu");
-		menu.setBackground(new Color(51, 0, 51));
+		menu.setBackground(GUI.background);
 		menu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GUI.getInstance().setContentPane(new MainMenu());
@@ -150,13 +150,13 @@ public class ReviewScreen extends JPanel {
 		});
 		
 		JButton relisten = new JButton("Listen to the Word");
-		relisten.setBackground(new Color(51, 0, 51));
+		relisten.setBackground(GUI.background);
 		relisten.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				currentReview.sayWord();
 			}
 		});
-		relisten.setForeground(new Color(255, 255, 255));
+		relisten.setForeground(GUI.foreground);
 		relisten.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_relisten = new GridBagConstraints();
 		gbc_relisten.gridwidth = 7;
@@ -166,7 +166,7 @@ public class ReviewScreen extends JPanel {
 		add(relisten, gbc_relisten);
 		
 		viewWordToggle = new JToggleButton("Show Spelling");
-		viewWordToggle.setBackground(new Color(51, 0, 51));
+		viewWordToggle.setBackground(GUI.background);
 		viewWordToggle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(viewWordToggle.isSelected()){
@@ -178,7 +178,7 @@ public class ReviewScreen extends JPanel {
 				}
 			}
 		});
-		viewWordToggle.setForeground(new Color(255, 255, 255));
+		viewWordToggle.setForeground(GUI.foreground);
 		viewWordToggle.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_viewWordToggle = new GridBagConstraints();
 		gbc_viewWordToggle.gridwidth = 7;
@@ -186,7 +186,7 @@ public class ReviewScreen extends JPanel {
 		gbc_viewWordToggle.gridx = 0;
 		gbc_viewWordToggle.gridy = 8;
 		add(viewWordToggle, gbc_viewWordToggle);
-		menu.setForeground(new Color(255, 255, 255));
+		menu.setForeground(GUI.foreground);
 		menu.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		GridBagConstraints gbc_menu = new GridBagConstraints();
 		gbc_menu.fill = GridBagConstraints.HORIZONTAL;

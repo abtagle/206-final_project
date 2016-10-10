@@ -18,7 +18,11 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+/**
+ * Class representing the screen users see when they view achievements
+ * @author atag549
+ *
+ */
 public class AchievementScreen extends JPanel {
 	private JLabel title;
 	private JLabel streak;
@@ -44,7 +48,7 @@ public class AchievementScreen extends JPanel {
 	 */
 	public AchievementScreen() {
 		viewRewardButtons = new ArrayList <JButton>();
-		setBackground(new Color(51, 0, 51));
+		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{80, 300, 0, 300, 80, 0};
 		gridBagLayout.rowHeights = new int[]{30, 0, 20, 0, 10, 0, 0, 20, 0, 0, 20, 0, 0, 0, 50, 0, 30, 0};
@@ -55,7 +59,7 @@ public class AchievementScreen extends JPanel {
 		title = new JLabel("Achiev");
 		title.setVerticalAlignment(SwingConstants.BOTTOM);
 		title.setHorizontalAlignment(SwingConstants.RIGHT);
-		title.setForeground(Color.WHITE);
+		title.setForeground(GUI.foreground);
 		title.setFont(new Font("Century Schoolbook L", Font.BOLD, 72));
 		GridBagConstraints gbc_title = new GridBagConstraints();
 		gbc_title.anchor = GridBagConstraints.EAST;
@@ -74,7 +78,7 @@ public class AchievementScreen extends JPanel {
 		});
 		eButton.setVerticalAlignment(SwingConstants.BOTTOM);
 		eButton.setHorizontalAlignment(SwingConstants.RIGHT);
-		eButton.setForeground(Color.WHITE);
+		eButton.setForeground(GUI.foreground);
 		eButton.setFont(new Font("Century Schoolbook L", Font.BOLD, 72));
 		GridBagConstraints gbc_eButton = new GridBagConstraints();
 		gbc_eButton.insets = new Insets(0, 0, 5, 5);
@@ -85,7 +89,7 @@ public class AchievementScreen extends JPanel {
 		title2 = new JLabel("ments");
 		title2.setVerticalAlignment(SwingConstants.BOTTOM);
 		title2.setHorizontalAlignment(SwingConstants.RIGHT);
-		title2.setForeground(Color.WHITE);
+		title2.setForeground(GUI.foreground);
 		title2.setFont(new Font("Century Schoolbook L", Font.BOLD, 72));
 		GridBagConstraints gbc_title2 = new GridBagConstraints();
 		gbc_title2.anchor = GridBagConstraints.NORTHWEST;
@@ -96,7 +100,7 @@ public class AchievementScreen extends JPanel {
 		
 		streak = new JLabel("Streak Length");
 		streak.setHorizontalAlignment(SwingConstants.RIGHT);
-		streak.setForeground(Color.WHITE);
+		streak.setForeground(GUI.foreground);
 		streak.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 		GridBagConstraints gbc_streak = new GridBagConstraints();
 		gbc_streak.insets = new Insets(0, 0, 5, 5);
@@ -106,7 +110,7 @@ public class AchievementScreen extends JPanel {
 		
 		wordsRight = new JLabel("Words Right");
 		wordsRight.setHorizontalAlignment(SwingConstants.RIGHT);
-		wordsRight.setForeground(Color.WHITE);
+		wordsRight.setForeground(GUI.foreground);
 		wordsRight.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
 		GridBagConstraints gbc_wordsRight = new GridBagConstraints();
 		gbc_wordsRight.insets = new Insets(0, 0, 5, 5);
@@ -116,7 +120,7 @@ public class AchievementScreen extends JPanel {
 		
 		JLabel streakLabel10 = new JLabel("10 Words");
 		streakLabel10.setHorizontalAlignment(SwingConstants.RIGHT);
-		streakLabel10.setForeground(Color.WHITE);
+		streakLabel10.setForeground(GUI.foreground);
 		streakLabel10.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
 		GridBagConstraints gbc_streakLabel10 = new GridBagConstraints();
 		gbc_streakLabel10.insets = new Insets(0, 0, 5, 5);
@@ -133,16 +137,16 @@ public class AchievementScreen extends JPanel {
 		
 		rightLabel50 = new JLabel("50 Words");
 		rightLabel50.setHorizontalAlignment(SwingConstants.RIGHT);
-		rightLabel50.setForeground(Color.WHITE);
+		rightLabel50.setForeground(GUI.foreground);
 		rightLabel50.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
 		GridBagConstraints gbc_rightLabel50 = new GridBagConstraints();
 		gbc_rightLabel50.insets = new Insets(0, 0, 5, 5);
 		gbc_rightLabel50.gridx = 3;
 		gbc_rightLabel50.gridy = 5;
 		add(rightLabel50, gbc_rightLabel50);
-		streak10ViewReward.setForeground(Color.WHITE);
+		streak10ViewReward.setForeground(GUI.foreground);
 		streak10ViewReward.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
-		streak10ViewReward.setBackground(new Color(51, 0, 51));
+		streak10ViewReward.setBackground(GUI.background);
 		GridBagConstraints gbc_streak10ViewReward = new GridBagConstraints();
 		gbc_streak10ViewReward.anchor = GridBagConstraints.NORTH;
 		gbc_streak10ViewReward.insets = new Insets(0, 0, 5, 5);
@@ -156,9 +160,9 @@ public class AchievementScreen extends JPanel {
 				new VideoReward(AchievementList.getInstance().getAchievement(1));
 			}
 		});
-		right50ViewReward.setForeground(Color.WHITE);
+		right50ViewReward.setForeground(GUI.foreground);
 		right50ViewReward.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
-		right50ViewReward.setBackground(new Color(51, 0, 51));
+		right50ViewReward.setBackground(GUI.background);
 		GridBagConstraints gbc_right50ViewReward = new GridBagConstraints();
 		gbc_right50ViewReward.insets = new Insets(0, 0, 5, 5);
 		gbc_right50ViewReward.gridx = 3;
@@ -167,7 +171,7 @@ public class AchievementScreen extends JPanel {
 		
 		streakLabel25 = new JLabel("25 Words");
 		streakLabel25.setHorizontalAlignment(SwingConstants.RIGHT);
-		streakLabel25.setForeground(Color.WHITE);
+		streakLabel25.setForeground(GUI.foreground);
 		streakLabel25.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
 		GridBagConstraints gbc_streakLabel25 = new GridBagConstraints();
 		gbc_streakLabel25.insets = new Insets(0, 0, 5, 5);
@@ -177,7 +181,7 @@ public class AchievementScreen extends JPanel {
 		
 		rightLabel100 = new JLabel("100 Words");
 		rightLabel100.setHorizontalAlignment(SwingConstants.RIGHT);
-		rightLabel100.setForeground(Color.WHITE);
+		rightLabel100.setForeground(GUI.foreground);
 		rightLabel100.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
 		GridBagConstraints gbc_rightLabel100 = new GridBagConstraints();
 		gbc_rightLabel100.insets = new Insets(0, 0, 5, 5);
@@ -191,9 +195,9 @@ public class AchievementScreen extends JPanel {
 				new VideoReward(AchievementList.getInstance().getAchievement(2));
 			}
 		});
-		streak25ViewReward.setForeground(Color.WHITE);
+		streak25ViewReward.setForeground(GUI.foreground);
 		streak25ViewReward.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
-		streak25ViewReward.setBackground(new Color(51, 0, 51));
+		streak25ViewReward.setBackground(GUI.background);
 		GridBagConstraints gbc_streak25ViewReward = new GridBagConstraints();
 		gbc_streak25ViewReward.insets = new Insets(0, 0, 5, 5);
 		gbc_streak25ViewReward.gridx = 1;
@@ -206,9 +210,9 @@ public class AchievementScreen extends JPanel {
 				new VideoReward(AchievementList.getInstance().getAchievement(3));
 			}
 		});
-		right100ViewReward.setForeground(Color.WHITE);
+		right100ViewReward.setForeground(GUI.foreground);
 		right100ViewReward.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
-		right100ViewReward.setBackground(new Color(51, 0, 51));
+		right100ViewReward.setBackground(GUI.background);
 		GridBagConstraints gbc_right100ViewReward = new GridBagConstraints();
 		gbc_right100ViewReward.insets = new Insets(0, 0, 5, 5);
 		gbc_right100ViewReward.gridx = 3;
@@ -217,7 +221,7 @@ public class AchievementScreen extends JPanel {
 		
 		streakLabel50 = new JLabel("50 Words");
 		streakLabel50.setHorizontalAlignment(SwingConstants.RIGHT);
-		streakLabel50.setForeground(Color.WHITE);
+		streakLabel50.setForeground(GUI.foreground);
 		streakLabel50.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
 		GridBagConstraints gbc_streakLabel50 = new GridBagConstraints();
 		gbc_streakLabel50.insets = new Insets(0, 0, 5, 5);
@@ -227,7 +231,7 @@ public class AchievementScreen extends JPanel {
 		
 		rightLabel250 = new JLabel("250 Words");
 		rightLabel250.setHorizontalAlignment(SwingConstants.RIGHT);
-		rightLabel250.setForeground(Color.WHITE);
+		rightLabel250.setForeground(GUI.foreground);
 		rightLabel250.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
 		GridBagConstraints gbc_rightLabel250 = new GridBagConstraints();
 		gbc_rightLabel250.insets = new Insets(0, 0, 5, 5);
@@ -241,9 +245,9 @@ public class AchievementScreen extends JPanel {
 				new VideoReward(AchievementList.getInstance().getAchievement(4));
 			}
 		});
-		streak50ViewReward.setForeground(Color.WHITE);
+		streak50ViewReward.setForeground(GUI.foreground);
 		streak50ViewReward.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
-		streak50ViewReward.setBackground(new Color(51, 0, 51));
+		streak50ViewReward.setBackground(GUI.background);
 		GridBagConstraints gbc_streak50ViewReward = new GridBagConstraints();
 		gbc_streak50ViewReward.insets = new Insets(0, 0, 5, 5);
 		gbc_streak50ViewReward.gridx = 1;
@@ -263,17 +267,17 @@ public class AchievementScreen extends JPanel {
 				new VideoReward(AchievementList.getInstance().getAchievement(5));
 			}
 		});
-		right250ViewReward.setForeground(Color.WHITE);
+		right250ViewReward.setForeground(GUI.foreground);
 		right250ViewReward.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
-		right250ViewReward.setBackground(new Color(51, 0, 51));
+		right250ViewReward.setBackground(GUI.background);
 		GridBagConstraints gbc_right250ViewReward = new GridBagConstraints();
 		gbc_right250ViewReward.insets = new Insets(0, 0, 5, 5);
 		gbc_right250ViewReward.gridx = 3;
 		gbc_right250ViewReward.gridy = 12;
 		add(right250ViewReward, gbc_right250ViewReward);
-		menu.setForeground(Color.WHITE);
+		menu.setForeground(GUI.foreground);
 		menu.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
-		menu.setBackground(new Color(51, 0, 51));
+		menu.setBackground(GUI.background);
 		GridBagConstraints gbc_menu = new GridBagConstraints();
 		gbc_menu.gridwidth = 2;
 		gbc_menu.insets = new Insets(0, 0, 5, 5);
