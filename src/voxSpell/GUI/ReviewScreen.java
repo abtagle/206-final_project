@@ -1,7 +1,6 @@
 package voxSpell.GUI;
 
 import javax.swing.JPanel;
-import java.awt.Color;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -74,7 +73,7 @@ public class ReviewScreen extends JPanel {
 		title.setVerticalAlignment(SwingConstants.BOTTOM);
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		title.setForeground(GUI.foreground);
-		title.setFont(new Font("Century Schoolbook L", Font.BOLD, 72));
+		title.setFont(new Font(GUI.FONT, Font.BOLD, 72));
 		GridBagConstraints gbc_title = new GridBagConstraints();
 		gbc_title.fill = GridBagConstraints.HORIZONTAL;
 		gbc_title.gridwidth = 7;
@@ -86,7 +85,7 @@ public class ReviewScreen extends JPanel {
 		wordNumber = new JLabel("Word 1 of " + (currentReview.getLength()));
 		wordNumber.setHorizontalAlignment(SwingConstants.CENTER);
 		wordNumber.setForeground(GUI.foreground);
-		wordNumber.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
+		wordNumber.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 		GridBagConstraints gbc_wordNumber = new GridBagConstraints();
 		gbc_wordNumber.gridwidth = 7;
 		gbc_wordNumber.insets = new Insets(0, 0, 5, 0);
@@ -104,7 +103,7 @@ public class ReviewScreen extends JPanel {
 			}
 		});
 		previous.setForeground(GUI.foreground);
-		previous.setFont(new Font("Century Schoolbook L", Font.BOLD, 28));
+		previous.setFont(new Font(GUI.FONT, Font.BOLD, 28));
 		GridBagConstraints gbc_previous = new GridBagConstraints();
 		gbc_previous.fill = GridBagConstraints.BOTH;
 		gbc_previous.insets = new Insets(0, 0, 5, 5);
@@ -124,7 +123,7 @@ public class ReviewScreen extends JPanel {
 		word = new JLabel("?");
 		word.setHorizontalAlignment(SwingConstants.CENTER);
 		word.setForeground(GUI.foreground);
-		word.setFont(new Font("Century Schoolbook L", Font.PLAIN, 48));
+		word.setFont(new Font(GUI.FONT, Font.PLAIN, 48));
 		GridBagConstraints gbc_word = new GridBagConstraints();
 		gbc_word.insets = new Insets(0, 0, 5, 5);
 		gbc_word.fill = GridBagConstraints.HORIZONTAL;
@@ -133,7 +132,7 @@ public class ReviewScreen extends JPanel {
 		gbc_word.gridy = 5;
 		add(word, gbc_word);
 		next.setForeground(GUI.foreground);
-		next.setFont(new Font("Century Schoolbook L", Font.BOLD, 28));
+		next.setFont(new Font(GUI.FONT, Font.BOLD, 28));
 		GridBagConstraints gbc_next = new GridBagConstraints();
 		gbc_next.fill = GridBagConstraints.VERTICAL;
 		gbc_next.insets = new Insets(0, 0, 5, 5);
@@ -157,7 +156,7 @@ public class ReviewScreen extends JPanel {
 			}
 		});
 		relisten.setForeground(GUI.foreground);
-		relisten.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		relisten.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		GridBagConstraints gbc_relisten = new GridBagConstraints();
 		gbc_relisten.gridwidth = 7;
 		gbc_relisten.insets = new Insets(0, 0, 5, 0);
@@ -179,7 +178,7 @@ public class ReviewScreen extends JPanel {
 			}
 		});
 		viewWordToggle.setForeground(GUI.foreground);
-		viewWordToggle.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		viewWordToggle.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		GridBagConstraints gbc_viewWordToggle = new GridBagConstraints();
 		gbc_viewWordToggle.gridwidth = 7;
 		gbc_viewWordToggle.insets = new Insets(0, 0, 5, 0);
@@ -187,7 +186,7 @@ public class ReviewScreen extends JPanel {
 		gbc_viewWordToggle.gridy = 8;
 		add(viewWordToggle, gbc_viewWordToggle);
 		menu.setForeground(GUI.foreground);
-		menu.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		menu.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		GridBagConstraints gbc_menu = new GridBagConstraints();
 		gbc_menu.fill = GridBagConstraints.HORIZONTAL;
 		gbc_menu.insets = new Insets(0, 0, 5, 5);

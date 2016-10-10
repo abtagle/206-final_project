@@ -60,7 +60,7 @@ public class SettingsScreen extends JPanel {
 		label.setVerticalAlignment(SwingConstants.BOTTOM);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setForeground(GUI.foreground);
-		label.setFont(new Font("Century Schoolbook L", Font.BOLD, 72));
+		label.setFont(new Font(GUI.FONT, Font.BOLD, 72));
 		GridBagConstraints gbc_label = new GridBagConstraints();
 		gbc_label.insets = new Insets(0, 0, 5, 0);
 		gbc_label.fill = GridBagConstraints.BOTH;
@@ -83,7 +83,7 @@ public class SettingsScreen extends JPanel {
 			}
 		});
 		button.setForeground(GUI.foreground);
-		button.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		button.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		button.setBackground(GUI.background);
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.fill = GridBagConstraints.HORIZONTAL;
@@ -97,7 +97,7 @@ public class SettingsScreen extends JPanel {
 		JLabel levelLabel = new JLabel("Level");
 		levelLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		levelLabel.setForeground(GUI.foreground);
-		levelLabel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
+		levelLabel.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 		GridBagConstraints gbc_levelLabel = new GridBagConstraints();
 		gbc_levelLabel.anchor = GridBagConstraints.EAST;
 		gbc_levelLabel.fill = GridBagConstraints.VERTICAL;
@@ -107,7 +107,7 @@ public class SettingsScreen extends JPanel {
 		add(levelLabel, gbc_levelLabel);
 		
 		levelSelect = new JComboBox<String>();
-		levelSelect.setFont(new Font("Century Schoolbook L", Font.BOLD, 28));
+		levelSelect.setFont(new Font(GUI.FONT, Font.BOLD, 28));
 		ArrayList<String> levels = Lists.getInstance().getListNames();
 		for(String list : levels){
 			levelSelect.addItem(list);
@@ -122,7 +122,7 @@ public class SettingsScreen extends JPanel {
 		
 		JButton submitLevel = new JButton("Submit");
 		submitLevel.setBackground(GUI.background);
-		submitLevel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		submitLevel.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		submitLevel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String selected = (String)levelSelect.getSelectedItem();
@@ -143,7 +143,7 @@ public class SettingsScreen extends JPanel {
 		JLabel voiceLabel = new JLabel("Voice");
 		voiceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		voiceLabel.setForeground(GUI.foreground);
-		voiceLabel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
+		voiceLabel.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 		GridBagConstraints gbc_voiceLabel = new GridBagConstraints();
 		gbc_voiceLabel.anchor = GridBagConstraints.EAST;
 		gbc_voiceLabel.insets = new Insets(0, 0, 5, 5);
@@ -165,7 +165,7 @@ public class SettingsScreen extends JPanel {
 		voiceSelect = new JComboBox<String>();
 		voiceSelect.setModel(selectModel);
 		
-		voiceSelect.setFont(new Font("Century Schoolbook L", Font.BOLD, 28));
+		voiceSelect.setFont(new Font(GUI.FONT, Font.BOLD, 28));
 		GridBagConstraints gbc_voiceSelect = new GridBagConstraints();
 		gbc_voiceSelect.gridwidth = 4;
 		gbc_voiceSelect.insets = new Insets(0, 0, 5, 5);
@@ -191,7 +191,7 @@ public class SettingsScreen extends JPanel {
 			}
 		});
 		submitVoice.setForeground(GUI.foreground);
-		submitVoice.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		submitVoice.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		GridBagConstraints gbc_submitVoice = new GridBagConstraints();
 		gbc_submitVoice.fill = GridBagConstraints.HORIZONTAL;
 		gbc_submitVoice.insets = new Insets(0, 0, 5, 5);
@@ -202,7 +202,7 @@ public class SettingsScreen extends JPanel {
 		JLabel quizSizeLabel = new JLabel("Quiz Size");
 		quizSizeLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		quizSizeLabel.setForeground(GUI.foreground);
-		quizSizeLabel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
+		quizSizeLabel.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 		GridBagConstraints gbc_quizSizeLabel = new GridBagConstraints();
 		gbc_quizSizeLabel.anchor = GridBagConstraints.EAST;
 		gbc_quizSizeLabel.insets = new Insets(0, 0, 5, 5);
@@ -212,7 +212,7 @@ public class SettingsScreen extends JPanel {
 		
 		quizSizeSelect = new JComboBox<String>();
 		quizSizeSelect.setModel(new DefaultComboBoxModel(new String[] {"3", "5", "10"}));
-		quizSizeSelect.setFont(new Font("Century Schoolbook L", Font.BOLD, 28));
+		quizSizeSelect.setFont(new Font(GUI.FONT, Font.BOLD, 28));
 		GridBagConstraints gbc_quizSizeSelect = new GridBagConstraints();
 		gbc_quizSizeSelect.gridwidth = 4;
 		gbc_quizSizeSelect.insets = new Insets(0, 0, 5, 5);
@@ -229,7 +229,7 @@ public class SettingsScreen extends JPanel {
 			}
 		});
 		submitQuizSize.setForeground(GUI.foreground);
-		submitQuizSize.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		submitQuizSize.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		GridBagConstraints gbc_submitQuizSize = new GridBagConstraints();
 		gbc_submitQuizSize.fill = GridBagConstraints.HORIZONTAL;
 		gbc_submitQuizSize.insets = new Insets(0, 0, 5, 5);
@@ -255,8 +255,8 @@ public class SettingsScreen extends JPanel {
 				restart();
 			}
 		});
-		restart.setForeground(GUI.foreground);
-		restart.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		restart.setForeground(Color.WHITE);
+		restart.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		GridBagConstraints gbc_restart = new GridBagConstraints();
 		gbc_restart.fill = GridBagConstraints.HORIZONTAL;
 		gbc_restart.gridwidth = 4;
@@ -266,7 +266,7 @@ public class SettingsScreen extends JPanel {
 		add(restart, gbc_restart);
 		currentLevel.setHorizontalAlignment(SwingConstants.RIGHT);
 		currentLevel.setForeground(GUI.foreground);
-		currentLevel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
+		currentLevel.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 		GridBagConstraints gbc_currentLevel = new GridBagConstraints();
 		gbc_currentLevel.gridwidth = 8;
 		gbc_currentLevel.insets = new Insets(0, 0, 5, 5);
@@ -279,7 +279,7 @@ public class SettingsScreen extends JPanel {
 		setSampleWords();
 		sampleWords.setHorizontalAlignment(SwingConstants.CENTER);
 		sampleWords.setForeground(GUI.foreground);
-		sampleWords.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
+		sampleWords.setFont(new Font(GUI.FONT, Font.PLAIN, 24));
 		GridBagConstraints gbc_sampleWords = new GridBagConstraints();
 		gbc_sampleWords.gridwidth = 10;
 		gbc_sampleWords.fill = GridBagConstraints.HORIZONTAL;
@@ -288,7 +288,7 @@ public class SettingsScreen extends JPanel {
 		gbc_sampleWords.gridy = 13;
 		add(sampleWords, gbc_sampleWords);
 		btnBackToMenu.setForeground(GUI.foreground);
-		btnBackToMenu.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		btnBackToMenu.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		GridBagConstraints gbc_btnBackToMenu = new GridBagConstraints();
 		gbc_btnBackToMenu.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnBackToMenu.gridwidth = 3;
@@ -305,7 +305,7 @@ public class SettingsScreen extends JPanel {
 			}
 		});
 		theme.setForeground(GUI.foreground);
-		theme.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		theme.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		theme.setBackground(GUI.background);
 		GridBagConstraints gbc_theme = new GridBagConstraints();
 		gbc_theme.anchor = GridBagConstraints.EAST;

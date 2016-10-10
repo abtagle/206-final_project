@@ -7,7 +7,6 @@ import javax.swing.border.EmptyBorder;
 import voxSpell.quiz.Quiz;
 import voxSpell.quiz.Settings;
 
-import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -62,7 +61,7 @@ public class Options extends JFrame {
 		JLabel title = new JLabel("Options");
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		title.setForeground(GUI.foreground);
-		title.setFont(new Font("Century Schoolbook L", Font.BOLD, 36));
+		title.setFont(new Font(GUI.FONT, Font.BOLD, 36));
 		GridBagConstraints gbc_title = new GridBagConstraints();
 		gbc_title.gridwidth = 3;
 		gbc_title.fill = GridBagConstraints.HORIZONTAL;
@@ -86,7 +85,7 @@ public class Options extends JFrame {
 			}
 		});
 		menu.setForeground(GUI.foreground);
-		menu.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		menu.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		GridBagConstraints gbc_menu = new GridBagConstraints();
 		gbc_menu.fill = GridBagConstraints.HORIZONTAL;
 		gbc_menu.insets = new Insets(0, 0, 5, 5);
@@ -104,7 +103,7 @@ public class Options extends JFrame {
 			}
 		});
 		changeVoice.setForeground(GUI.foreground);
-		changeVoice.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		changeVoice.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		GridBagConstraints gbc_changeVoice = new GridBagConstraints();
 		gbc_changeVoice.fill = GridBagConstraints.HORIZONTAL;
 		gbc_changeVoice.insets = new Insets(0, 0, 5, 5);
@@ -115,7 +114,7 @@ public class Options extends JFrame {
 		stats = new JButton("Statistics");
 		stats.setBackground(GUI.background);
 		stats.setForeground(GUI.foreground);
-		stats.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		stats.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		GridBagConstraints gbc_stats = new GridBagConstraints();
 		gbc_stats.fill = GridBagConstraints.HORIZONTAL;
 		gbc_stats.insets = new Insets(0, 0, 5, 5);
@@ -143,7 +142,7 @@ public class Options extends JFrame {
 			JLabel lblChangeVoice = new JLabel("Change Voice");
 			lblChangeVoice.setHorizontalAlignment(SwingConstants.CENTER);
 			lblChangeVoice.setForeground(GUI.foreground);
-			lblChangeVoice.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
+			lblChangeVoice.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 			GridBagConstraints gbc_lblChangeVoice = new GridBagConstraints();
 			gbc_lblChangeVoice.insets = new Insets(0, 0, 5, 0);
 			gbc_lblChangeVoice.fill = GridBagConstraints.HORIZONTAL;
@@ -153,7 +152,7 @@ public class Options extends JFrame {
 			add(lblChangeVoice, gbc_lblChangeVoice);
 			
 			voiceSelect = new JComboBox<String>();
-			voiceSelect.setFont(new Font("Century Schoolbook L", Font.BOLD, 28));
+			voiceSelect.setFont(new Font(GUI.FONT, Font.BOLD, 28));
 			voiceSelect.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -187,7 +186,7 @@ public class Options extends JFrame {
 				}
 			});
 			button.setForeground(GUI.background);
-			button.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+			button.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 			GridBagConstraints gbc_button = new GridBagConstraints();
 			gbc_button.fill = GridBagConstraints.HORIZONTAL;
 			gbc_button.insets = new Insets(0, 0, 0, 5);

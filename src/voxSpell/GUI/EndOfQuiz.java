@@ -3,7 +3,6 @@ package voxSpell.GUI;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 
-import java.awt.Color;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
@@ -16,7 +15,6 @@ import voxSpell.quiz.Quiz;
 import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
@@ -46,7 +44,7 @@ public class EndOfQuiz extends JPanel {
 		congratulatoins = new JLabel("Congratulations");
 		congratulatoins.setHorizontalAlignment(SwingConstants.CENTER);
 		congratulatoins.setForeground(GUI.foreground);
-		congratulatoins.setFont(new Font("Century Schoolbook L", Font.BOLD, 72));
+		congratulatoins.setFont(new Font(GUI.FONT, Font.BOLD, 72));
 		GridBagConstraints gbc_congratulatoins = new GridBagConstraints();
 		gbc_congratulatoins.gridwidth = 3;
 		gbc_congratulatoins.insets = new Insets(0, 0, 5, 0);
@@ -57,7 +55,7 @@ public class EndOfQuiz extends JPanel {
 		score = new JLabel("You scored " + _quiz.getScore() +" out of " + _quiz.getNumberOfWords());
 		score.setHorizontalAlignment(SwingConstants.CENTER);
 		score.setForeground(GUI.foreground);
-		score.setFont(new Font("Century Schoolbook L", Font.PLAIN, 48));
+		score.setFont(new Font(GUI.FONT, Font.PLAIN, 48));
 		GridBagConstraints gbc_score = new GridBagConstraints();
 		gbc_score.gridwidth = 2;
 		gbc_score.insets = new Insets(0, 0, 5, 0);
@@ -69,7 +67,7 @@ public class EndOfQuiz extends JPanel {
 			list.setIcon(new ImageIcon(GUI.PATH+"/achievements.png"));
 			list.setHorizontalAlignment(SwingConstants.CENTER);
 			list.setForeground(GUI.foreground);
-			list.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
+			list.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 			GridBagConstraints gbc_list = new GridBagConstraints();
 			gbc_list.gridwidth = 2;
 			gbc_list.insets = new Insets(0, 0, 5, 5);
@@ -86,8 +84,8 @@ public class EndOfQuiz extends JPanel {
 			achievements.setAlignmentX(CENTER_ALIGNMENT);
 			achievements.setText(textAchievements.toString());
 			achievements.setForeground(GUI.foreground);
-			achievements.setFont(new Font("Century Schoolbook L", Font.PLAIN, 24));
-			achievements.setCaretColor(new Color(255, 255, 255));
+			achievements.setFont(new Font(GUI.FONT, Font.PLAIN, 24));
+			achievements.setCaretColor(GUI.foreground);
 			achievements.setBackground(GUI.background);
 			GridBagConstraints gbc_achievements = new GridBagConstraints();
 			gbc_achievements.insets = new Insets(0, 0, 5, 5);
@@ -112,7 +110,7 @@ public class EndOfQuiz extends JPanel {
 			}
 		});
 		viewAchievements.setForeground(GUI.foreground);
-		viewAchievements.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		viewAchievements.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		viewAchievements.setBackground(GUI.background);
 		GridBagConstraints gbc_viewAchievements = new GridBagConstraints();
 		gbc_viewAchievements.insets = new Insets(0, 0, 5, 5);
@@ -120,7 +118,7 @@ public class EndOfQuiz extends JPanel {
 		gbc_viewAchievements.gridy = 8;
 		add(viewAchievements, gbc_viewAchievements);
 		button.setForeground(GUI.foreground);
-		button.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		button.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		button.setBackground(GUI.background);
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 5, 5);

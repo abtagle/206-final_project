@@ -1,7 +1,6 @@
 package voxSpell.GUI;
 
 import javax.swing.JPanel;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -54,7 +53,7 @@ public class QuizScreen extends JPanel {
 		titleLabel = new JLabel(this.title);
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		titleLabel.setForeground(GUI.foreground);
-		titleLabel.setFont(new Font("Century Schoolbook L", Font.BOLD, 72));
+		titleLabel.setFont(new Font(GUI.FONT, Font.BOLD, 72));
 		GridBagConstraints gbc_titleLabel = new GridBagConstraints();
 		gbc_titleLabel.gridwidth = 5;
 		gbc_titleLabel.insets = new Insets(0, 0, 5, 0);
@@ -66,7 +65,7 @@ public class QuizScreen extends JPanel {
 		wordNumberLabel = new JLabel("Word 1 of " + quiz.getNumberOfWords());
 		wordNumberLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		wordNumberLabel.setForeground(GUI.foreground);
-		wordNumberLabel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
+		wordNumberLabel.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 		GridBagConstraints gbc_wordNumberLabel = new GridBagConstraints();
 		gbc_wordNumberLabel.fill = GridBagConstraints.HORIZONTAL;
 		gbc_wordNumberLabel.gridwidth = 5;
@@ -78,7 +77,7 @@ public class QuizScreen extends JPanel {
 		scoreLabel = new JLabel("Score: 0");
 		scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		scoreLabel.setForeground(GUI.foreground);
-		scoreLabel.setFont(new Font("Century Schoolbook L", Font.PLAIN, 36));
+		scoreLabel.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 		GridBagConstraints gbc_scoreLabel = new GridBagConstraints();
 		gbc_scoreLabel.fill = GridBagConstraints.HORIZONTAL;
 		gbc_scoreLabel.gridwidth = 5;
@@ -107,7 +106,7 @@ public class QuizScreen extends JPanel {
 			}
 		});
 		relisten.setForeground(GUI.foreground);
-		relisten.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		relisten.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		GridBagConstraints gbc_relisten = new GridBagConstraints();
 		gbc_relisten.fill = GridBagConstraints.BOTH;
 		gbc_relisten.insets = new Insets(0, 0, 5, 5);
@@ -125,7 +124,7 @@ public class QuizScreen extends JPanel {
 		});
 		GUI.getInstance().getFrame().getRootPane().setDefaultButton(submit);
 		submit.setForeground(GUI.foreground);
-		submit.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		submit.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		GridBagConstraints gbc_submit = new GridBagConstraints();
 		gbc_submit.gridwidth = 3;
 		gbc_submit.fill = GridBagConstraints.HORIZONTAL;
@@ -144,7 +143,7 @@ public class QuizScreen extends JPanel {
 			}
 		});
 		options.setForeground(GUI.foreground);
-		options.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		options.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		GridBagConstraints gbc_options = new GridBagConstraints();
 		gbc_options.gridwidth = 3;
 		gbc_options.fill = GridBagConstraints.HORIZONTAL;
