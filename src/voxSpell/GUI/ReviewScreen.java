@@ -18,6 +18,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JToggleButton;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.Color;
+import javax.swing.UIManager;
 /**
  * 
  * Class representing the view you see when you review words in a flashcard-like setting
@@ -193,6 +195,20 @@ public class ReviewScreen extends JPanel {
 		gbc_menu.gridx = 2;
 		gbc_menu.gridy = 10;
 		add(menu, gbc_menu);
+		
+		JButton viewList = new JButton("View Whole List");
+		viewList.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		viewList.setForeground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		viewList.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		viewList.setBackground(new Color(51, 0, 51));
+		GridBagConstraints gbc_viewList = new GridBagConstraints();
+		gbc_viewList.insets = new Insets(0, 0, 5, 5);
+		gbc_viewList.gridx = 4;
+		gbc_viewList.gridy = 10;
+		add(viewList, gbc_viewList);
 		
 		if(currentReview.getLength() == 0){
 			JOptionPane.showMessageDialog(null, "There are no words available to review from that category. Please go back to the main menu", "Review", JOptionPane.ERROR_MESSAGE);

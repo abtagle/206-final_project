@@ -50,7 +50,7 @@ public class Lists {
 	private Lists(){
 		//Reads in all the statistics storing lists if they already  exist
 		AchievementList.getInstance();
-		
+
 		File f = new File(System.getProperty("java.class.path"));
 		File dir = f.getAbsoluteFile().getParentFile();
 		_thisList = this;
@@ -152,22 +152,28 @@ public class Lists {
 	}
 	//Reads in the wordlist file specified by the user
 	public void setWordList(File file){
-		_wordLists = new HashMap<String, WordList>();
 		if(file.exists()){
 			try{
-				BufferedReader wordListRead = new BufferedReader(new FileReader(file));
-				String word;
-				String listName = "";
+				BufferedReader checkReader = new BufferedReader(new FileReader(file));
+				if(checkReader.readLine().charAt(0)=='%'){
+					_wordLists = new HashMap<String, WordList>();
+					BufferedReader wordListRead = new BufferedReader(new FileReader(file));
+					String word;
+					String listName = "";
 
-				while((word = wordListRead.readLine()) != null){
-					if((word.equals("") == false && (word.equals("\\s+") == false)&& word.charAt(0)!='%')){
-						_wordLists.get(listName).addWord(word);
-					} else if( word.charAt(0)=='%'){
-						listName = word.substring(1);
-						_wordLists.put(listName, new WordList());
+					while((word = wordListRead.readLine()) != null){
+						if((word.equals("") == false && (word.equals("\\s+") == false)&& word.charAt(0)!='%')){
+							_wordLists.get(listName).addWord(word);
+						} else if( word.charAt(0)=='%'){
+							listName = word.substring(1);
+							_wordLists.put(listName, new WordList());
+						}
 					}
+					wordListRead.close();	
+				} else{
+					JOptionPane.showMessageDialog(null, "Error: file  " + file.getName() + " is not in correct format.");
 				}
-				wordListRead.close();	
+				checkReader.close();
 
 			} catch (FileNotFoundException e){
 				JOptionPane.showMessageDialog(null, "Error: unable to load " + file.getName() + ".");
@@ -286,7 +292,7 @@ public class Lists {
 		ArrayList<String> arrayList = new ArrayList<String>();
 		arrayList.addAll(_levelStats.keySet());
 		return arrayList;
-		
+
 	}
 	public int getNumberOfLevels(){
 
@@ -340,7 +346,7 @@ public class Lists {
 		writer.println(_longestStreak + " " + _currentStreak + " " + _numberOfWordsRight + " " +_numberOfWordsAttempted);
 		writer.close();
 	}
-	
+
 	private void writeLevelStatsToFile() throws FileNotFoundException{
 		PrintWriter writer = new PrintWriter(LEVEL_STATS);
 		for(String list : _levelStats.keySet()){
