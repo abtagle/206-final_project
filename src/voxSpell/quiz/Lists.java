@@ -154,7 +154,6 @@ public class Lists {
 	public void setWordList(File file){
 		_wordLists = new HashMap<String, WordList>();
 		if(file.exists()){
-
 			try{
 				BufferedReader wordListRead = new BufferedReader(new FileReader(file));
 				String word;

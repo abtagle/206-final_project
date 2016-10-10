@@ -49,8 +49,7 @@ public class GUI implements WindowListener{
 	}
 	private GUI(){
 		//Create and set up the window.
-		JOptionPane.showMessageDialog(null, "Please select a file to read words from", "Select a Word List", JOptionPane.INFORMATION_MESSAGE);
-		chooseFile();
+		Lists.getInstance().setWordList(new File(PATH+"/sample-words.txt"));
 		Settings.getInstance();
 		_frame = new JFrame("VOXSPELL");
 		_frame.setResizable(false);
@@ -60,17 +59,6 @@ public class GUI implements WindowListener{
 		Lists.getInstance().setUpScores();
 	}
 	
-	protected void chooseFile(){
-		JFileChooser chooser = new JFileChooser();
-	    int returnVal = chooser.showOpenDialog(null);
-	    if(returnVal == JFileChooser.APPROVE_OPTION) {
-	    	if(chooser.getSelectedFile()!= null)
-	            Lists.getInstance().setWordList(chooser.getSelectedFile());
-	    } else{
-	    	JOptionPane.showMessageDialog(null, "You MUST select a word list upon startup", "Select a Word List", JOptionPane.ERROR_MESSAGE);
-	    	chooseFile();
-	    }
-	}
 	protected void setLevel(int level){
 		_level = level;
 	}

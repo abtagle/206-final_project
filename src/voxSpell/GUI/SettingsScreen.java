@@ -1,6 +1,8 @@
 package voxSpell.GUI;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.awt.Color;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -13,6 +15,8 @@ import voxSpell.quiz.Lists;
 import voxSpell.quiz.Settings;
 
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+
 import java.awt.Insets;
 import java.awt.Font;
 
@@ -23,7 +27,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.awt.event.ActionEvent;
-import javax.swing.JToggleButton;
 
 public class SettingsScreen extends JPanel {
 
@@ -39,16 +42,19 @@ public class SettingsScreen extends JPanel {
 	private JLabel currentLevel;
 	private JLabel sampleWords;
 	private JComboBox<String> quizSizeSelect;
+	private JScrollPane scroll;
 	
 	public SettingsScreen() {
 		GUI.getInstance().getFrame().setVisible(true);
 		setBackground(new Color(51, 0, 51));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 190, 20, 160, 0, 160, 160, 0, 160, 20, 0};
-		gridBagLayout.rowHeights = new int[]{120, 0, 0, 0, 0, 0, 20, 0, 20, 0, 0, 20, 0, 20, 0};
+		gridBagLayout.rowHeights = new int[]{90, 20, 0, 20, 0, 0, 0, 0, 0, 20, 0, 20, 0, 0, 20, 0, 20, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
+		
+		scroll = new JScrollPane(this);
 		
 		JLabel label = new JLabel("Settings");
 		label.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -63,6 +69,30 @@ public class SettingsScreen extends JPanel {
 		gbc_label.gridy = 0;
 		add(label, gbc_label);
 		
+		JButton button = new JButton("Change Word List");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser chooser = new JFileChooser();
+			    int returnVal = chooser.showOpenDialog(null);
+			    if(returnVal == JFileChooser.APPROVE_OPTION) {
+			    	if(chooser.getSelectedFile()!= null)
+			            Lists.getInstance().setWordList(chooser.getSelectedFile());
+			    		Settings.getInstance().setLevel(Lists.getInstance().getListNames().get(0));
+			    }
+			    GUI.getInstance().setContentPane(new SettingsScreen());
+			}
+		});
+		button.setForeground(Color.WHITE);
+		button.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		button.setBackground(new Color(51, 0, 51));
+		GridBagConstraints gbc_button = new GridBagConstraints();
+		gbc_button.fill = GridBagConstraints.HORIZONTAL;
+		gbc_button.gridwidth = 4;
+		gbc_button.insets = new Insets(0, 0, 5, 5);
+		gbc_button.gridx = 3;
+		gbc_button.gridy = 2;
+		add(button, gbc_button);
+		
 		//Level Select
 		JLabel levelLabel = new JLabel("Level");
 		levelLabel.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -73,7 +103,7 @@ public class SettingsScreen extends JPanel {
 		gbc_levelLabel.fill = GridBagConstraints.VERTICAL;
 		gbc_levelLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_levelLabel.gridx = 1;
-		gbc_levelLabel.gridy = 1;
+		gbc_levelLabel.gridy = 4;
 		add(levelLabel, gbc_levelLabel);
 		
 		levelSelect = new JComboBox<String>();
@@ -87,7 +117,7 @@ public class SettingsScreen extends JPanel {
 		gbc_levelSelect.insets = new Insets(0, 0, 5, 5);
 		gbc_levelSelect.fill = GridBagConstraints.BOTH;
 		gbc_levelSelect.gridx = 3;
-		gbc_levelSelect.gridy = 1;
+		gbc_levelSelect.gridy = 4;
 		add(levelSelect, gbc_levelSelect);
 		
 		JButton submitLevel = new JButton("Submit");
@@ -106,7 +136,7 @@ public class SettingsScreen extends JPanel {
 		gbc_submitLevel.fill = GridBagConstraints.BOTH;
 		gbc_submitLevel.insets = new Insets(0, 0, 5, 5);
 		gbc_submitLevel.gridx = 8;
-		gbc_submitLevel.gridy = 1;
+		gbc_submitLevel.gridy = 4;
 		add(submitLevel, gbc_submitLevel);
 		
 		//Voice-related things
@@ -118,7 +148,7 @@ public class SettingsScreen extends JPanel {
 		gbc_voiceLabel.anchor = GridBagConstraints.EAST;
 		gbc_voiceLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_voiceLabel.gridx = 1;
-		gbc_voiceLabel.gridy = 3;
+		gbc_voiceLabel.gridy = 6;
 		add(voiceLabel, gbc_voiceLabel);
 		
 		File pathToVoices = new File("/usr/share/festival/voices/english");
@@ -141,7 +171,7 @@ public class SettingsScreen extends JPanel {
 		gbc_voiceSelect.insets = new Insets(0, 0, 5, 5);
 		gbc_voiceSelect.fill = GridBagConstraints.BOTH;
 		gbc_voiceSelect.gridx = 3;
-		gbc_voiceSelect.gridy = 3;
+		gbc_voiceSelect.gridy = 6;
 		
 		voiceSelect.addActionListener(new ActionListener() {
 			@Override
@@ -166,7 +196,7 @@ public class SettingsScreen extends JPanel {
 		gbc_submitVoice.fill = GridBagConstraints.HORIZONTAL;
 		gbc_submitVoice.insets = new Insets(0, 0, 5, 5);
 		gbc_submitVoice.gridx = 8;
-		gbc_submitVoice.gridy = 3;
+		gbc_submitVoice.gridy = 6;
 		add(submitVoice, gbc_submitVoice);
 		
 		JLabel quizSizeLabel = new JLabel("Quiz Size");
@@ -177,7 +207,7 @@ public class SettingsScreen extends JPanel {
 		gbc_quizSizeLabel.anchor = GridBagConstraints.EAST;
 		gbc_quizSizeLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_quizSizeLabel.gridx = 1;
-		gbc_quizSizeLabel.gridy = 5;
+		gbc_quizSizeLabel.gridy = 8;
 		add(quizSizeLabel, gbc_quizSizeLabel);
 		
 		quizSizeSelect = new JComboBox<String>();
@@ -188,7 +218,7 @@ public class SettingsScreen extends JPanel {
 		gbc_quizSizeSelect.insets = new Insets(0, 0, 5, 5);
 		gbc_quizSizeSelect.fill = GridBagConstraints.BOTH;
 		gbc_quizSizeSelect.gridx = 3;
-		gbc_quizSizeSelect.gridy = 5;
+		gbc_quizSizeSelect.gridy = 8;
 		add(quizSizeSelect, gbc_quizSizeSelect);
 		
 		JButton submitQuizSize = new JButton("Submit");
@@ -204,7 +234,7 @@ public class SettingsScreen extends JPanel {
 		gbc_submitQuizSize.fill = GridBagConstraints.HORIZONTAL;
 		gbc_submitQuizSize.insets = new Insets(0, 0, 5, 5);
 		gbc_submitQuizSize.gridx = 8;
-		gbc_submitQuizSize.gridy = 5;
+		gbc_submitQuizSize.gridy = 8;
 		add(submitQuizSize, gbc_submitQuizSize);
 		
 		JButton btnBackToMenu = new JButton("Back To Menu");
@@ -232,7 +262,7 @@ public class SettingsScreen extends JPanel {
 		gbc_restart.gridwidth = 4;
 		gbc_restart.insets = new Insets(0, 0, 5, 5);
 		gbc_restart.gridx = 3;
-		gbc_restart.gridy = 7;
+		gbc_restart.gridy = 10;
 		add(restart, gbc_restart);
 		currentLevel.setHorizontalAlignment(SwingConstants.RIGHT);
 		currentLevel.setForeground(Color.WHITE);
@@ -241,7 +271,7 @@ public class SettingsScreen extends JPanel {
 		gbc_currentLevel.gridwidth = 8;
 		gbc_currentLevel.insets = new Insets(0, 0, 5, 5);
 		gbc_currentLevel.gridx = 1;
-		gbc_currentLevel.gridy = 9;
+		gbc_currentLevel.gridy = 12;
 		add(currentLevel, gbc_currentLevel);
 		
 		//Show the sample words for the level
@@ -255,7 +285,7 @@ public class SettingsScreen extends JPanel {
 		gbc_sampleWords.fill = GridBagConstraints.HORIZONTAL;
 		gbc_sampleWords.insets = new Insets(0, 0, 5, 0);
 		gbc_sampleWords.gridx = 0;
-		gbc_sampleWords.gridy = 10;
+		gbc_sampleWords.gridy = 13;
 		add(sampleWords, gbc_sampleWords);
 		btnBackToMenu.setForeground(new Color(255, 255, 255));
 		btnBackToMenu.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
@@ -264,8 +294,20 @@ public class SettingsScreen extends JPanel {
 		gbc_btnBackToMenu.gridwidth = 3;
 		gbc_btnBackToMenu.insets = new Insets(0, 0, 5, 5);
 		gbc_btnBackToMenu.gridx = 1;
-		gbc_btnBackToMenu.gridy = 12;
+		gbc_btnBackToMenu.gridy = 15;
 		add(btnBackToMenu, gbc_btnBackToMenu);
+		
+		JButton theme = new JButton("Change Theme");
+		theme.setForeground(Color.WHITE);
+		theme.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		theme.setBackground(new Color(51, 0, 51));
+		GridBagConstraints gbc_theme = new GridBagConstraints();
+		gbc_theme.anchor = GridBagConstraints.EAST;
+		gbc_theme.gridwidth = 3;
+		gbc_theme.insets = new Insets(0, 0, 5, 5);
+		gbc_theme.gridx = 6;
+		gbc_theme.gridy = 15;
+		add(theme, gbc_theme);
 
 	}
 	private void setCurrentLevelText(){
