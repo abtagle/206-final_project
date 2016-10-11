@@ -33,13 +33,12 @@ public class QuizScreen extends JPanel {
 	private JButton options;
 	private String title;
 	private Quiz quiz;
-	private boolean isReview = false;
 	/**
 	 * Create the panel.
 	 */
 	public QuizScreen(String title) {
 		this.title = title;
-		setUp(title, false);
+		setUp(title);
 		GUI.getInstance().getFrame().setSize(800, 600);
 		
 		setBackground(GUI.background);
@@ -156,9 +155,8 @@ public class QuizScreen extends JPanel {
 	/**
 	 * Code that sets up all the things for this UI, from Assignments 3 and 2
 	 */
-	private void setUp(String title, boolean isReview){
+	private void setUp(String title){
 		this.title = title;
-		this.isReview = isReview;
 		quiz = new NewQuiz(this);
 		quiz.sayWord();
 		
@@ -174,7 +172,14 @@ public class QuizScreen extends JPanel {
 	public void updateScore(int score){
 		scoreLabel.setText("Score: " + score);
 	}
-	
+	public void disableButtons(){
+		submit.setEnabled(false);
+		relisten.setEnabled(false);
+	}
+	public void enableButtons(){
+		submit.setEnabled(true);
+		relisten.setEnabled(true);
+	}
 	public void endQuiz(){
 		GUI.getInstance().setContentPane(new EndOfQuiz(quiz));
 	}

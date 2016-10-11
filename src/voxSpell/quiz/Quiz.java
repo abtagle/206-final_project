@@ -20,6 +20,9 @@ import voxSpell.achievements.AchievementList;
  * Last Modified: 22 September, 2016
  */
 public abstract class Quiz{
+	private static final String RIGHT_SOUND = "right.wav";
+	private static final String WRONG_SOUND = "wrong.wav";
+	
 	protected String _name;
 	protected int _score;
 	protected boolean _isReview = false;
@@ -65,19 +68,19 @@ public abstract class Quiz{
 							}
 							_wordNumberInt++;
 							_score++;
-							sayPhrase("Correct.");
+							rightSound();
 							//Update the streak
 							Lists.getInstance().increaseStreak();
 						} else{
 							_attemptNumber++;
 							Lists.getInstance().resetStreak();
-							sayPhrase("Incorrect. Please try again.");
+							wrongSound();
 						}
 						quizQuestion();
 						//Second attempt- failed or faulted
 					} else if (_attemptNumber == 2){
 						if(spelling.equals(_wordlist.get(_wordNumberInt-1).toLowerCase())){
-							sayPhrase("Correct. ");
+							rightSound();
 							Lists.getInstance().getFaulted().addWord(_wordlist.get(_wordNumberInt-1));
 							if(Lists.getInstance().getLastFailed().contains(_wordlist.get(_wordNumberInt-1))){
 								Lists.getInstance().getLastFailed().remove(_wordlist.get(_wordNumberInt-1));
@@ -87,6 +90,7 @@ public abstract class Quiz{
 							updateWordNumberInGUI();
 							quizQuestion();
 						} else{
+							wrongSound();
 							Lists.getInstance().getFailed().addWord(_wordlist.get(_wordNumberInt-1));
 							if(Lists.getInstance().getLastFailed().contains(_wordlist.get(_wordNumberInt-1))==false){
 								Lists.getInstance().getLastFailed().addWord(_wordlist.get(_wordNumberInt-1));
@@ -155,7 +159,12 @@ public abstract class Quiz{
 	
 	protected void sayPhrase(String phrase){
 		SayAnything anything = new SayAnything(phrase);
+		/*_screen.disableButtons();
 		_threadPool.execute(anything);
+		while(!anything.isDone()){
+			
+		}
+		_screen.enableButtons();*/
 	}
 	
 	public int getScore(){
@@ -169,7 +178,15 @@ public abstract class Quiz{
 	public void sayWord(){
 		_threadPool.execute(new SayAnything(_wordlist.get(_wordNumberInt-1), true));
 	}
-
+	
+	private void rightSound(){
+		new ButtonSound(RIGHT_SOUND).execute();
+	}
+	
+	protected void wrongSound(){
+		new ButtonSound(WRONG_SOUND).execute();
+	}
+	
 	public void exit(){
 		Lists.getInstance().resetStreak();
 	}

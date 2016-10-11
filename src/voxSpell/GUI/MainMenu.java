@@ -21,6 +21,7 @@ import javax.swing.SwingConstants;
  *
  */
 public class MainMenu extends JPanel {
+	private static final String BUTTON_SOUND = "wand.wav";
 	public MainMenu() {
 		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -32,6 +33,8 @@ public class MainMenu extends JPanel {
 		
 
 		String path = GUI.PATH;
+		
+		//New Quiz Button
 		JButton newQuiz = new JButton("      New Quiz");
 		newQuiz.setHorizontalAlignment(SwingConstants.RIGHT);
 		newQuiz.setIcon(new ImageIcon(path+"/play.png"));
@@ -43,6 +46,7 @@ public class MainMenu extends JPanel {
 			}
 		});
 		
+		//Main Image
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(path+"/welcomeMini.gif"));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
@@ -61,6 +65,7 @@ public class MainMenu extends JPanel {
 		gbc_newQuiz.gridy = 1;
 		add(newQuiz, gbc_newQuiz);
 		
+		//Review Button
 		JButton review = new JButton("          Review");
 		review.setHorizontalAlignment(SwingConstants.RIGHT);
 		review.setIcon(new ImageIcon(path+"/review.png"));
@@ -81,6 +86,7 @@ public class MainMenu extends JPanel {
 		gbc_review.gridy = 2;
 		add(review, gbc_review);
 		
+		//Statistics Button
 		JButton statistics = new JButton("      Statistics");
 		statistics.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -101,6 +107,7 @@ public class MainMenu extends JPanel {
 		gbc_statistics.gridy = 3;
 		add(statistics, gbc_statistics);
 		
+		//Achievements Button
 		JButton achievements = new JButton("Achievements");
 		achievements.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -121,6 +128,7 @@ public class MainMenu extends JPanel {
 		gbc_achievements.gridy = 4;
 		add(achievements, gbc_achievements);
 		
+		//Settings button
 		JButton settings = new JButton("        Settings");
 		settings.setHorizontalAlignment(SwingConstants.RIGHT);
 		settings.addActionListener(new ActionListener() {
@@ -141,8 +149,11 @@ public class MainMenu extends JPanel {
 		gbc_settings.gridy = 5;
 		add(settings, gbc_settings);
 	}
+	/**
+	 * Method that causes the button press noise to execute
+	 */
 	private void buttonPress(){
-		ButtonSound sound = new ButtonSound();
+		ButtonSound sound = new ButtonSound(BUTTON_SOUND);
 		sound.execute();
 		
 	}

@@ -15,6 +15,7 @@ import javax.swing.SwingWorker;
  * Last Modified: 21 September, 2016
  */
 class SayAnything extends SwingWorker<Void, Void>{
+	private boolean _done = false;
 	private String _phrase = null;
 	private String _fileName = "/.say.scm";
 	
@@ -83,6 +84,14 @@ class SayAnything extends SwingWorker<Void, Void>{
 
 		//rt.exec("(SayWord " + _phrase + " -o -eval '(" + Settings.getInstance().getVoice() + ")')");
 		return null;
+	}
+	
+	protected void done(){
+		_done = true;
+	}
+	
+	public boolean isSpeechDone(){
+		return _done;
 	}
 	
 	protected void setPhrase(String phrase){

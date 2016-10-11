@@ -7,11 +7,17 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.SwingWorker;
 
+
 public class ButtonSound extends SwingWorker<Void, Void>{
-	public static final String SOUND_NAME = "/wand.wav";
+	private static final String SOUND = "/Sound/";
+	private String _soundName;
+	
+	public ButtonSound(String soundName){
+		_soundName = soundName;
+	}
 	@Override
 	protected Void doInBackground() throws Exception {
-		AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(Lists.PATH+SOUND_NAME).getAbsoluteFile());
+		AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(Lists.PATH+SOUND+_soundName).getAbsoluteFile());
 		Clip clip = AudioSystem.getClip();
 		clip.open(audioInputStream);
 		clip.start();
