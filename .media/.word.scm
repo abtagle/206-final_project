@@ -1,2 +1,2 @@
 (voice_kal_diphone) ;;
-(SayText "friendly")
+(SayText "rich")
