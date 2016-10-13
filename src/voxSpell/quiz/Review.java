@@ -45,7 +45,7 @@ public class Review {
 		}
 	}
 	public void sayWord(){
-		new SayAnything(getWord()).execute();
+		new SayAnything(getWord(), null).execute();
 	}
 	public int getLength(){
 		return _reviewList.size();

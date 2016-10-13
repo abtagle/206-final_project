@@ -61,7 +61,7 @@ public class Settings {
 	public void saySampleVoicePhrase(String voiceName){
 		String originalVoiceName = _voiceName;
 		setVoice(voiceName);
-		SayAnything sample= new SayAnything("This is the voice");
+		SayAnything sample= new SayAnything("This is the voice", null);
 		sample.execute();
 		setVoice(originalVoiceName);
 	}

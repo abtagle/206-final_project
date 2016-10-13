@@ -20,8 +20,6 @@ import voxSpell.achievements.AchievementList;
  * Last Modified: 22 September, 2016
  */
 public abstract class Quiz{
-	private static final String RIGHT_SOUND = "right.wav";
-	private static final String WRONG_SOUND = "wrong.wav";
 	
 	protected String _name;
 	protected int _score;
@@ -158,7 +156,7 @@ public abstract class Quiz{
 	}
 	
 	protected void sayPhrase(String phrase){
-		SayAnything anything = new SayAnything(phrase);
+		SayAnything anything = new SayAnything(phrase, _screen);
 		_screen.disableButtons();
 		_threadPool.execute(anything);
 	}
@@ -172,7 +170,7 @@ public abstract class Quiz{
 	}
 	
 	public void sayWord(){
-		_threadPool.execute(new SayAnything(_wordlist.get(_wordNumberInt-1), true));
+		_threadPool.execute(new SayAnything(_wordlist.get(_wordNumberInt-1),_screen, true));
 	}
 	
 	private void rightSound(){

@@ -7,6 +7,8 @@ import java.nio.file.Path;
 
 import javax.swing.SwingWorker;
 
+import voxSpell.GUI.QuizScreen;
+
 /**
  * Swingworker class in responsible for making Festival calls to say words aloud via .scm files.
  * 
@@ -18,10 +20,17 @@ class SayAnything extends SwingWorker<Void, Void>{
 	private boolean _done = false;
 	private String _phrase = null;
 	private String _fileName = "/.say.scm";
-	
+	QuizScreen _screen = null;
 	Process _process;
-	public SayAnything(String anything){
+	
+	/**
+	 * Constructor for general phrase
+	 * @param anything
+	 * @param screen
+	 */
+	public SayAnything(String anything, QuizScreen screen){
 		_phrase = anything;
+		_screen  = screen;
 		//Create the .scm file
 		PrintWriter writer;
 		_phrase = anything;
@@ -35,8 +44,12 @@ class SayAnything extends SwingWorker<Void, Void>{
 			e.printStackTrace();
 		}
 	}
-	//If the phrase being said is a word, use a different .scm file
-	public SayAnything(String anything, boolean isWord){
+	
+	/**
+	 * 	 * If the phrase being said is a word, use a different .scm file
+	 */
+	public SayAnything(String anything, QuizScreen screen, boolean isWord){
+		_screen  = screen;
 		if(isWord){
 			_fileName = "/.word.scm";
 		}
@@ -69,31 +82,14 @@ class SayAnything extends SwingWorker<Void, Void>{
 			e.printStackTrace();
 		}
 
-		//executeCommand("festival; (" + Settings.getInstance().getVoice() + "); (SayText \"" + _phrase + "\"); (exit)");
-		/*String sayCommand = "echo " + _phrase + "." + " | festival --tts";
-		ProcessBuilder sayBuilder = new ProcessBuilder("/bin/bash", "-c", sayCommand);
-		_process = sayBuilder.start();
-		_process.waitFor();*/
-		//Adapted from http://www.hiteshagrawal.com/java/text-to-speech-tts-in-java/
-		/*Runtime rt = Runtime.getRuntime();
-		Process process = rt.exec("festival --pipe");
-		OutputStream output = process.getOutputStream();
-		output.write(("("+Settings.getInstance().getVoice()+")").getBytes());
-		output.write(("(SayText \"" + _phrase + "\")").getBytes());
-		output.flush();*/
-
-		//rt.exec("(SayWord " + _phrase + " -o -eval '(" + Settings.getInstance().getVoice() + ")')");
 		return null;
 	}
-	
 	protected void done(){
-		_done = true;
+		if(_screen != null){
+			_screen.enableButtons();
+		}
 	}
-	
-	public boolean isSpeechDone(){
-		return _done;
-	}
-	
+
 	protected void setPhrase(String phrase){
 		_phrase = phrase;
 	}
