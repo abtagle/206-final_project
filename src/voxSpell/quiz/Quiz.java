@@ -148,7 +148,9 @@ public abstract class Quiz{
 		}
 		return false;
 	}
-	
+	/**
+	 * Shows the screen at the end of the quiz
+	 */
 	protected void endQuiz(){
 		_newAchievements = AchievementList.getInstance().checkChange(_originalAchievements);
 		_screen.endQuiz();
@@ -156,6 +158,7 @@ public abstract class Quiz{
 	
 	protected void sayPhrase(String phrase){
 		SayAnything anything = new SayAnything(phrase, _screen);
+		//disable buttons while speaking
 		_screen.disableButtons();
 		_threadPool.execute(anything);
 	}
@@ -169,6 +172,7 @@ public abstract class Quiz{
 	}
 	
 	public void sayWord(){
+		//disable buttons while speaking
 		_screen.disableButtons();
 		_threadPool.execute(new SayAnything(_wordlist.get(_wordNumberInt-1),_screen, true));
 	}
