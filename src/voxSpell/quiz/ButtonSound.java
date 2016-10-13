@@ -5,8 +5,9 @@ import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
 import javax.swing.SwingWorker;
+
+import voxSpell.GUI.GUI;
 
 
 public class ButtonSound extends SwingWorker<Void, Void>{
@@ -18,12 +19,27 @@ public class ButtonSound extends SwingWorker<Void, Void>{
 	}
 	@Override
 	protected Void doInBackground() throws Exception {
-		AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(Lists.PATH+SOUND+_soundName).getAbsoluteFile());
+		/*AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(Lists.PATH+SOUND+_soundName).getAbsoluteFile());
 		Clip clip = AudioSystem.getClip();
 		clip.open(audioInputStream);
-		FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-		gainControl.setValue(-15.0f);
-		clip.start();
+		//from http://stackoverflow.com/questions/2335601/reliably-playing-a-short-sound-in-java
+
+	    while (System.in.read() == '\n') {
+	        clip.stop();
+	        clip.setFramePosition(0);
+	        clip.start();
+	    }*/
+		
+		File soundFile = new File(GUI.PATH + SOUND + _soundName);
+		Clip clip = AudioSystem.getClip();
+		AudioInputStream inputStream = AudioSystem.getAudioInputStream(soundFile.getAbsoluteFile());
+		clip.open(inputStream);
+
+		while (System.in.read() == '\n') {
+		    clip.stop();
+		    clip.setFramePosition(0);
+		    clip.start();
+		}
 		return null;
 	}
 
