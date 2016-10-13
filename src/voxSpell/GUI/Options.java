@@ -188,6 +188,8 @@ public class Options extends JFrame {
 			voiceSelect.setModel(selectModel);
 			
 			JButton button = new JButton("Submit");
+			button.setBackground(GUI.background);
+			button.setForeground(GUI.foreground);
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Settings.getInstance().setVoice(voiceNames.get((String)voiceSelect.getSelectedItem()));

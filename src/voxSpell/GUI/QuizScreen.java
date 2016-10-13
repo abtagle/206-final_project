@@ -10,6 +10,7 @@ import javax.swing.SwingConstants;
 
 import voxSpell.quiz.NewQuiz;
 import voxSpell.quiz.Quiz;
+import voxSpell.quiz.Settings;
 
 import javax.swing.JTextField;
 import java.awt.Insets;
@@ -17,6 +18,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import java.awt.Color;
+import javax.swing.UIManager;
 
 /**
  * Class representing the quiz screen created for the project
@@ -33,12 +36,12 @@ public class QuizScreen extends JPanel {
 	private JButton options;
 	private String title;
 	private Quiz quiz;
+	private JButton start;
 	/**
 	 * Create the panel.
 	 */
 	public QuizScreen(String title) {
-		this.title = title;
-		setUp(title);
+		this.title = "Press Start!";
 		GUI.getInstance().getFrame().setSize(800, 600);
 		
 		setBackground(GUI.background);
@@ -61,7 +64,7 @@ public class QuizScreen extends JPanel {
 		gbc_titleLabel.gridy = 1;
 		add(titleLabel, gbc_titleLabel);
 		
-		wordNumberLabel = new JLabel("Word 1 of " + quiz.getNumberOfWords());
+		wordNumberLabel = new JLabel("Word 1 of " + Settings.getInstance().getQuizSize());
 		wordNumberLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		wordNumberLabel.setForeground(GUI.foreground);
 		wordNumberLabel.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
@@ -84,6 +87,26 @@ public class QuizScreen extends JPanel {
 		gbc_scoreLabel.gridx = 0;
 		gbc_scoreLabel.gridy = 5;
 		add(scoreLabel, gbc_scoreLabel);
+		
+		start = new JButton("START");
+		start.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				enableButtons();
+				start.setEnabled(false);
+				start.setVisible(false);
+				setUp("New Quiz");
+			}
+		});
+		start.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+		start.setBackground(new Color(102, 0, 51));
+		start.setForeground(Color.WHITE);
+		GridBagConstraints gbc_button = new GridBagConstraints();
+		gbc_button.fill = GridBagConstraints.HORIZONTAL;
+		gbc_button.gridwidth = 5;
+		gbc_button.insets = new Insets(0, 0, 5, 5);
+		gbc_button.gridx = 0;
+		gbc_button.gridy = 6;
+		add(start, gbc_button);
 		//Spelling JTextField
 		spellingBar = new JTextField();
 		spellingBar.setFont(new Font("Dialog", Font.PLAIN, 20));
@@ -119,6 +142,8 @@ public class QuizScreen extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				quiz.checkSpelling(spellingBar.getText());
 				spellingBar.setText("");
+				start.setEnabled(false);
+				start.setVisible(false);
 			}
 		});
 		GUI.getInstance().getFrame().getRootPane().setDefaultButton(submit);
@@ -150,7 +175,7 @@ public class QuizScreen extends JPanel {
 		gbc_options.gridx = 1;
 		gbc_options.gridy = 11;
 		add(options, gbc_options);
-
+		disableButtons();
 	}
 	/**
 	 * Code that sets up all the things for this UI, from Assignments 3 and 2

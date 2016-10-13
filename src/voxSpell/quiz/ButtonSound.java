@@ -34,12 +34,7 @@ public class ButtonSound extends SwingWorker<Void, Void>{
 		Clip clip = AudioSystem.getClip();
 		AudioInputStream inputStream = AudioSystem.getAudioInputStream(soundFile.getAbsoluteFile());
 		clip.open(inputStream);
-
-		while (System.in.read() == '\n') {
-		    clip.stop();
-		    clip.setFramePosition(0);
-		    clip.start();
-		}
+	    clip.start();
 		return null;
 	}
 
