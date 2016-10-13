@@ -246,7 +246,9 @@ public class ReviewScreen extends JPanel {
 
 	}
 	
-	
+	/**
+	 * Prepares the screen for the new word
+	 */
 	private void setForNewWord(){
 		wordNumber.setText("Word " + (currentReview.getWordNumber()+1) + " of " + currentReview.getLength());
 		if(viewWordToggle.isSelected()){
@@ -271,7 +273,7 @@ public class ReviewScreen extends JPanel {
 		 */
 		public ListView(ArrayList<String> wordList) {
 			_wordList = wordList;
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			setBounds(100, 100, 450, 300);
 			_contentPane = new JPanel();
 			_contentPane.setBackground(GUI.background);
@@ -283,6 +285,7 @@ public class ReviewScreen extends JPanel {
 			_contentPane.add(scrollPane, BorderLayout.CENTER);
 			
 			_listView = new JTextArea();
+			_listView.setFont(new Font(GUI.FONT,Font.PLAIN, 24));
 			_listView.setEditable(false);
 			for(String word : _wordList){
 				_listView.append(word + "\n");

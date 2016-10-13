@@ -350,7 +350,7 @@ public class Lists {
 
 	}
 /**
- * Helper method of writeAllStats which writes out streak alues
+ * Helper method of writeAllStats which writes out streak values
  * @throws FileNotFoundException
  */
 	private void writeStreaksToFile() throws FileNotFoundException{

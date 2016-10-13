@@ -170,6 +170,7 @@ public abstract class Quiz{
 	}
 	
 	public void sayWord(){
+		_screen.disableButtons();
 		_threadPool.execute(new SayAnything(_wordlist.get(_wordNumberInt-1),_screen, true));
 	}
 	
