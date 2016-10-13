@@ -88,7 +88,6 @@ public abstract class Quiz{
 							updateWordNumberInGUI();
 							quizQuestion();
 						} else{
-							wrongSound();
 							Lists.getInstance().getFailed().addWord(_wordlist.get(_wordNumberInt-1));
 							if(Lists.getInstance().getLastFailed().contains(_wordlist.get(_wordNumberInt-1))==false){
 								Lists.getInstance().getLastFailed().addWord(_wordlist.get(_wordNumberInt-1));

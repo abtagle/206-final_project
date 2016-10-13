@@ -200,10 +200,14 @@ public class ReviewScreen extends JPanel {
 					remove = new JButton("Remove Word");
 					remove.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							int reply = JOptionPane.showConfirmDialog(null, "Are you sure you know the word " + currentReview.getWord() +" well enough to remove it from the list?", "Remove Word", JOptionPane.YES_NO_OPTION);
+							int reply = JOptionPane.showConfirmDialog(null, "Are you sure you know the word \"" + currentReview.getWord() +"\" well enough to remove it from the list?", "Remove Word", JOptionPane.YES_NO_OPTION);
 							if (reply == JOptionPane.YES_OPTION) {
+								JOptionPane.showMessageDialog(null, "\""+currentReview.getWord()+"\" has been removed from the Failed list", "Remove Word", JOptionPane.INFORMATION_MESSAGE);
 								currentReview.removeWord();
-								JOptionPane.showMessageDialog(null, currentReview.getWord()+" has been removed from the Failed list", "Remove Word", JOptionPane.INFORMATION_MESSAGE);
+								if(currentReview.getLength() == 0){
+									JOptionPane.showMessageDialog(null, "There are no words left to review. You will be taken back to the Main Menu.", "No Words to Review", JOptionPane.ERROR_MESSAGE);
+									GUI.getInstance().setContentPane(new MainMenu());
+								}
 							}
 						}
 					});
