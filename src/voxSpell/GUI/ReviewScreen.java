@@ -1,6 +1,10 @@
 package voxSpell.GUI;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -13,13 +17,18 @@ import voxSpell.quiz.Review;
 
 import java.awt.Insets;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JToggleButton;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 /**
  * 
  * Class representing the view you see when you review words in a flashcard-like setting
@@ -33,72 +42,57 @@ public class ReviewScreen extends JPanel {
 	private JToggleButton viewWordToggle;
 	private JLabel word;
 	private JLabel wordNumber;
+	private JButton remove;
+	private JButton relisten;
+	private JButton next;
+	private JButton previous;
+	private JLabel title;
+	private JButton viewList;
 	/**
 	 * Create the panel.
 	 */
 	public ReviewScreen(boolean isFailed) {
-		addKeyListener(new KeyAdapter() {
-			public void keyPressed(KeyEvent e) {
-				if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-					currentReview.nextWord();
-				} else if(e.getKeyCode() == KeyEvent.VK_LEFT){
-					currentReview.previousWord();
-				}  else if(e.getKeyCode() == KeyEvent.VK_SPACE){
-					currentReview.sayWord();
-				} else if(e.getKeyCode() == KeyEvent.VK_ENTER){
-					if(viewWordToggle.isSelected()){
-						viewWordToggle.setEnabled(false);
-						word.setText("?");
-						viewWordToggle.setText("Show Text");
-					} else {
-						viewWordToggle.setEnabled(true);
-						word.setText(currentReview.getWord());
-						viewWordToggle.setText("Hide Text");
-					}
-				}
-				setForNewWord();
-			}
-		});
-		this.setFocusable(true);
 		currentReview = new Review(isFailed);
 		
 		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{40, 160, 160, 160, 40, 0};
+		gridBagLayout.columnWidths = new int[]{20, 40, 160, 160, 160, 40, 20, 0};
 		gridBagLayout.rowHeights = new int[]{20, 0, 0, 0, 60, 60, 40, 0, 0, 50, 0, 20, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JButton previous = new JButton("<<");
+		//Previous Button
+		previous = new JButton("<<");
+		previous.setMnemonic(KeyEvent.VK_KP_LEFT);
 		previous.setBackground(GUI.background);
 		previous.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				currentReview.previousWord();		
-				setForNewWord();
-				
+				setForNewWord();			
 			}
 		});
-		
-		JLabel title = new JLabel("Review");
+		//Title of the panel
+		title = new JLabel("Review");
 		title.setVerticalAlignment(SwingConstants.BOTTOM);
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		title.setForeground(GUI.foreground);
 		title.setFont(new Font(GUI.FONT, Font.BOLD, 72));
 		GridBagConstraints gbc_title = new GridBagConstraints();
 		gbc_title.fill = GridBagConstraints.HORIZONTAL;
-		gbc_title.gridwidth = 5;
+		gbc_title.gridwidth = 7;
 		gbc_title.insets = new Insets(0, 0, 5, 0);
 		gbc_title.gridx = 0;
 		gbc_title.gridy = 1;
 		add(title, gbc_title);
 		
+		//Label that says what word you are on
 		wordNumber = new JLabel("Word 1 of " + (currentReview.getLength()));
 		wordNumber.setHorizontalAlignment(SwingConstants.CENTER);
 		wordNumber.setForeground(GUI.foreground);
 		wordNumber.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 		GridBagConstraints gbc_wordNumber = new GridBagConstraints();
-		gbc_wordNumber.gridwidth = 5;
+		gbc_wordNumber.gridwidth = 7;
 		gbc_wordNumber.insets = new Insets(0, 0, 5, 0);
 		gbc_wordNumber.gridx = 0;
 		gbc_wordNumber.gridy = 3;
@@ -108,11 +102,12 @@ public class ReviewScreen extends JPanel {
 		GridBagConstraints gbc_previous = new GridBagConstraints();
 		gbc_previous.fill = GridBagConstraints.BOTH;
 		gbc_previous.insets = new Insets(0, 0, 5, 5);
-		gbc_previous.gridx = 0;
+		gbc_previous.gridx = 1;
 		gbc_previous.gridy = 5;
 		add(previous, gbc_previous);
 		
-		JButton next = new JButton(">>");
+		//Next button
+		next = new JButton(">>");
 		next.setBackground(GUI.background);
 		next.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -121,6 +116,7 @@ public class ReviewScreen extends JPanel {
 			}
 		});
 		
+		//Label that shows spelling if opted to
 		word = new JLabel("?");
 		word.setHorizontalAlignment(SwingConstants.CENTER);
 		word.setForeground(GUI.foreground);
@@ -129,18 +125,19 @@ public class ReviewScreen extends JPanel {
 		gbc_word.insets = new Insets(0, 0, 5, 5);
 		gbc_word.fill = GridBagConstraints.HORIZONTAL;
 		gbc_word.gridwidth = 3;
-		gbc_word.gridx = 1;
+		gbc_word.gridx = 2;
 		gbc_word.gridy = 5;
 		add(word, gbc_word);
 		next.setForeground(GUI.foreground);
 		next.setFont(new Font(GUI.FONT, Font.BOLD, 28));
 		GridBagConstraints gbc_next = new GridBagConstraints();
 		gbc_next.fill = GridBagConstraints.VERTICAL;
-		gbc_next.insets = new Insets(0, 0, 5, 0);
-		gbc_next.gridx = 4;
+		gbc_next.insets = new Insets(0, 0, 5, 5);
+		gbc_next.gridx = 5;
 		gbc_next.gridy = 5;
 		add(next, gbc_next);
 		
+		//Back to menu button
 		JButton menu = new JButton("Back To Menu");
 		menu.setBackground(GUI.background);
 		menu.addActionListener(new ActionListener() {
@@ -148,8 +145,17 @@ public class ReviewScreen extends JPanel {
 				GUI.getInstance().setContentPane(new MainMenu());
 			}
 		});
+		menu.setForeground(GUI.foreground);
+		menu.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
+		GridBagConstraints gbc_menu = new GridBagConstraints();
+		gbc_menu.fill = GridBagConstraints.HORIZONTAL;
+		gbc_menu.insets = new Insets(0, 0, 5, 5);
+		gbc_menu.gridx = 2;
+		gbc_menu.gridy = 10;
+		add(menu, gbc_menu);
 		
-		JButton relisten = new JButton("Listen to the Word");
+		//Relisten button
+		relisten = new JButton("Listen to the Word");
 		relisten.setBackground(GUI.background);
 		relisten.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -159,45 +165,64 @@ public class ReviewScreen extends JPanel {
 		relisten.setForeground(GUI.foreground);
 		relisten.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		GridBagConstraints gbc_relisten = new GridBagConstraints();
-		gbc_relisten.gridwidth = 5;
+		gbc_relisten.gridwidth = 7;
 		gbc_relisten.insets = new Insets(0, 0, 5, 0);
 		gbc_relisten.gridx = 0;
-		gbc_relisten.gridy = 7;
+		gbc_relisten.gridy = 6;
 		add(relisten, gbc_relisten);
 		
-		viewWordToggle = new JToggleButton("Show Spelling");
-		viewWordToggle.setBackground(GUI.background);
-		viewWordToggle.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(viewWordToggle.isSelected()){
-					word.setText(currentReview.getWord());
-					viewWordToggle.setText("Hide Text");
-				} else {
-					word.setText("?");
-					viewWordToggle.setText("Show Text");
-				}
-			}
-		});
-		viewWordToggle.setForeground(GUI.foreground);
-		viewWordToggle.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
-		GridBagConstraints gbc_viewWordToggle = new GridBagConstraints();
-		gbc_viewWordToggle.gridwidth = 5;
-		gbc_viewWordToggle.insets = new Insets(0, 0, 5, 0);
-		gbc_viewWordToggle.gridx = 0;
-		gbc_viewWordToggle.gridy = 8;
-		add(viewWordToggle, gbc_viewWordToggle);
-		menu.setForeground(GUI.foreground);
-		menu.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
-		GridBagConstraints gbc_menu = new GridBagConstraints();
-		gbc_menu.fill = GridBagConstraints.HORIZONTAL;
-		gbc_menu.insets = new Insets(0, 0, 5, 5);
-		gbc_menu.gridx = 1;
-		gbc_menu.gridy = 10;
-		add(menu, gbc_menu);
 		
-		JButton viewList = new JButton("View Whole List");
+		//Button that toggles if the spelling is visible
+		viewWordToggle = new JToggleButton("Show Text");
+		viewWordToggle.setBackground(GUI.background);
+		
+				viewWordToggle.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if(viewWordToggle.isSelected()){
+							word.setText(currentReview.getWord());
+							viewWordToggle.setText("Hide Text");
+						} else {
+							word.setText("?");
+							viewWordToggle.setText("Show Text");
+						}
+					}
+				});
+				viewWordToggle.setForeground(GUI.foreground);
+				viewWordToggle.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
+				GridBagConstraints gbc_viewWordToggle = new GridBagConstraints();
+				gbc_viewWordToggle.gridwidth = 7;
+				gbc_viewWordToggle.insets = new Insets(0, 0, 5, 0);
+				gbc_viewWordToggle.gridx = 0;
+				gbc_viewWordToggle.gridy = 7;
+				add(viewWordToggle, gbc_viewWordToggle);
+		//Remove Button
+				if(isFailed){
+					remove = new JButton("Remove Word");
+					remove.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							int reply = JOptionPane.showConfirmDialog(null, "Are you sure you know the word " + currentReview.getWord() +" well enough to remove it from the list?", "Remove Word", JOptionPane.YES_NO_OPTION);
+							if (reply == JOptionPane.YES_OPTION) {
+								currentReview.removeWord();
+								JOptionPane.showMessageDialog(null, currentReview.getWord()+" has been removed from the Failed list", "Remove Word", JOptionPane.INFORMATION_MESSAGE);
+							}
+						}
+					});
+					remove.setForeground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+					remove.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+					remove.setBackground(Color.RED);
+					GridBagConstraints gbc_remove = new GridBagConstraints();
+					gbc_remove.gridwidth = 7;
+					gbc_remove.insets = new Insets(0, 0, 5, 5);
+					gbc_remove.gridx = 0;
+					gbc_remove.gridy = 8;
+					add(remove, gbc_remove);					
+				}
+		
+		
+		viewList = new JButton("View List");
 		viewList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new ListView(currentReview.getReviewList());
 			}
 		});
 		viewList.setForeground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
@@ -205,7 +230,7 @@ public class ReviewScreen extends JPanel {
 		viewList.setBackground(new Color(51, 0, 51));
 		GridBagConstraints gbc_viewList = new GridBagConstraints();
 		gbc_viewList.insets = new Insets(0, 0, 5, 5);
-		gbc_viewList.gridx = 3;
+		gbc_viewList.gridx = 4;
 		gbc_viewList.gridy = 10;
 		add(viewList, gbc_viewList);
 		
@@ -215,6 +240,8 @@ public class ReviewScreen extends JPanel {
 			next.setEnabled(false);
 			previous.setEnabled(false);
 			relisten.setEnabled(false);
+			viewList.setEnabled(false);
+			remove.setEnabled(false);
 		}
 
 	}
@@ -228,5 +255,41 @@ public class ReviewScreen extends JPanel {
 			word.setText("?");
 		}
 	}
+	/**
+	 * Class representing the frame that appears to show all the words that can be reviewed in the current review session
+	 * Last Modified: 14 October, 2016
+	 * @author atag549
+	 *
+	 */
+	public class ListView extends JFrame {
 
+		private JPanel _contentPane;
+		private JTextArea _listView;
+		private ArrayList<String> _wordList;
+		/**
+		 * Create the frame.
+		 */
+		public ListView(ArrayList<String> wordList) {
+			_wordList = wordList;
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			setBounds(100, 100, 450, 300);
+			_contentPane = new JPanel();
+			_contentPane.setBackground(GUI.background);
+			_contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			_contentPane.setLayout(new BorderLayout(0, 0));
+			setContentPane(_contentPane);
+			
+			JScrollPane scrollPane = new JScrollPane();
+			_contentPane.add(scrollPane, BorderLayout.CENTER);
+			
+			_listView = new JTextArea();
+			_listView.setEditable(false);
+			for(String word : _wordList){
+				_listView.append(word + "\n");
+			}
+			((JScrollPane) scrollPane).setViewportView(_listView);
+			setVisible(true);
+		}
+
+	}
 }

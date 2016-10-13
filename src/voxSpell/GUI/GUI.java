@@ -48,6 +48,9 @@ public class GUI implements WindowListener{
 			}
 		});
 	}
+	/**
+	 * Private constructor for singleton GUI class
+	 */
 	private GUI(){
 		//Create and set up the window.
 		Lists.getInstance().setWordList(new File(PATH+"/sample-words.txt"));
@@ -57,8 +60,10 @@ public class GUI implements WindowListener{
 		_frame.addWindowListener(this);
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		NUMBER_OF_LEVELS=Lists.getInstance().getNumberOfLevels();
-		Lists.getInstance().setUpScores();
 	}
+	/**
+	 * Switches the theme from light to dark
+	 */
 	protected void changeTheme(){
 		Color temp = background;
 		background  = foreground;

@@ -16,7 +16,8 @@ public class NewQuiz extends Quiz {
 
 	@Override
 	protected void spellAloud(String word) {
-		wrongSound();
+		sayPhrase("Incorrect.");
+		
 		_wordNumberInt++;
 		_attemptNumber = 1;
 		updateWordNumberInGUI();

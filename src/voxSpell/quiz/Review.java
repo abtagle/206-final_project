@@ -1,7 +1,13 @@
 package voxSpell.quiz;
 
 import java.util.ArrayList;
-
+import java.util.Collections;
+/**
+ * Class representing the review functionality (flashcards someone can navigate to learn things) in this application
+ * @author atag549
+ * Last Modified 14 October, 2016
+ *
+ */
 public class Review {
 	private ArrayList<String> _reviewList;
 	private int wordNumber;
@@ -12,6 +18,7 @@ public class Review {
 		} else{
 			_reviewList = Lists.getInstance().getWordList(Settings.getInstance().getLevel()).returnArrayList();
 		}
+		Collections.sort(_reviewList);
 		wordNumber = 0;
 	}
 	
@@ -42,6 +49,15 @@ public class Review {
 	}
 	public int getLength(){
 		return _reviewList.size();
+	}
+	public void removeWord(){
+		_reviewList.remove(wordNumber);
+		if(wordNumber == _reviewList.size()){
+			wordNumber -=1;
+		} 
+	}
+	public ArrayList<String> getReviewList(){
+		return _reviewList;
 	}
 
 }

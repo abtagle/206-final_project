@@ -159,12 +159,8 @@ public abstract class Quiz{
 	
 	protected void sayPhrase(String phrase){
 		SayAnything anything = new SayAnything(phrase);
-		/*_screen.disableButtons();
+		_screen.disableButtons();
 		_threadPool.execute(anything);
-		while(!anything.isDone()){
-			
-		}
-		_screen.enableButtons();*/
 	}
 	
 	public int getScore(){
@@ -180,11 +176,11 @@ public abstract class Quiz{
 	}
 	
 	private void rightSound(){
-		new ButtonSound(RIGHT_SOUND).execute();
+		sayPhrase("Correct");
 	}
 	
 	protected void wrongSound(){
-		new ButtonSound(WRONG_SOUND).execute();
+		sayPhrase("Incorrect. Please try again.");
 	}
 	
 	public void exit(){
