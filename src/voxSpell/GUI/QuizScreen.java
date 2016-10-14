@@ -182,6 +182,7 @@ public class QuizScreen extends JPanel {
 	 */
 	private void setUp(String title){
 		this.title = title;
+		titleLabel.setText(this.title);
 		quiz = new NewQuiz(this);
 		quiz.sayWord();
 		

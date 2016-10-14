@@ -17,6 +17,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import java.awt.Color;
+import javax.swing.UIManager;
 
 public class EndOfQuiz extends JPanel {
 	private JButton button;
@@ -26,6 +28,7 @@ public class EndOfQuiz extends JPanel {
 	private JLabel score;
 	private JLabel list;
 	private JButton viewAchievements;
+	private JButton viewWords;
 
 	/**
 	 * Create the panel.
@@ -35,9 +38,9 @@ public class EndOfQuiz extends JPanel {
 		_quiz = quiz;
 		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{30, 0, 30, 0};
+		gridBagLayout.columnWidths = new int[]{30, 0, 20, 0, 30, 0};
 		gridBagLayout.rowHeights = new int[]{20, 0, 10, 0, 30, 0, 100, 10, 0, 10, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 
@@ -46,7 +49,7 @@ public class EndOfQuiz extends JPanel {
 		congratulatoins.setForeground(GUI.foreground);
 		congratulatoins.setFont(new Font(GUI.FONT, Font.BOLD, 72));
 		GridBagConstraints gbc_congratulatoins = new GridBagConstraints();
-		gbc_congratulatoins.gridwidth = 3;
+		gbc_congratulatoins.gridwidth = 5;
 		gbc_congratulatoins.insets = new Insets(0, 0, 5, 0);
 		gbc_congratulatoins.gridx = 0;
 		gbc_congratulatoins.gridy = 1;
@@ -57,9 +60,9 @@ public class EndOfQuiz extends JPanel {
 		score.setForeground(GUI.foreground);
 		score.setFont(new Font(GUI.FONT, Font.PLAIN, 48));
 		GridBagConstraints gbc_score = new GridBagConstraints();
-		gbc_score.gridwidth = 2;
+		gbc_score.gridwidth = 5;
 		gbc_score.insets = new Insets(0, 0, 5, 0);
-		gbc_score.gridx = 1;
+		gbc_score.gridx = 0;
 		gbc_score.gridy = 3;
 		add(score, gbc_score);
 		if(_quiz.getNewAchievements().size() != 0){
@@ -102,27 +105,43 @@ public class EndOfQuiz extends JPanel {
 				GUI.getInstance().setContentPane(new MainMenu());
 			}
 		});
-
-		viewAchievements = new JButton("View Achievements");
-		viewAchievements.addActionListener(new ActionListener() {
+		
+				viewAchievements = new JButton("View Achievements");
+				viewAchievements.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						GUI.getInstance().setContentPane(new AchievementScreen());
+					}
+				});
+				viewAchievements.setForeground(GUI.foreground);
+				viewAchievements.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
+				viewAchievements.setBackground(GUI.background);
+				GridBagConstraints gbc_viewAchievements = new GridBagConstraints();
+				gbc_viewAchievements.insets = new Insets(0, 0, 5, 5);
+				gbc_viewAchievements.gridx = 1;
+				gbc_viewAchievements.gridy = 8;
+				add(viewAchievements, gbc_viewAchievements);
+		
+		viewWords = new JButton("View Words");
+		viewWords.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GUI.getInstance().setContentPane(new AchievementScreen());
+				new WordListView(_quiz.getWordlist());
 			}
 		});
-		viewAchievements.setForeground(GUI.foreground);
-		viewAchievements.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
-		viewAchievements.setBackground(GUI.background);
-		GridBagConstraints gbc_viewAchievements = new GridBagConstraints();
-		gbc_viewAchievements.insets = new Insets(0, 0, 5, 5);
-		gbc_viewAchievements.gridx = 1;
-		gbc_viewAchievements.gridy = 8;
-		add(viewAchievements, gbc_viewAchievements);
+		viewWords.setForeground(GUI.foreground);
+		viewWords.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
+		viewWords.setBackground(GUI.background);
+		GridBagConstraints gbc_viewWords = new GridBagConstraints();
+		gbc_viewWords.fill = GridBagConstraints.HORIZONTAL;
+		gbc_viewWords.insets = new Insets(0, 0, 5, 5);
+		gbc_viewWords.gridx = 3;
+		gbc_viewWords.gridy = 8;
+		add(viewWords, gbc_viewWords);
 		button.setForeground(GUI.foreground);
 		button.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		button.setBackground(GUI.background);
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 5, 5);
-		gbc_button.gridx = 1;
+		gbc_button.gridx = 3;
 		gbc_button.gridy = 10;
 		add(button, gbc_button);
 

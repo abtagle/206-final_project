@@ -155,7 +155,10 @@ public abstract class Quiz{
 		_newAchievements = AchievementList.getInstance().checkChange(_originalAchievements);
 		_screen.endQuiz();
 	}
-	
+	/**
+	 * Method that says the parameter phrase
+	 * @param phrase
+	 */
 	protected void sayPhrase(String phrase){
 		SayAnything anything = new SayAnything(phrase, _screen);
 		//disable buttons while speaking
@@ -169,6 +172,10 @@ public abstract class Quiz{
 	
 	public ArrayList<Achievement> getNewAchievements(){
 		return _newAchievements;
+	}
+	
+	public ArrayList<String> getWordlist(){
+		return _wordlist;
 	}
 	
 	public void sayWord(){
