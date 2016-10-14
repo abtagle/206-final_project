@@ -100,14 +100,15 @@ public class GUI implements WindowListener{
 		return _frame;
 	}
 	protected void setContentPane(Container c){
-		_frame.setVisible(false);
-		if(c instanceof MainMenu){
+		/*if(c instanceof MainMenu){
 			_frame.setSize(1000, 500);
 		}else{		
 			_frame.setSize(800, 600);
-		}
+		}*/
+		_frame.getContentPane().removeAll();
+		_frame.setLocation(5, 5);
 		_frame.setContentPane(c);
-		_frame.setVisible(true);
+		_frame.pack();
 	}
 
 	@Override

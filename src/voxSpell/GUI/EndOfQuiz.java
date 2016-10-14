@@ -144,6 +144,5 @@ public class EndOfQuiz extends JPanel {
 		gbc_button.gridx = 3;
 		gbc_button.gridy = 10;
 		add(button, gbc_button);
-
 	}
 }

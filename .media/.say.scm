@@ -1,2 +1,2 @@
-(voice_kal_diphone) ;;
+(voice_rab_diphone) ;;
 (SayText "Correct")

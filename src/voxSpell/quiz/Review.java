@@ -11,7 +11,10 @@ import java.util.Collections;
 public class Review {
 	private ArrayList<String> _reviewList;
 	private int wordNumber;
-
+	/**
+	 * Constructs a review with a particular list based on the input
+	 * @param isFailed
+	 */
 	public Review(boolean isFailed){
 		if(isFailed){
 			_reviewList = Lists.getInstance().getLastFailed().returnArrayList();
@@ -58,6 +61,9 @@ public class Review {
 	}
 	public ArrayList<String> getReviewList(){
 		return _reviewList;
+	}
+	public void shuffle(){
+		Collections.shuffle(_reviewList);
 	}
 
 }

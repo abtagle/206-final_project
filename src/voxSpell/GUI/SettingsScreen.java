@@ -54,7 +54,7 @@ public class SettingsScreen extends JPanel {
 		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 190, 20, 160, 0, 160, 160, 0, 160, 20, 0};
-		gridBagLayout.rowHeights = new int[]{90, 20, 0, 20, 0, 0, 0, 0, 0, 20, 0, 20, 0, 0, 20, 0, 20, 0};
+		gridBagLayout.rowHeights = new int[]{90, 20, 0, 20, 0, 0, 0, 0, 0, 20, 0, 20, 0, 0, 20, 0, 30, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);

@@ -43,9 +43,9 @@ public class StatisticsScreen extends JPanel {
 		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{30, 0, 50, 300, 20, 0, 30, 0};
-		gridBagLayout.rowHeights = new int[]{30, 0, 20, 0, 20, 0, 20, 20, 20, 20, 20, 0, 0, 30, 0, 0};
+		gridBagLayout.rowHeights = new int[]{30, 0, 20, 0, 20, 0, 20, 20, 20, 20, 20, 0, 0, 30, 0, 30, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 
 		title = new JLabel("Statistics");
@@ -144,13 +144,6 @@ public class StatisticsScreen extends JPanel {
 		gbc_currentStreak.gridy = 8;
 		add(currentStreak, gbc_currentStreak);
 
-		menu = new JButton("Back to Menu");
-		menu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				GUI.getInstance().setContentPane(new MainMenu());
-			}
-		});
-
 		longestStreak = new JLabel("Longest Streak: " + Lists.getInstance().getLongestStreak());
 		longestStreak.setHorizontalAlignment(SwingConstants.RIGHT);
 		longestStreak.setForeground(GUI.foreground);
@@ -186,15 +179,22 @@ public class StatisticsScreen extends JPanel {
 		gbc_overallAccuracy.gridx = 1;
 		gbc_overallAccuracy.gridy = 12;
 		add(overallAccuracy, gbc_overallAccuracy);
-		menu.setForeground(GUI.foreground);
-		menu.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
-		menu.setBackground(GUI.background);
-		GridBagConstraints gbc_menu = new GridBagConstraints();
-		gbc_menu.gridwidth = 2;
-		gbc_menu.insets = new Insets(0, 0, 0, 5);
-		gbc_menu.gridx = 1;
-		gbc_menu.gridy = 14;
-		add(menu, gbc_menu);
+		
+				menu = new JButton("Back to Menu");
+				menu.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						GUI.getInstance().setContentPane(new MainMenu());
+					}
+				});
+				menu.setForeground(GUI.foreground);
+				menu.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
+				menu.setBackground(GUI.background);
+				GridBagConstraints gbc_menu = new GridBagConstraints();
+				gbc_menu.gridwidth = 2;
+				gbc_menu.insets = new Insets(0, 0, 5, 5);
+				gbc_menu.gridx = 1;
+				gbc_menu.gridy = 14;
+				add(menu, gbc_menu);
 
 	}
 	

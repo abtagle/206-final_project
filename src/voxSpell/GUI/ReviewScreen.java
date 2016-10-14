@@ -48,6 +48,7 @@ public class ReviewScreen extends JPanel {
 	private JButton previous;
 	private JLabel title;
 	private JButton viewList;
+	private JButton shuffle;
 	/**
 	 * Create the panel.
 	 */
@@ -57,7 +58,7 @@ public class ReviewScreen extends JPanel {
 		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{20, 40, 160, 160, 160, 40, 20, 0};
-		gridBagLayout.rowHeights = new int[]{20, 0, 0, 0, 60, 60, 40, 0, 0, 50, 0, 20, 0};
+		gridBagLayout.rowHeights = new int[]{20, 0, 0, 0, 60, 60, 40, 0, 0, 50, 0, 30, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
@@ -86,6 +87,25 @@ public class ReviewScreen extends JPanel {
 		gbc_title.gridy = 1;
 		add(title, gbc_title);
 		
+		shuffle = new JButton("Shuffle");
+		shuffle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				currentReview.shuffle();
+				wordNumber.setText("Word 1 of " + (currentReview.getLength()));
+				JOptionPane.showMessageDialog(null, "The list has been shuffled. Words are now in a random order", "Shuffle", JOptionPane.ERROR_MESSAGE);
+				setWordView();
+			}
+		});
+		shuffle.setForeground(GUI.foreground);
+		shuffle.setFont(new Font("Century Schoolbook L", Font.PLAIN, 18));
+		shuffle.setBackground(GUI.background);
+		GridBagConstraints gbc_shuffle = new GridBagConstraints();
+		gbc_shuffle.gridwidth = 7;
+		gbc_shuffle.insets = new Insets(0, 0, 5, 5);
+		gbc_shuffle.gridx = 0;
+		gbc_shuffle.gridy = 3;
+		add(shuffle, gbc_shuffle);
+		
 		//Label that says what word you are on
 		wordNumber = new JLabel("Word 1 of " + (currentReview.getLength()));
 		wordNumber.setHorizontalAlignment(SwingConstants.CENTER);
@@ -95,7 +115,7 @@ public class ReviewScreen extends JPanel {
 		gbc_wordNumber.gridwidth = 7;
 		gbc_wordNumber.insets = new Insets(0, 0, 5, 0);
 		gbc_wordNumber.gridx = 0;
-		gbc_wordNumber.gridy = 3;
+		gbc_wordNumber.gridy = 4;
 		add(wordNumber, gbc_wordNumber);
 		previous.setForeground(GUI.foreground);
 		previous.setFont(new Font(GUI.FONT, Font.BOLD, 28));
@@ -256,6 +276,10 @@ public class ReviewScreen extends JPanel {
 	 */
 	private void setForNewWord(){
 		wordNumber.setText("Word " + (currentReview.getWordNumber()+1) + " of " + currentReview.getLength());
+
+	}
+	
+	private void setWordView(){
 		if(viewWordToggle.isSelected()){
 			word.setText(currentReview.getWord());
 		} else{

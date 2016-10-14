@@ -132,7 +132,7 @@ public class Options extends JFrame {
 		contentPane.add(stats, gbc_stats);
 	}
 	
-	class ChangeVoice extends JPanel {
+	private class ChangeVoice extends JPanel {
 
 		/**
 		 * Create the panel.
@@ -196,7 +196,6 @@ public class Options extends JFrame {
 					JOptionPane.showMessageDialog(null, "Your voice has successfully been changed to " + (String)voiceSelect.getSelectedItem(), "Changed Voice", JOptionPane.INFORMATION_MESSAGE);
 				}
 			});
-			button.setForeground(GUI.background);
 			button.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 			GridBagConstraints gbc_button = new GridBagConstraints();
 			gbc_button.fill = GridBagConstraints.HORIZONTAL;
