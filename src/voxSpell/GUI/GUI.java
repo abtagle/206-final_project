@@ -31,9 +31,9 @@ public class GUI implements WindowListener{
 	public static int NUMBER_OF_LEVELS;
 	private static Dimension _frameSize;
 	private static int _level;
-	protected static final String FONT="Century Schoolbook L";
-	protected static Color background = new Color(51, 0, 51);
-	protected static Color foreground = new Color(204, 204, 204);
+	public static final String FONT="Century Schoolbook L";
+	public static Color background = new Color(51, 0, 51);
+	public static Color foreground = new Color(204, 204, 204);
 
 	//From: http://stackoverflow.com/questions/7140248/get-system-default-font
 	public static final Font TITLE_FONT = new Font(new JLabel().getName(), 1, 20);
