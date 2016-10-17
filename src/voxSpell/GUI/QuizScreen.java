@@ -8,6 +8,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import voxSpell.quiz.Lists;
 import voxSpell.quiz.NewQuiz;
 import voxSpell.quiz.Quiz;
 import voxSpell.quiz.Settings;
@@ -39,6 +40,7 @@ public class QuizScreen extends JPanel {
 	private JButton start;
 	private JButton menu;
 	private JButton changeVoice;
+	private JLabel streak;
 	/**
 	 * Create the panel.
 	 */
@@ -48,9 +50,9 @@ public class QuizScreen extends JPanel {
 		
 		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{100, 0, 190, 20, 190, 0, 100, 0};
+		gridBagLayout.columnWidths = new int[]{100, 0, 190, 20, 190, 20, 0, 100, 0};
 		gridBagLayout.rowHeights = new int[]{30, 40, 20, 0, 0, 0, 50, 50, 50, 0, 10, 0, 30, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
@@ -60,7 +62,7 @@ public class QuizScreen extends JPanel {
 		titleLabel.setForeground(GUI.foreground);
 		titleLabel.setFont(new Font(GUI.FONT, Font.BOLD, 72));
 		GridBagConstraints gbc_titleLabel = new GridBagConstraints();
-		gbc_titleLabel.gridwidth = 7;
+		gbc_titleLabel.gridwidth = 8;
 		gbc_titleLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_titleLabel.fill = GridBagConstraints.HORIZONTAL;
 		gbc_titleLabel.gridx = 0;
@@ -74,7 +76,7 @@ public class QuizScreen extends JPanel {
 		wordNumberLabel.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 		GridBagConstraints gbc_wordNumberLabel = new GridBagConstraints();
 		gbc_wordNumberLabel.fill = GridBagConstraints.HORIZONTAL;
-		gbc_wordNumberLabel.gridwidth = 7;
+		gbc_wordNumberLabel.gridwidth = 8;
 		gbc_wordNumberLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_wordNumberLabel.gridx = 0;
 		gbc_wordNumberLabel.gridy = 3;
@@ -86,7 +88,7 @@ public class QuizScreen extends JPanel {
 		scoreLabel.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 		GridBagConstraints gbc_scoreLabel = new GridBagConstraints();
 		gbc_scoreLabel.fill = GridBagConstraints.HORIZONTAL;
-		gbc_scoreLabel.gridwidth = 7;
+		gbc_scoreLabel.gridwidth = 8;
 		gbc_scoreLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_scoreLabel.gridx = 0;
 		gbc_scoreLabel.gridy = 5;
@@ -106,7 +108,7 @@ public class QuizScreen extends JPanel {
 		start.setForeground(Color.WHITE);
 		GridBagConstraints gbc_menu = new GridBagConstraints();
 		gbc_menu.fill = GridBagConstraints.HORIZONTAL;
-		gbc_menu.gridwidth = 7;
+		gbc_menu.gridwidth = 8;
 		gbc_menu.insets = new Insets(0, 0, 5, 0);
 		gbc_menu.gridx = 0;
 		gbc_menu.gridy = 6;
@@ -136,7 +138,7 @@ public class QuizScreen extends JPanel {
 		GridBagConstraints gbc_relisten = new GridBagConstraints();
 		gbc_relisten.fill = GridBagConstraints.BOTH;
 		gbc_relisten.insets = new Insets(0, 0, 5, 5);
-		gbc_relisten.gridx = 5;
+		gbc_relisten.gridx = 6;
 		gbc_relisten.gridy = 7;
 		add(relisten, gbc_relisten);
 		
@@ -155,7 +157,7 @@ public class QuizScreen extends JPanel {
 		submit.setForeground(GUI.foreground);
 		submit.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		GridBagConstraints gbc_submit = new GridBagConstraints();
-		gbc_submit.gridwidth = 5;
+		gbc_submit.gridwidth = 6;
 		gbc_submit.fill = GridBagConstraints.HORIZONTAL;
 		gbc_submit.insets = new Insets(0, 0, 5, 5);
 		gbc_submit.gridx = 1;
@@ -193,6 +195,17 @@ public class QuizScreen extends JPanel {
 		gbc_changeVoice.gridx = 4;
 		gbc_changeVoice.gridy = 11;
 		add(changeVoice, gbc_changeVoice);
+		
+		streak = new JLabel("Streak: " + Lists.getInstance().getStreak());
+		streak.setHorizontalAlignment(SwingConstants.CENTER);
+		streak.setForeground(GUI.foreground);
+		streak.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
+		GridBagConstraints gbc_streak = new GridBagConstraints();
+		gbc_streak.anchor = GridBagConstraints.EAST;
+		gbc_streak.insets = new Insets(0, 0, 5, 5);
+		gbc_streak.gridx = 6;
+		gbc_streak.gridy = 11;
+		add(streak, gbc_streak);
 		disableButtons();
 	}
 	/**
@@ -215,6 +228,7 @@ public class QuizScreen extends JPanel {
 	}
 	public void updateScore(int score){
 		scoreLabel.setText("Score: " + score);
+		streak.setText("Streak: " + Lists.getInstance().getStreak());
 	}
 	public void disableButtons(){
 		submit.setEnabled(false);
