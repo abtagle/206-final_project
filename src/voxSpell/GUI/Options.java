@@ -44,20 +44,21 @@ public class Options extends JFrame {
 	 */
 	public Options(Quiz quiz) {
 		thisFrame = this;
+		thisFrame.setSize(100, 300);
 		_quiz = quiz;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(GUI.background);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		setContentPane(new ChangeVoice());
+		/*setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{50, 300, 50, 0};
 		gbl_contentPane.rowHeights = new int[]{30, 36, 0, 0, 0, 0, 0, 0, 30, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
-		
 		JLabel title = new JLabel("Options");
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		title.setForeground(GUI.foreground);
@@ -130,6 +131,7 @@ public class Options extends JFrame {
 		gbc_stats.gridx = 1;
 		gbc_stats.gridy = 7;
 		contentPane.add(stats, gbc_stats);
+		*/
 	}
 	
 	private class ChangeVoice extends JPanel {

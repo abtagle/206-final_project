@@ -33,10 +33,11 @@ public class QuizScreen extends JPanel {
 	private JLabel titleLabel ;
 	private JButton relisten;
 	private JButton submit;
-	private JButton options;
 	private String title;
 	private Quiz quiz;
 	private JButton start;
+	private JButton menu;
+	private JButton changeVoice;
 	/**
 	 * Create the panel.
 	 */
@@ -46,9 +47,9 @@ public class QuizScreen extends JPanel {
 		
 		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{100, 0, 400, 0, 100, 0};
+		gridBagLayout.columnWidths = new int[]{100, 0, 190, 20, 190, 0, 100, 0};
 		gridBagLayout.rowHeights = new int[]{30, 40, 20, 0, 0, 0, 50, 50, 50, 0, 10, 0, 30, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
@@ -57,7 +58,7 @@ public class QuizScreen extends JPanel {
 		titleLabel.setForeground(GUI.foreground);
 		titleLabel.setFont(new Font(GUI.FONT, Font.BOLD, 72));
 		GridBagConstraints gbc_titleLabel = new GridBagConstraints();
-		gbc_titleLabel.gridwidth = 5;
+		gbc_titleLabel.gridwidth = 7;
 		gbc_titleLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_titleLabel.fill = GridBagConstraints.HORIZONTAL;
 		gbc_titleLabel.gridx = 0;
@@ -70,7 +71,7 @@ public class QuizScreen extends JPanel {
 		wordNumberLabel.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 		GridBagConstraints gbc_wordNumberLabel = new GridBagConstraints();
 		gbc_wordNumberLabel.fill = GridBagConstraints.HORIZONTAL;
-		gbc_wordNumberLabel.gridwidth = 5;
+		gbc_wordNumberLabel.gridwidth = 7;
 		gbc_wordNumberLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_wordNumberLabel.gridx = 0;
 		gbc_wordNumberLabel.gridy = 3;
@@ -82,7 +83,7 @@ public class QuizScreen extends JPanel {
 		scoreLabel.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 		GridBagConstraints gbc_scoreLabel = new GridBagConstraints();
 		gbc_scoreLabel.fill = GridBagConstraints.HORIZONTAL;
-		gbc_scoreLabel.gridwidth = 5;
+		gbc_scoreLabel.gridwidth = 7;
 		gbc_scoreLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_scoreLabel.gridx = 0;
 		gbc_scoreLabel.gridy = 5;
@@ -100,18 +101,18 @@ public class QuizScreen extends JPanel {
 		start.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
 		start.setBackground(new Color(102, 0, 51));
 		start.setForeground(Color.WHITE);
-		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.fill = GridBagConstraints.HORIZONTAL;
-		gbc_button.gridwidth = 5;
-		gbc_button.insets = new Insets(0, 0, 5, 5);
-		gbc_button.gridx = 0;
-		gbc_button.gridy = 6;
-		add(start, gbc_button);
+		GridBagConstraints gbc_menu = new GridBagConstraints();
+		gbc_menu.fill = GridBagConstraints.HORIZONTAL;
+		gbc_menu.gridwidth = 7;
+		gbc_menu.insets = new Insets(0, 0, 5, 0);
+		gbc_menu.gridx = 0;
+		gbc_menu.gridy = 6;
+		add(start, gbc_menu);
 		//Spelling JTextField
 		spellingBar = new JTextField();
 		spellingBar.setFont(new Font("Dialog", Font.PLAIN, 20));
 		GridBagConstraints gbc_spellingBar = new GridBagConstraints();
-		gbc_spellingBar.gridwidth = 2;
+		gbc_spellingBar.gridwidth = 4;
 		gbc_spellingBar.insets = new Insets(0, 0, 5, 5);
 		gbc_spellingBar.fill = GridBagConstraints.BOTH;
 		gbc_spellingBar.gridx = 1;
@@ -132,7 +133,7 @@ public class QuizScreen extends JPanel {
 		GridBagConstraints gbc_relisten = new GridBagConstraints();
 		gbc_relisten.fill = GridBagConstraints.BOTH;
 		gbc_relisten.insets = new Insets(0, 0, 5, 5);
-		gbc_relisten.gridx = 3;
+		gbc_relisten.gridx = 5;
 		gbc_relisten.gridy = 7;
 		add(relisten, gbc_relisten);
 		
@@ -150,31 +151,42 @@ public class QuizScreen extends JPanel {
 		submit.setForeground(GUI.foreground);
 		submit.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		GridBagConstraints gbc_submit = new GridBagConstraints();
-		gbc_submit.gridwidth = 3;
+		gbc_submit.gridwidth = 5;
 		gbc_submit.fill = GridBagConstraints.HORIZONTAL;
 		gbc_submit.insets = new Insets(0, 0, 5, 5);
 		gbc_submit.gridx = 1;
 		gbc_submit.gridy = 9;
 		add(submit, gbc_submit);
 		
-		options = new JButton("Options");
-		options.setBackground(GUI.background);
-		options.addActionListener(new ActionListener() {
+		menu = new JButton("Back to Menu");
+		menu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Options window = new Options(quiz);
-				window.setSize(new Dimension(400, 200));
-				window.setVisible(true);
+				GUI.getInstance().setContentPane(new MainMenu());
 			}
 		});
-		options.setForeground(GUI.foreground);
-		options.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
-		GridBagConstraints gbc_options = new GridBagConstraints();
-		gbc_options.gridwidth = 3;
-		gbc_options.fill = GridBagConstraints.HORIZONTAL;
-		gbc_options.insets = new Insets(0, 0, 5, 5);
-		gbc_options.gridx = 1;
-		gbc_options.gridy = 11;
-		add(options, gbc_options);
+		menu.setForeground(GUI.foreground);
+		menu.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
+		menu.setBackground(GUI.background);
+		gbc_menu = new GridBagConstraints();
+		gbc_menu.insets = new Insets(0, 0, 5, 5);
+		gbc_menu.gridx = 2;
+		gbc_menu.gridy = 11;
+		add(menu, gbc_menu);
+		
+		changeVoice = new JButton("Change Voice");
+		changeVoice.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Options(quiz).setVisible(true);
+			}
+		});
+		changeVoice.setForeground(GUI.foreground);
+		changeVoice.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
+		changeVoice.setBackground(GUI.background);
+		GridBagConstraints gbc_changeVoice = new GridBagConstraints();
+		gbc_changeVoice.insets = new Insets(0, 0, 5, 5);
+		gbc_changeVoice.gridx = 4;
+		gbc_changeVoice.gridy = 11;
+		add(changeVoice, gbc_changeVoice);
 		disableButtons();
 	}
 	/**

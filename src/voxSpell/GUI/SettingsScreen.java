@@ -132,6 +132,7 @@ public class SettingsScreen extends JPanel {
 				Settings.getInstance().setLevel(selected);
 				setCurrentLevelText();
 				setSampleWords();
+				JOptionPane.showMessageDialog(null, "Your are now playing the level  \"" + levelSelect.getSelectedItem() + "\".","Changed Level", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		submitLevel.setForeground(GUI.foreground);
@@ -229,6 +230,7 @@ public class SettingsScreen extends JPanel {
 		submitQuizSize.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Settings.getInstance().setQuizSize(Integer.parseInt((String)quizSizeSelect.getSelectedItem()));
+				JOptionPane.showMessageDialog(null, "The quiz size has been changed to " +quizSizeSelect.getSelectedItem() +".","Changed Level", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		submitQuizSize.setForeground(GUI.foreground);

@@ -70,7 +70,7 @@ public class ReviewScreen extends JPanel {
 		previous.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				currentReview.previousWord();		
-				setForNewWord();			
+				setWordView();			
 			}
 		});
 		//Title of the panel
@@ -92,7 +92,6 @@ public class ReviewScreen extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				currentReview.shuffle();
 				wordNumber.setText("Word 1 of " + (currentReview.getLength()));
-				JOptionPane.showMessageDialog(null, "The list has been shuffled. Words are now in a random order", "Shuffle", JOptionPane.ERROR_MESSAGE);
 				setWordView();
 			}
 		});
@@ -132,7 +131,7 @@ public class ReviewScreen extends JPanel {
 		next.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				currentReview.nextWord();
-				setForNewWord();
+				setWordView();
 			}
 		});
 		
@@ -278,12 +277,15 @@ public class ReviewScreen extends JPanel {
 		wordNumber.setText("Word " + (currentReview.getWordNumber()+1) + " of " + currentReview.getLength());
 
 	}
-	
+	/**
+	 * Sets the word view for the next question
+	 */
 	private void setWordView(){
 		if(viewWordToggle.isSelected()){
 			word.setText(currentReview.getWord());
 		} else{
 			word.setText("?");
 		}
+		setForNewWord();
 	}
 }

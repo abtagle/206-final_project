@@ -1,2 +1,2 @@
-(voice_rab_diphone) ;;
-(SayText "thin")
+(voice_kal_diphone) ;;
+(SayText "beautiful")
