@@ -3,6 +3,7 @@ package voxSpell.GUI;
 
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -34,6 +35,8 @@ public class VideoReward extends JFrame{
 	private EmbeddedMediaPlayer _video;
 	private String _videoName;
 	private final EmbeddedMediaPlayerComponent _player;
+	
+	private JButton btnPause;
 
 	public VideoReward(Achievement achievement) {
 		super("Video Reward");
@@ -47,7 +50,7 @@ public class VideoReward extends JFrame{
 	
 	public VideoReward() {
 		super("Secret Video Reward");
-		_videoName = "/big_buck_bunny_1_minute.avi";
+		_videoName = "/name-o.avi";
 		_player = new EmbeddedMediaPlayerComponent();
 		_video = _player.getMediaPlayer();
 		setContentPane(_player);
@@ -66,6 +69,10 @@ public class VideoReward extends JFrame{
 		_video.canPause();
 
 		JButton btnMute = new JButton("Mute");
+		//set appearance of mute
+		btnMute.setForeground(GUI.foreground);
+		btnMute.setBackground(GUI.background);
+		btnMute.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 		panel.add(btnMute, BorderLayout.NORTH);
 		btnMute.addActionListener(new ActionListener() {
 			@Override
@@ -75,13 +82,17 @@ public class VideoReward extends JFrame{
 		});
 
 
-		JButton btnPause = new JButton("Pause");
+		btnPause = new JButton("Pause");
 		btnPause.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pause();
 			}
 		});
+		//set appearance of pause
+		btnPause.setForeground(GUI.foreground);
+		btnPause.setBackground(GUI.background);
+		btnPause.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 		panel.add(btnPause, BorderLayout.SOUTH);
 
 		setLocation(100, 100);
@@ -114,8 +125,10 @@ public class VideoReward extends JFrame{
 	private void pause(){
 		if(_video.isPlaying()){
 			_video.pause();
+			btnPause.setText("Play");
 		} else {
 			_video.play();
+			btnPause.setText("Pause");
 		}
 	}
 

@@ -10,6 +10,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 import voxSpell.achievements.Achievement;
+import voxSpell.quiz.ButtonSound;
 import voxSpell.quiz.Quiz;
 
 import java.awt.Insets;
@@ -39,22 +40,23 @@ public class EndOfQuiz extends JPanel {
 		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{30, 0, 20, 0, 30, 0};
-		gridBagLayout.rowHeights = new int[]{20, 0, 10, 0, 30, 0, 100, 10, 0, 10, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{20, 0, 10, 0, 30, 0, 100, 50, 0, 30, 0, 30, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
-
+		//Congratulations label
 		congratulatoins = new JLabel("Congratulations");
 		congratulatoins.setHorizontalAlignment(SwingConstants.CENTER);
 		congratulatoins.setForeground(GUI.foreground);
 		congratulatoins.setFont(new Font(GUI.FONT, Font.BOLD, 72));
 		GridBagConstraints gbc_congratulatoins = new GridBagConstraints();
-		gbc_congratulatoins.gridwidth = 5;
+		gbc_congratulatoins.gridwidth = 3;
 		gbc_congratulatoins.insets = new Insets(0, 0, 5, 0);
-		gbc_congratulatoins.gridx = 0;
+		gbc_congratulatoins.gridx = 1;
 		gbc_congratulatoins.gridy = 1;
 		add(congratulatoins, gbc_congratulatoins);
-
+		
+		//Label saying score
 		score = new JLabel("You scored " + _quiz.getScore() +" out of " + _quiz.getNumberOfWords());
 		score.setHorizontalAlignment(SwingConstants.CENTER);
 		score.setForeground(GUI.foreground);
@@ -65,6 +67,8 @@ public class EndOfQuiz extends JPanel {
 		gbc_score.gridx = 0;
 		gbc_score.gridy = 3;
 		add(score, gbc_score);
+		
+		//Achievements view, if any were unlocked
 		if(_quiz.getNewAchievements().size() != 0){
 			list = new JLabel("Achievements Unlocked");
 			list.setIcon(new ImageIcon(GUI.PATH+"/achievements.png"));
@@ -74,7 +78,7 @@ public class EndOfQuiz extends JPanel {
 			GridBagConstraints gbc_list = new GridBagConstraints();
 			gbc_list.gridwidth = 2;
 			gbc_list.insets = new Insets(0, 0, 5, 5);
-			gbc_list.gridx = 0;
+			gbc_list.gridx =1;
 			gbc_list.gridy = 4;
 			add(list, gbc_list);
 
@@ -96,7 +100,7 @@ public class EndOfQuiz extends JPanel {
 			gbc_achievements.gridx = 1;
 			gbc_achievements.gridy = 5;
 			add(achievements, gbc_achievements);
-			
+			new ButtonSound("well-done.wav").execute();
 		}
 
 		button = new JButton("Back To Menu");

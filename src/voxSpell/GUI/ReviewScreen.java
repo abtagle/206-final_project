@@ -25,6 +25,7 @@ import javax.swing.JToggleButton;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.UIManager;
@@ -245,6 +246,8 @@ public class ReviewScreen extends JPanel {
 		viewList = new JButton("View List");
 		viewList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ArrayList<String> alphabeticalList = (ArrayList<String>)currentReview.getReviewList().clone();
+				Collections.sort(alphabeticalList);
 				new WordListView(currentReview.getReviewList());
 			}
 		});

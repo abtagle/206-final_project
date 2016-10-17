@@ -23,6 +23,7 @@ import javax.swing.UIManager;
 
 /**
  * Class representing the quiz screen created for the project
+ * Generated GUI with WindowBuilder
  * @author atag549
  *
  */
@@ -53,6 +54,7 @@ public class QuizScreen extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
+		//Title label
 		titleLabel = new JLabel(this.title);
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		titleLabel.setForeground(GUI.foreground);
@@ -65,6 +67,7 @@ public class QuizScreen extends JPanel {
 		gbc_titleLabel.gridy = 1;
 		add(titleLabel, gbc_titleLabel);
 		
+		//Label showing what word you're on
 		wordNumberLabel = new JLabel("Word 1 of " + Settings.getInstance().getQuizSize());
 		wordNumberLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		wordNumberLabel.setForeground(GUI.foreground);
@@ -137,6 +140,7 @@ public class QuizScreen extends JPanel {
 		gbc_relisten.gridy = 7;
 		add(relisten, gbc_relisten);
 		
+		//Submit Button
 		submit = new JButton("Submit");
 		submit.setBackground(GUI.background);
 		submit.addActionListener(new ActionListener() {
@@ -158,6 +162,7 @@ public class QuizScreen extends JPanel {
 		gbc_submit.gridy = 9;
 		add(submit, gbc_submit);
 		
+		//Back to Menu button
 		menu = new JButton("Back to Menu");
 		menu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -173,6 +178,7 @@ public class QuizScreen extends JPanel {
 		gbc_menu.gridy = 11;
 		add(menu, gbc_menu);
 		
+		//Change voice button
 		changeVoice = new JButton("Change Voice");
 		changeVoice.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

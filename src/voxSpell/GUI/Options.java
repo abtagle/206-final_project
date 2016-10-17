@@ -52,86 +52,7 @@ public class Options extends JFrame {
 		contentPane.setBackground(GUI.background);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(new ChangeVoice());
-		/*setContentPane(contentPane);
-		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{50, 300, 50, 0};
-		gbl_contentPane.rowHeights = new int[]{30, 36, 0, 0, 0, 0, 0, 0, 30, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		contentPane.setLayout(gbl_contentPane);
-		JLabel title = new JLabel("Options");
-		title.setHorizontalAlignment(SwingConstants.CENTER);
-		title.setForeground(GUI.foreground);
-		title.setFont(new Font(GUI.FONT, Font.BOLD, 36));
-		GridBagConstraints gbc_title = new GridBagConstraints();
-		gbc_title.gridwidth = 3;
-		gbc_title.fill = GridBagConstraints.HORIZONTAL;
-		gbc_title.insets = new Insets(0, 0, 5, 0);
-		gbc_title.anchor = GridBagConstraints.NORTH;
-		gbc_title.gridx = 0;
-		gbc_title.gridy = 1;
-		contentPane.add(title, gbc_title);
 		
-		menu = new JButton("Back to Menu");
-		menu.setBackground(GUI.background);
-		menu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to LEAVE THIS QUIZ? You will lose your streak.", "Leave Quiz", JOptionPane.YES_NO_OPTION);
-				if (reply == JOptionPane.YES_OPTION) {
-					_quiz.exit();
-					dispose();
-					GUI.getInstance().setContentPane(new MainMenu());
-				}
-					
-			}
-		});
-		menu.setForeground(GUI.foreground);
-		menu.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
-		GridBagConstraints gbc_menu = new GridBagConstraints();
-		gbc_menu.fill = GridBagConstraints.HORIZONTAL;
-		gbc_menu.insets = new Insets(0, 0, 5, 5);
-		gbc_menu.gridx = 1;
-		gbc_menu.gridy = 3;
-		contentPane.add(menu, gbc_menu);
-		
-		changeVoice = new JButton("Change Voice");
-		changeVoice.setBackground(GUI.background);
-		changeVoice.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				thisFrame.setVisible(false);
-				thisFrame.setContentPane(new ChangeVoice());
-				thisFrame.setVisible(true);
-			}
-		});
-		changeVoice.setForeground(GUI.foreground);
-		changeVoice.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
-		GridBagConstraints gbc_changeVoice = new GridBagConstraints();
-		gbc_changeVoice.fill = GridBagConstraints.HORIZONTAL;
-		gbc_changeVoice.insets = new Insets(0, 0, 5, 5);
-		gbc_changeVoice.gridx = 1;
-		gbc_changeVoice.gridy = 5;
-		contentPane.add(changeVoice, gbc_changeVoice);
-		
-		stats = new JButton("Statistics");
-		stats.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				thisFrame.setVisible(false);
-				thisFrame.setContentPane(new InnerStatistics());
-				thisFrame.setSize(800, 600);
-				thisFrame.setVisible(true);
-				
-			}
-		});
-		stats.setBackground(GUI.background);
-		stats.setForeground(GUI.foreground);
-		stats.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
-		GridBagConstraints gbc_stats = new GridBagConstraints();
-		gbc_stats.fill = GridBagConstraints.HORIZONTAL;
-		gbc_stats.insets = new Insets(0, 0, 5, 5);
-		gbc_stats.gridx = 1;
-		gbc_stats.gridy = 7;
-		contentPane.add(stats, gbc_stats);
-		*/
 	}
 	
 	private class ChangeVoice extends JPanel {
@@ -189,6 +110,7 @@ public class Options extends JFrame {
 			}
 			voiceSelect.setModel(selectModel);
 			
+			//Button to submit voice change
 			JButton button = new JButton("Submit");
 			button.setBackground(GUI.background);
 			button.setForeground(GUI.foreground);
