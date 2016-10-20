@@ -32,6 +32,10 @@ public class HelpScreen extends JFrame {
 
 	private JPanel contentPane;
 	private JButton newQuiz;
+	private JButton review;
+	private JButton stats;
+	private JButton achievements;
+	private JButton settings;
 	private JTextArea helpArea;
 	private JScrollPane scrollPane;
 	private JLabel title;
@@ -106,7 +110,86 @@ public class HelpScreen extends JFrame {
 		gbc_newQuiz.gridy = 2;
 		contentPane.add(newQuiz, gbc_newQuiz);
 
+		//Review button
+		review = new JButton("");
+		review.setIcon(new ImageIcon(GUI.PATH+"/review.png"));
+		review.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				helpArea.setText(getHelpText("Review"));
+				title.setText("Review");
+			}
+		});
+		review.setForeground(GUI.foreground);
+		review.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
+		review.setBackground(new Color(51, 0, 51));
+		GridBagConstraints gbc_review = new GridBagConstraints();
+		gbc_review.insets = new Insets(0, 0, 5, 5);
+		gbc_review.gridx = 1;
+		gbc_review.gridy = 3;
+		contentPane.add(review, gbc_review);
+		
+		//Stats button
+		stats = new JButton("");
+		stats.setIcon(new ImageIcon(GUI.PATH+"/stats.png"));
+		stats.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				helpArea.setText(getHelpText("stats"));
+				title.setText("stats");
+			}
+		});
+		stats.setForeground(GUI.foreground);
+		stats.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
+		stats.setBackground(new Color(51, 0, 51));
+		GridBagConstraints gbc_stats = new GridBagConstraints();
+		gbc_stats.insets = new Insets(0, 0, 5, 5);
+		gbc_stats.gridx = 1;
+		gbc_stats.gridy = 4;
+		contentPane.add(stats, gbc_stats);
+		
+		//Achievements button
+		achievements = new JButton("");
+		achievements.setIcon(new ImageIcon(GUI.PATH+"/achievements.png"));
+		achievements.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				helpArea.setText(getHelpText("achievements"));
+				title.setText("Achievements");
+			}
+		});
+		achievements.setForeground(GUI.foreground);
+		achievements.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
+		achievements.setBackground(new Color(51, 0, 51));
+		GridBagConstraints gbc_achievements = new GridBagConstraints();
+		gbc_achievements.insets = new Insets(0, 0, 5, 5);
+		gbc_achievements.gridx = 1;
+		gbc_achievements.gridy = 5;
+		contentPane.add(achievements, gbc_achievements);
+		
+		//Settings button
+		settings = new JButton("");
+		settings.setIcon(new ImageIcon(GUI.PATH+"/settings.png"));
+		settings.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				helpArea.setText(getHelpText("settings"));
+				title.setText("Settings");
+			}
+		});
+		settings.setForeground(GUI.foreground);
+		settings.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
+		settings.setBackground(new Color(51, 0, 51));
+		GridBagConstraints gbc_settings = new GridBagConstraints();
+		gbc_settings.insets = new Insets(0, 0, 5, 5);
+		gbc_settings.gridx = 1;
+		gbc_settings.gridy = 6;
+		contentPane.add(settings, gbc_settings);
+		
 	}
+	
+	
+	/**
+	 * Retrieves the help text from the .txt file in the Help folder for the specified mode
+	 * @param mode
+	 * @return
+	 */
 	private String getHelpText(String mode){
 		File help = new File(GUI.PATH + "/Help/" + mode);
 		StringBuilder text = new StringBuilder();
