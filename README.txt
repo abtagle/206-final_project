@@ -1,6 +1,6 @@
 Welcome to voxSpell- an beta version of the projext application developed by Aimee Tagle for Softeng 206's Assignment 4. There is a tl;dr at the bottom
 
-Last Modified: 09 September, 2016
+Last Modified: 11 October, 2016
 
 ------------------------------------
 RUNNING THE JAR FILE
@@ -11,11 +11,13 @@ This assignment should run correctly in the standard Linux environment on lab co
 BEFORE YOU TRY THINGS OUT
 ::::::::::::::::::
 Cover the words in the buttons of the menu. Can you tell what the icons represent? If you can't (especially with review), please select alternatives. I'm thinking about just doing flashcards, but they may just look like rectangles.
+
+Just added the view whole word list button in review that isn't yet implemented
 ==================================================================
 ------------------------------------
 STARTUP
 ------------------------------------
-Upon executing the executable .jar file, you will be prompted to slect a word list. You may select any word list that is in the format agreed upon in lectures. I have provided one as a sample in the ideal format for my application. 
+Double click the jar file and enjoy!
 
 ==================================================================
 ------------------------------------
@@ -48,7 +50,7 @@ Literally just the statistics. You should be able to view the statistics by leve
 ::::::::::::::::::
 SETTINGS
 ::::::::::::::::::
-This is probably even more intuitive. Added the ability to see what some of the words in the list are when you submit/choose a list.
+This is probably even more intuitive. Added the ability to see what some of the words in the list are when you submit/choose a list, and changing the list is an options as well. The restart game button is red but generally just stands out as not ausual part of this GUI and the process.
 ==================================================================
 ------------------------------------
 WHAT I WANT FEEDBACK ON
@@ -67,7 +69,10 @@ WHAT I DO NOT WANT FEEDBACK ON
 ------------------------------------
 -Missing Javadoc commenting
 -How little commenting there is if you don't say what needs the commenting (because I already know I need more commenting)
-
+------------------------------------
+KNOWN BUGS
+------------------------------------
+On one person's computer in the labs, the application was failing to resize correctly between panels. I have been unable to recreate this, but my theory was the use of instanceOf.
 ==================================================================
 ---------------------------------
 TL;DR
