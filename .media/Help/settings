@@ -1,0 +1,17 @@
+Settings mode allows you to:
+ -Import a new text file to use as the word list source
+ -Change the level you are currently being learning and being tested on
+ -Change the voice used in the application
+ -Change the quiz size (number of words)
+ -Restart the game
+ -Change the theme
+
+Any changes to voice, quiz size and word list in their drop down box can be confirmed by pressing the "Submit" button next to it.
+
+A preview of the level you are currently on is shown at the bottom of the screen, as well as the name of the level.
+
+If you change the voice, you will hear a preview of voices you select before submitting the change.
+
+If you choose to restart the game, you will be warned that all your statistics, streaks, and achievements will be lost.
+
+The changes between dark and light.

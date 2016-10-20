@@ -4,8 +4,10 @@ Start the quiz by pressing the "START" button.
 
 You will hear a word. Spell the word in the text bar and press enter or "Submit" to check the spelling. If you need to hear the word again, press "Relisten". 
 
-If you spell the word incorrectly, you will get another chance to spell it. However, you will lose your streak.
+If you spell the word incorrectly, you will get another chance to spell it. However, you will lose your streak. If you spell it incorrectly again, you fail the word.
 
 You can change the voice used in the quiz by pressing the button and selecting one.
 
-At the end of the quiz, you can view the achievements you unlocked during the quiz (if any), and see your score.
+If you go to the Main Menu during the quiz, you will lose your streak, as you did not spell the word you were on correctly.
+
+At the end of the quiz, you can view the achievements you unlocked during the quiz (if any), the words in your quiz, and see your score.
