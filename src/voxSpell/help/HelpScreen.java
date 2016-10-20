@@ -48,7 +48,8 @@ public class HelpScreen extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setSize(600, 400);
+		contentPane.setSize(590, 500);
+		setSize(590, 500);
 		//Set up content pane in terms of layout and colour
 		contentPane.setBackground(GUI.background);
 		contentPane.setForeground(GUI.foreground);
@@ -56,9 +57,9 @@ public class HelpScreen extends JFrame {
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0, 900, 20, 0};
-		gbl_contentPane.rowHeights = new int[]{30, 20, 0, 0, 0, 0, 0, 30, 0};
+		gbl_contentPane.rowHeights = new int[]{30, 20, 0, 0, 0, 0, 0, 70, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		title = new JLabel("Help");
@@ -66,8 +67,9 @@ public class HelpScreen extends JFrame {
 		title.setForeground(GUI.foreground);
 		title.setFont(new Font(GUI.FONT, Font.PLAIN, 36));
 		GridBagConstraints gbc_title = new GridBagConstraints();
+		gbc_title.gridwidth = 4;
 		gbc_title.insets = new Insets(0, 0, 5, 5);
-		gbc_title.gridx = 2;
+		gbc_title.gridx = 0;
 		gbc_title.gridy = 1;
 		contentPane.add(title, gbc_title);
 
@@ -134,7 +136,7 @@ public class HelpScreen extends JFrame {
 		stats.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				helpArea.setText(getHelpText("stats"));
-				title.setText("stats");
+				title.setText("Statistics");
 			}
 		});
 		stats.setForeground(GUI.foreground);
