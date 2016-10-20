@@ -88,7 +88,7 @@ public class HelpScreen extends JFrame {
 		helpArea = new JTextArea("Select a mode to get help with on the left \n <<");
 		helpArea.setWrapStyleWord(true);
 		helpArea.setLineWrap(true);
-		helpArea.setBackground(new Color(51, 0, 51));
+		helpArea.setBackground(GUI.background);
 		helpArea.setEditable(false);
 		helpArea.setForeground(GUI.foreground);
 		helpArea.setFont(new Font(GUI.FONT, Font.PLAIN, 24));

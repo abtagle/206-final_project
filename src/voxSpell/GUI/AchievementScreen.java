@@ -9,15 +9,18 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 import voxSpell.achievements.AchievementList;
+import voxSpell.help.HelpScreen;
 
 import java.awt.Insets;
 import javax.swing.JProgressBar;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.UIManager;
 /**
  * Class representing the screen users see when they view achievements
  * @author atag549
@@ -42,6 +45,7 @@ public class AchievementScreen extends JPanel {
 	private JButton right250ViewReward;
 	private JLabel title2;
 	private JLabel eButton;
+	private JLabel help;
 
 	/**
 	 * Create the panel.
@@ -284,6 +288,24 @@ public class AchievementScreen extends JPanel {
 		gbc_menu.gridx = 0;
 		gbc_menu.gridy = 15;
 		add(menu, gbc_menu);
+		
+		//Help button
+		help = new JLabel("");
+		help.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				new HelpScreen();
+			}
+		});
+		help.setIcon(new ImageIcon(GUI.PATH + "/help.png"));
+		help.setHorizontalAlignment(SwingConstants.RIGHT);
+		help.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
+		help.setBackground(GUI.background);
+		GridBagConstraints gbc_help = new GridBagConstraints();
+		gbc_help.anchor = GridBagConstraints.EAST;
+		gbc_help.insets = new Insets(0, 0, 5, 5);
+		gbc_help.gridx = 3;
+		gbc_help.gridy = 15;
+		add(help, gbc_help);
 		
 		addButtonsToList();
 		setButtonEnabling();
