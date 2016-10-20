@@ -31,6 +31,7 @@ import javax.swing.UIManager;
  * Class representing the quiz screen created for the project
  * Generated GUI with WindowBuilder
  * @author atag549
+ * Last Modified: 21 October, 2016
  *
  */
 public class QuizScreen extends JPanel {
@@ -183,6 +184,7 @@ public class QuizScreen extends JPanel {
 					//If it has, let them know they will lose their streak if they proceed
 					int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to go back to the Main Menu? You will lose your current streak.", "Exit Game", JOptionPane.YES_NO_OPTION);
 					if (reply == JOptionPane.YES_OPTION) {
+						//Exit the new quiz
 						quiz.exit();
 						GUI.getInstance().setContentPane(new MainMenu());
 					}

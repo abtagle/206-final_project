@@ -26,6 +26,7 @@ import javax.swing.UIManager;
 /**
  * This is the class representing the statistics screen designed for my 206 project
  * @author atag549
+ * Last Modified: 21 October, 2016
  *
  */
 public class StatisticsScreen extends JPanel {

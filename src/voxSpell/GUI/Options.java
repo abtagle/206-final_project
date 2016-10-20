@@ -25,8 +25,9 @@ import java.io.File;
 import java.util.HashMap;
 import java.awt.event.ActionEvent;
 /**
- * Options window that appears in quiz for options implemented for the 206 project
+ * Options window that appears in quiz for options implemented for the 206 project. Now it only lets you change the voice
  * @author atag549
+ * Last Modified: 21 October, 2016
  *
  */
 public class Options extends JFrame {
@@ -71,6 +72,7 @@ public class Options extends JFrame {
 			gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 			setLayout(gridBagLayout);
 			
+			//Title label that says Change Voice
 			JLabel lblChangeVoice = new JLabel("Change Voice");
 			lblChangeVoice.setHorizontalAlignment(SwingConstants.CENTER);
 			lblChangeVoice.setForeground(GUI.foreground);
@@ -128,13 +130,6 @@ public class Options extends JFrame {
 			gbc_button.gridy = 5;
 			add(button, gbc_button);
 
-		}
-
-	}
-	private class InnerStatistics extends StatisticsScreen{
-		public InnerStatistics(){
-			super();
-			menu.setVisible(false);
 		}
 	}
 

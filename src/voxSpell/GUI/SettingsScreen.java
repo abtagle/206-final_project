@@ -186,6 +186,7 @@ public class SettingsScreen extends JPanel {
 		
 		add(voiceSelect, gbc_voiceSelect);
 		
+		//Submit voice button
 		submitVoice = new JButton("Submit");
 		submitVoice.setBackground(GUI.background);
 		submitVoice.addActionListener(new ActionListener() {
@@ -203,6 +204,7 @@ public class SettingsScreen extends JPanel {
 		gbc_submitVoice.gridy = 6;
 		add(submitVoice, gbc_submitVoice);
 		
+		//Label for quiz size
 		JLabel quizSizeLabel = new JLabel("Quiz Size");
 		quizSizeLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		quizSizeLabel.setForeground(GUI.foreground);
@@ -214,6 +216,7 @@ public class SettingsScreen extends JPanel {
 		gbc_quizSizeLabel.gridy = 8;
 		add(quizSizeLabel, gbc_quizSizeLabel);
 		
+		//Quiz size drop down menu
 		quizSizeSelect = new JComboBox<String>();
 		quizSizeSelect.setModel(new DefaultComboBoxModel(new String[] {"3", "5", "10"}));
 		quizSizeSelect.setFont(new Font(GUI.FONT, Font.BOLD, 28));
@@ -225,6 +228,7 @@ public class SettingsScreen extends JPanel {
 		gbc_quizSizeSelect.gridy = 8;
 		add(quizSizeSelect, gbc_quizSizeSelect);
 		
+		//Quiz size submit button
 		submitQuizSize = new JButton("Submit");
 		submitQuizSize.setBackground(GUI.background);
 		submitQuizSize.addActionListener(new ActionListener() {
@@ -242,6 +246,7 @@ public class SettingsScreen extends JPanel {
 		gbc_submitQuizSize.gridy = 8;
 		add(submitQuizSize, gbc_submitQuizSize);
 		
+		//Back to main menu button
 		btnBackToMenu = new JButton("Back To Menu");
 		btnBackToMenu.setBackground(GUI.background);
 		btnBackToMenu.addActionListener(new ActionListener() {
@@ -249,10 +254,22 @@ public class SettingsScreen extends JPanel {
 				GUI.getInstance().setContentPane(new MainMenu());
 			}
 		});
+				
+		btnBackToMenu.setForeground(GUI.foreground);
+		btnBackToMenu.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
+		GridBagConstraints gbc_btnBackToMenu = new GridBagConstraints();
+		gbc_btnBackToMenu.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnBackToMenu.gridwidth = 3;
+		gbc_btnBackToMenu.insets = new Insets(0, 0, 5, 5);
+		gbc_btnBackToMenu.gridx = 1;
+		gbc_btnBackToMenu.gridy = 15;
+		add(btnBackToMenu, gbc_btnBackToMenu);
 		
+		//Current level label
 		currentLevel = new JLabel();
 		setCurrentLevelText();
 		
+		//Button to restart the whole game
 		JButton restart = new JButton("Restart Game");
 		restart.setBackground(new Color(204, 0, 0));
 		restart.addActionListener(new ActionListener() {
@@ -292,16 +309,8 @@ public class SettingsScreen extends JPanel {
 		gbc_sampleWords.gridx = 0;
 		gbc_sampleWords.gridy = 13;
 		add(sampleWords, gbc_sampleWords);
-		btnBackToMenu.setForeground(GUI.foreground);
-		btnBackToMenu.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
-		GridBagConstraints gbc_btnBackToMenu = new GridBagConstraints();
-		gbc_btnBackToMenu.fill = GridBagConstraints.HORIZONTAL;
-		gbc_btnBackToMenu.gridwidth = 3;
-		gbc_btnBackToMenu.insets = new Insets(0, 0, 5, 5);
-		gbc_btnBackToMenu.gridx = 1;
-		gbc_btnBackToMenu.gridy = 15;
-		add(btnBackToMenu, gbc_btnBackToMenu);
-		
+
+		//Change theme button
 		theme = new JButton("Change Theme");
 		theme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -321,14 +330,23 @@ public class SettingsScreen extends JPanel {
 		add(theme, gbc_theme);
 
 	}
+	/**
+	 * Method sets the label saying the current level to actually show the current level
+	 */
 	private void setCurrentLevelText(){
 		currentLevel.setText("Current Level: " + Settings.getInstance().getLevel() );
 		currentLevel.repaint();
 	}
+	/**
+	 * Sets the text which shows the sample words for the level you are currently on
+	 */
 	private void setSampleWords(){
 		sampleWords.setText("Sample Level Words: " + Lists.getInstance().getWordList(Settings.getInstance().getLevel()).getWord(0) + ", " + Lists.getInstance().getWordList(Settings.getInstance().getLevel()).getWord(1) + ", " + Lists.getInstance().getWordList(Settings.getInstance().getLevel()).getWord(2));
 		sampleWords.repaint();
 	}
+	/**
+	 * Resets all the statistics and streaks and achievements
+	 */
 	private void restart(){
 		int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to RESTART YOUR GAME? All your achievements and streaks will be lost.", "Restart Game", JOptionPane.YES_NO_OPTION);
 		if (reply == JOptionPane.YES_OPTION) {

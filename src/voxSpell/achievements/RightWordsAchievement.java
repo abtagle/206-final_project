@@ -1,7 +1,12 @@
 package voxSpell.achievements;
 
 import voxSpell.quiz.Lists;
-
+/**
+ * Class representing achievements for the number of words right
+ * @author atag549
+ * Last Modified: 21 October, 2016
+ *
+ */
 public class RightWordsAchievement extends Achievement {
 	
 	private int _numberOfWords;

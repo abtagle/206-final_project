@@ -37,6 +37,7 @@ public class WordListView extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		_contentPane.add(scrollPane, BorderLayout.CENTER);
 
+		//textarea where you can see all the words and scroll through
 		_listView = new JTextArea();
 		_listView.setFont(new Font(GUI.FONT,Font.PLAIN, 24));
 		_listView.setEditable(false);

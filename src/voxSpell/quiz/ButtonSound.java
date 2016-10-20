@@ -9,7 +9,11 @@ import javax.swing.SwingWorker;
 
 import voxSpell.GUI.GUI;
 
-
+/**
+ * Class representing the sound that sounds when main meny buttons are pressed
+ * @author atag549
+ * Last Modified: 21 October, 2016
+ */
 public class ButtonSound extends SwingWorker<Void, Void>{
 	private static final String SOUND = "/Sound/";
 	private String _soundName;
@@ -17,19 +21,11 @@ public class ButtonSound extends SwingWorker<Void, Void>{
 	public ButtonSound(String soundName){
 		_soundName = soundName;
 	}
+	/**
+	 * swingworker method to prevent GUI freezing when the sound plays
+	 */
 	@Override
 	protected Void doInBackground() throws Exception {
-		/*AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(Lists.PATH+SOUND+_soundName).getAbsoluteFile());
-		Clip clip = AudioSystem.getClip();
-		clip.open(audioInputStream);
-		//from http://stackoverflow.com/questions/2335601/reliably-playing-a-short-sound-in-java
-
-	    while (System.in.read() == '\n') {
-	        clip.stop();
-	        clip.setFramePosition(0);
-	        clip.start();
-	    }*/
-		
 		File soundFile = new File(GUI.PATH + SOUND + _soundName);
 		Clip clip = AudioSystem.getClip();
 		AudioInputStream inputStream = AudioSystem.getAudioInputStream(soundFile.getAbsoluteFile());

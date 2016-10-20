@@ -1,7 +1,11 @@
 package voxSpell.achievements;
 
 import voxSpell.quiz.Lists;
-
+/**
+ * Class representing achievements for consecutive correct answers (streaks)
+ * @author atag549
+ *Last Modified: 21 October, 2016
+ */
 public class StreakAchievement extends Achievement {
 	
 	private int _streakValue;

@@ -22,8 +22,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.UIManager;
 /**
- * Class representing the screen users see when they view achievements
+ * Class representing the screen users see when they view achievements. It also holds a secret button associated with a 
+ * secret video reward
  * @author atag549
+ * Last Modified: 21 October, 2016
  *
  */
 public class AchievementScreen extends JPanel {
@@ -60,6 +62,7 @@ public class AchievementScreen extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
+		//Title divided up to have the secret button
 		title = new JLabel("Achiev");
 		title.setVerticalAlignment(SwingConstants.BOTTOM);
 		title.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -73,6 +76,7 @@ public class AchievementScreen extends JPanel {
 		gbc_title.gridy = 1;
 		add(title, gbc_title);
 		
+		//The secret e button
 		eButton = new JLabel("e");
 		eButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -90,6 +94,7 @@ public class AchievementScreen extends JPanel {
 		gbc_eButton.gridy = 1;
 		add(eButton, gbc_eButton);
 		
+		//the rest of the title
 		title2 = new JLabel("ments");
 		title2.setVerticalAlignment(SwingConstants.BOTTOM);
 		title2.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -102,6 +107,7 @@ public class AchievementScreen extends JPanel {
 		gbc_title2.gridy = 1;
 		add(title2, gbc_title2);
 		
+		//Streak length column label
 		streak = new JLabel("Streak Length");
 		streak.setHorizontalAlignment(SwingConstants.RIGHT);
 		streak.setForeground(GUI.foreground);
@@ -112,6 +118,7 @@ public class AchievementScreen extends JPanel {
 		gbc_streak.gridy = 3;
 		add(streak, gbc_streak);
 		
+		//Words right column label
 		wordsRight = new JLabel("Words Right");
 		wordsRight.setHorizontalAlignment(SwingConstants.RIGHT);
 		wordsRight.setForeground(GUI.foreground);
@@ -122,6 +129,7 @@ public class AchievementScreen extends JPanel {
 		gbc_wordsRight.gridy = 3;
 		add(wordsRight, gbc_wordsRight);
 		
+		//Label for 10 word streak
 		JLabel streakLabel10 = new JLabel("10 Words");
 		streakLabel10.setHorizontalAlignment(SwingConstants.RIGHT);
 		streakLabel10.setForeground(GUI.foreground);
@@ -132,6 +140,7 @@ public class AchievementScreen extends JPanel {
 		gbc_streakLabel10.gridy = 5;
 		add(streakLabel10, gbc_streakLabel10);
 		
+		//View reward button for 10 word streak
 		streak10ViewReward = new JButton("View Reward");
 		streak10ViewReward.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -139,6 +148,7 @@ public class AchievementScreen extends JPanel {
 			}
 		});
 		
+		//Label for 50 words correct
 		rightLabel50 = new JLabel("50 Words");
 		rightLabel50.setHorizontalAlignment(SwingConstants.RIGHT);
 		rightLabel50.setForeground(GUI.foreground);
@@ -158,6 +168,7 @@ public class AchievementScreen extends JPanel {
 		gbc_streak10ViewReward.gridy = 6;
 		add(streak10ViewReward, gbc_streak10ViewReward);
 		
+		//View reward for 50 words right
 		right50ViewReward = new JButton("View Reward");
 		right50ViewReward.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -173,6 +184,7 @@ public class AchievementScreen extends JPanel {
 		gbc_right50ViewReward.gridy = 6;
 		add(right50ViewReward, gbc_right50ViewReward);
 		
+		//Label for 25 word streak
 		streakLabel25 = new JLabel("25 Words");
 		streakLabel25.setHorizontalAlignment(SwingConstants.RIGHT);
 		streakLabel25.setForeground(GUI.foreground);
@@ -183,6 +195,7 @@ public class AchievementScreen extends JPanel {
 		gbc_streakLabel25.gridy = 8;
 		add(streakLabel25, gbc_streakLabel25);
 		
+		//Label for 100 words right
 		rightLabel100 = new JLabel("100 Words");
 		rightLabel100.setHorizontalAlignment(SwingConstants.RIGHT);
 		rightLabel100.setForeground(GUI.foreground);
@@ -193,6 +206,7 @@ public class AchievementScreen extends JPanel {
 		gbc_rightLabel100.gridy = 8;
 		add(rightLabel100, gbc_rightLabel100);
 		
+		//View reward for 25 word streak
 		streak25ViewReward = new JButton("View Reward");
 		streak25ViewReward.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -208,6 +222,7 @@ public class AchievementScreen extends JPanel {
 		gbc_streak25ViewReward.gridy = 9;
 		add(streak25ViewReward, gbc_streak25ViewReward);
 		
+		//View reward for 100 words right
 		right100ViewReward = new JButton("View Reward");
 		right100ViewReward.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -223,6 +238,7 @@ public class AchievementScreen extends JPanel {
 		gbc_right100ViewReward.gridy = 9;
 		add(right100ViewReward, gbc_right100ViewReward);
 		
+		//Label for 50 word streak 
 		streakLabel50 = new JLabel("50 Words");
 		streakLabel50.setHorizontalAlignment(SwingConstants.RIGHT);
 		streakLabel50.setForeground(GUI.foreground);
@@ -233,6 +249,7 @@ public class AchievementScreen extends JPanel {
 		gbc_streakLabel50.gridy = 11;
 		add(streakLabel50, gbc_streakLabel50);
 		
+		//Label for 100 words right
 		rightLabel250 = new JLabel("250 Words");
 		rightLabel250.setHorizontalAlignment(SwingConstants.RIGHT);
 		rightLabel250.setForeground(GUI.foreground);
@@ -243,6 +260,7 @@ public class AchievementScreen extends JPanel {
 		gbc_rightLabel250.gridy = 11;
 		add(rightLabel250, gbc_rightLabel250);
 		
+		//View reward button for 50 word streak
 		streak50ViewReward = new JButton("View Reward");
 		streak50ViewReward.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -258,6 +276,7 @@ public class AchievementScreen extends JPanel {
 		gbc_streak50ViewReward.gridy = 12;
 		add(streak50ViewReward, gbc_streak50ViewReward);
 		
+		//Back to menu button
 		menu = new JButton("Back to Main Menu");
 		menu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -265,6 +284,7 @@ public class AchievementScreen extends JPanel {
 			}
 		});
 		
+		//View reward for 250 word streak
 		right250ViewReward = new JButton("View Reward");
 		right250ViewReward.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -311,7 +331,9 @@ public class AchievementScreen extends JPanel {
 		setButtonEnabling();
 
 	}
-	
+	/**
+	 * Stores all the "View Reward" buttons in a list
+	 */
 	private void addButtonsToList(){
 		viewRewardButtons.add(streak10ViewReward);
 		viewRewardButtons.add(streak25ViewReward);
@@ -321,6 +343,9 @@ public class AchievementScreen extends JPanel {
 		viewRewardButtons.add(right250ViewReward);	
 	}
 	
+	/**
+	 * Sets if buttons are disabled because the associated achievement is still locked
+	 */
 	private void setButtonEnabling(){
 		for(int i = 0; i < viewRewardButtons.size(); i++){
 			if(!AchievementList.getInstance().getShallowCopy().get(i)){

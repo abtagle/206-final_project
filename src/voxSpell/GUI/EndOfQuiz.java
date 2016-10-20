@@ -18,9 +18,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
-import java.awt.Color;
-import javax.swing.UIManager;
 
+/**
+ * Class representing the screen that appears at the end of a quiz, with the score, ability to view the list tested, and any achievements unlocked.
+ * @author atag549
+ * Last Modified: 21 October, 2016
+ *
+ */
 public class EndOfQuiz extends JPanel {
 	private JButton button;
 	private JLabel congratulatoins;
