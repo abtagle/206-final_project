@@ -17,6 +17,8 @@ import voxSpell.quiz.ButtonSound;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.UIManager;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * Class representing the main menu written using WindowBuilder for the final assignment of Softeng 206
@@ -28,10 +30,10 @@ public class MainMenu extends JPanel {
 	public MainMenu() {
 		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{40, 125, 0, 60, 160, 40, 10, 0};
-		gridBagLayout.rowHeights = new int[]{30, 0, 0, 0, 0, 0, 30, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{40, 125, 0, 60, 160, 20, 0};
+		gridBagLayout.rowHeights = new int[]{30, 0, 0, 0, 0, 0, 30, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 
@@ -152,25 +154,25 @@ public class MainMenu extends JPanel {
 		gbc_settings.gridy = 5;
 		add(settings, gbc_settings);
 		
-		JButton help = new JButton("");
-		help.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		//Help button
+		JLabel help = new JLabel();
+		help.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
 				new HelpScreen();
 			}
 		});
-		
-		//Help button
 		help.setIcon(new ImageIcon(GUI.PATH + "/help.png"));
 		help.setHorizontalAlignment(SwingConstants.RIGHT);
 		help.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 		help.setBackground(GUI.background);
 		GridBagConstraints gbc_help = new GridBagConstraints();
-		gbc_help.gridwidth = 3;
-		gbc_help.insets = new Insets(0, 0, 0, 5);
+		gbc_help.insets = new Insets(0, 0, 5, 5);
+		gbc_help.gridwidth = 1;
 		gbc_help.anchor = GridBagConstraints.EAST;
 		gbc_help.gridx = 4;
 		gbc_help.gridy = 6;
 		add(help, gbc_help);
+
 	}
 	/**
 	 * Method that causes the button press noise to execute
