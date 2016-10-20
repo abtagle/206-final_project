@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -39,7 +41,7 @@ public class QuizScreen extends JPanel {
 	private JButton relisten;
 	private JButton submit;
 	private String title;
-	private Quiz quiz;
+	private Quiz quiz = null;
 	private JButton start;
 	private JButton menu;
 	private JButton changeVoice;
@@ -51,7 +53,7 @@ public class QuizScreen extends JPanel {
 	public QuizScreen(String title) {
 		this.title = "Press Start!";
 		GUI.getInstance().getFrame().setSize(800, 600);
-		
+
 		setBackground(GUI.background);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{100, 0, 190, 20, 190, 20, 0, 100, 0};
@@ -59,7 +61,7 @@ public class QuizScreen extends JPanel {
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
-		
+
 		//Title label
 		titleLabel = new JLabel(this.title);
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -72,7 +74,7 @@ public class QuizScreen extends JPanel {
 		gbc_titleLabel.gridx = 0;
 		gbc_titleLabel.gridy = 1;
 		add(titleLabel, gbc_titleLabel);
-		
+
 		//Label showing what word you're on
 		wordNumberLabel = new JLabel("Word 1 of " + Settings.getInstance().getQuizSize());
 		wordNumberLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -85,7 +87,7 @@ public class QuizScreen extends JPanel {
 		gbc_wordNumberLabel.gridx = 0;
 		gbc_wordNumberLabel.gridy = 3;
 		add(wordNumberLabel, gbc_wordNumberLabel);
-		
+
 		scoreLabel = new JLabel("Score: 0");
 		scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		scoreLabel.setForeground(GUI.foreground);
@@ -97,7 +99,7 @@ public class QuizScreen extends JPanel {
 		gbc_scoreLabel.gridx = 0;
 		gbc_scoreLabel.gridy = 5;
 		add(scoreLabel, gbc_scoreLabel);
-		
+
 		start = new JButton("START");
 		start.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -117,6 +119,7 @@ public class QuizScreen extends JPanel {
 		gbc_menu.gridx = 0;
 		gbc_menu.gridy = 6;
 		add(start, gbc_menu);
+
 		//Spelling JTextField
 		spellingBar = new JTextField();
 		spellingBar.setFont(new Font("Dialog", Font.PLAIN, 20));
@@ -128,6 +131,7 @@ public class QuizScreen extends JPanel {
 		gbc_spellingBar.gridy = 7;
 		add(spellingBar, gbc_spellingBar);
 		spellingBar.setColumns(10);
+
 		//Relisten Button
 		relisten = new JButton("Relisten");
 		relisten.setBackground(GUI.background);
@@ -145,7 +149,7 @@ public class QuizScreen extends JPanel {
 		gbc_relisten.gridx = 6;
 		gbc_relisten.gridy = 7;
 		add(relisten, gbc_relisten);
-		
+
 		//Submit Button
 		submit = new JButton("Submit");
 		submit.setBackground(GUI.background);
@@ -167,12 +171,21 @@ public class QuizScreen extends JPanel {
 		gbc_submit.gridx = 1;
 		gbc_submit.gridy = 9;
 		add(submit, gbc_submit);
-		
+
 		//Back to Menu button
 		menu = new JButton("Back to Menu");
 		menu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GUI.getInstance().setContentPane(new MainMenu());
+				if(quiz == null){
+					//If the quiz has not yet started, go back to the main menu
+					GUI.getInstance().setContentPane(new MainMenu());
+				} else{
+					//If it has, let them know they will lose their streak if they proceed
+					int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to go back to the Main Menu? You will lose your current streak.", "Exit Game", JOptionPane.YES_NO_OPTION);
+					if (reply == JOptionPane.YES_OPTION) {
+						GUI.getInstance().setContentPane(new MainMenu());
+					}
+				}
 			}
 		});
 		menu.setForeground(GUI.foreground);
@@ -183,7 +196,7 @@ public class QuizScreen extends JPanel {
 		gbc_menu.gridx = 2;
 		gbc_menu.gridy = 11;
 		add(menu, gbc_menu);
-		
+
 		//Change voice button
 		changeVoice = new JButton("Change Voice");
 		changeVoice.addActionListener(new ActionListener() {
@@ -199,7 +212,7 @@ public class QuizScreen extends JPanel {
 		gbc_changeVoice.gridx = 4;
 		gbc_changeVoice.gridy = 11;
 		add(changeVoice, gbc_changeVoice);
-		
+
 		//Streak display
 		streak = new JLabel("Streak: " + Lists.getInstance().getStreak());
 		streak.setHorizontalAlignment(SwingConstants.CENTER);
@@ -211,7 +224,7 @@ public class QuizScreen extends JPanel {
 		gbc_streak.gridx = 6;
 		gbc_streak.gridy = 11;
 		add(streak, gbc_streak);
-		
+
 		//Help button
 		help = new JLabel("");
 		help.addMouseListener(new MouseAdapter() {
@@ -228,7 +241,7 @@ public class QuizScreen extends JPanel {
 		gbc_help.gridx = 7;
 		gbc_help.gridy = 11;
 		add(help, gbc_help);
-		
+
 		//Disable buttons before quiz
 		disableButtons();
 	}
@@ -240,7 +253,7 @@ public class QuizScreen extends JPanel {
 		titleLabel.setText(this.title);
 		quiz = new NewQuiz(this);
 		quiz.sayWord();
-		
+
 	}
 	/**
 	 * Updates the word number you are on in the given quiz
