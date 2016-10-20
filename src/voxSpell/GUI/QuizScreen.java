@@ -183,6 +183,7 @@ public class QuizScreen extends JPanel {
 					//If it has, let them know they will lose their streak if they proceed
 					int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to go back to the Main Menu? You will lose your current streak.", "Exit Game", JOptionPane.YES_NO_OPTION);
 					if (reply == JOptionPane.YES_OPTION) {
+						quiz.exit();
 						GUI.getInstance().setContentPane(new MainMenu());
 					}
 				}
