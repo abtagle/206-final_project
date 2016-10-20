@@ -102,7 +102,7 @@ public class EndOfQuiz extends JPanel {
 			add(achievements, gbc_achievements);
 			new ButtonSound("well-done.wav").execute();
 		}
-
+		//Menu button
 		button = new JButton("Back To Menu");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -124,7 +124,7 @@ public class EndOfQuiz extends JPanel {
 				gbc_viewAchievements.gridx = 1;
 				gbc_viewAchievements.gridy = 8;
 				add(viewAchievements, gbc_viewAchievements);
-		
+		//View Words Button
 		viewWords = new JButton("View Words");
 		viewWords.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

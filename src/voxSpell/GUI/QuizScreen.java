@@ -8,6 +8,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import voxSpell.help.HelpScreen;
 import voxSpell.quiz.Lists;
 import voxSpell.quiz.NewQuiz;
 import voxSpell.quiz.Quiz;
@@ -17,6 +18,8 @@ import javax.swing.JTextField;
 import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Color;
@@ -41,6 +44,7 @@ public class QuizScreen extends JPanel {
 	private JButton menu;
 	private JButton changeVoice;
 	private JLabel streak;
+	private JLabel help;
 	/**
 	 * Create the panel.
 	 */
@@ -196,6 +200,7 @@ public class QuizScreen extends JPanel {
 		gbc_changeVoice.gridy = 11;
 		add(changeVoice, gbc_changeVoice);
 		
+		//Streak display
 		streak = new JLabel("Streak: " + Lists.getInstance().getStreak());
 		streak.setHorizontalAlignment(SwingConstants.CENTER);
 		streak.setForeground(GUI.foreground);
@@ -206,6 +211,25 @@ public class QuizScreen extends JPanel {
 		gbc_streak.gridx = 6;
 		gbc_streak.gridy = 11;
 		add(streak, gbc_streak);
+		
+		//Help button
+		help = new JLabel("");
+		help.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				new HelpScreen();
+			}
+		});
+		help.setIcon(new ImageIcon(GUI.PATH + "/help.png"));
+		help.setHorizontalAlignment(SwingConstants.RIGHT);
+		help.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
+		help.setBackground(GUI.background);
+		GridBagConstraints gbc_help = new GridBagConstraints();
+		gbc_help.insets = new Insets(0, 0, 5, 0);
+		gbc_help.gridx = 7;
+		gbc_help.gridy = 11;
+		add(help, gbc_help);
+		
+		//Disable buttons before quiz
 		disableButtons();
 	}
 	/**
@@ -226,18 +250,31 @@ public class QuizScreen extends JPanel {
 	public void updateWordNumber(int number, int total){
 		wordNumberLabel.setText("Word " + number+ " of " + (quiz.getNumberOfWords()));
 	}
+	/**
+	 * Updates the score after each question is answered
+	 * @param score
+	 */
 	public void updateScore(int score){
 		scoreLabel.setText("Score: " + score);
 		streak.setText("Streak: " + Lists.getInstance().getStreak());
 	}
+	/**
+	 * Disables buttons if festival is speaking or before the quiz starts to limit the spamming that can be done
+	 */
 	public void disableButtons(){
 		submit.setEnabled(false);
 		relisten.setEnabled(false);
 	}
+	/**
+	 * Enables the buttons for use again
+	 */
 	public void enableButtons(){
 		submit.setEnabled(true);
 		relisten.setEnabled(true);
 	}
+	/**
+	 * Shows the end of quiz screen
+	 */
 	public void endQuiz(){
 		GUI.getInstance().setContentPane(new EndOfQuiz(quiz));
 	}

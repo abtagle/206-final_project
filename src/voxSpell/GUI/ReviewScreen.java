@@ -13,9 +13,12 @@ import java.awt.GridBagConstraints;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import voxSpell.help.HelpScreen;
 import voxSpell.quiz.Review;
 
 import java.awt.Insets;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -24,6 +27,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JToggleButton;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.awt.BorderLayout;
@@ -50,6 +55,7 @@ public class ReviewScreen extends JPanel {
 	private JLabel title;
 	private JButton viewList;
 	private JButton shuffle;
+	private JLabel help;
 	/**
 	 * Create the panel.
 	 */
@@ -101,7 +107,7 @@ public class ReviewScreen extends JPanel {
 		shuffle.setBackground(GUI.background);
 		GridBagConstraints gbc_shuffle = new GridBagConstraints();
 		gbc_shuffle.gridwidth = 7;
-		gbc_shuffle.insets = new Insets(0, 0, 5, 5);
+		gbc_shuffle.insets = new Insets(0, 0, 5, 0);
 		gbc_shuffle.gridx = 0;
 		gbc_shuffle.gridy = 3;
 		add(shuffle, gbc_shuffle);
@@ -259,6 +265,22 @@ public class ReviewScreen extends JPanel {
 		gbc_viewList.gridx = 4;
 		gbc_viewList.gridy = 10;
 		add(viewList, gbc_viewList);
+		
+		help = new JLabel("");
+		help.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				new HelpScreen();
+			}
+		});
+		help.setIcon(new ImageIcon(GUI.PATH + "/help.png"));
+		help.setHorizontalAlignment(SwingConstants.RIGHT);
+		help.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
+		help.setBackground(GUI.background);
+		GridBagConstraints gbc_help = new GridBagConstraints();
+		gbc_help.insets = new Insets(0, 0, 5, 5);
+		gbc_help.gridx = 5;
+		gbc_help.gridy = 10;
+		add(help, gbc_help);
 		
 		//Tells user to go back to the menu if there are no words to review
 		if(currentReview.getLength() == 0){
