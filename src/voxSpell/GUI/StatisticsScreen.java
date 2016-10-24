@@ -107,7 +107,7 @@ public class StatisticsScreen extends JPanel {
 					accuracyValue = accuracyValue.substring(0, 4);
 				}
 				accuracy.setText("Accuracy: "+ accuracyValue + "%");
-				wordsTested.setText("Word Tested from Level: " + Lists.getInstance().getWordsTested((String)chooseLevel.getSelectedItem()));
+				wordsTested.setText("Words Tested from Level: " + Lists.getInstance().getWordsTested((String)chooseLevel.getSelectedItem()));
 			}
 		});
 		submitLevel.setForeground(GUI.foreground);
@@ -214,6 +214,7 @@ public class StatisticsScreen extends JPanel {
 		gbc_menu.gridy = 14;
 		add(menu, gbc_menu);
 		
+		//Help button
 		help = new JLabel("");
 		help.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {

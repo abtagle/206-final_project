@@ -94,6 +94,7 @@ public class ReviewScreen extends JPanel {
 		gbc_title.gridy = 1;
 		add(title, gbc_title);
 		
+		//Shuffle button
 		shuffle = new JButton("Shuffle");
 		shuffle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -206,10 +207,12 @@ public class ReviewScreen extends JPanel {
 					public void actionPerformed(ActionEvent e) {
 						if(viewWordToggle.isSelected()){
 							word.setText(currentReview.getWord());
+							viewWordToggle.setForeground(Color.BLACK);
 							viewWordToggle.setText("Hide Text");
 						} else {
 							word.setText("?");
 							viewWordToggle.setText("Show Text");
+							viewWordToggle.setForeground(GUI.foreground);
 						}
 					}
 				});
@@ -237,8 +240,8 @@ public class ReviewScreen extends JPanel {
 							}
 						}
 					});
-					remove.setForeground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
-					remove.setFont(new Font("Century Schoolbook L", Font.PLAIN, 28));
+					remove.setForeground(Color.WHITE);
+					remove.setFont(new Font(GUI.FONT, Font.PLAIN, 28));
 					remove.setBackground(Color.RED);
 					GridBagConstraints gbc_remove = new GridBagConstraints();
 					gbc_remove.gridwidth = 7;
